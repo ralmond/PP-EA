@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## To get the base URL, go to the google sheet in question and click share.
+## Generate a view link, and then copy the link and paste it here.
+BASEURL=https://docs.google.com/spreadsheets/d/16LcEuCspZjiBoZ3-Y1R3jxi1COXmh9vuTa9GwH1A_7Q/edit?usp=sharing
+

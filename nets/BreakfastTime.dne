@@ -1,0 +1,232 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:26.
+
+bnet BreakfastTime {
+autoupdate = FALSE;
+title = "Breakfast time";
+whenchanged = 1579300946;
+user U1 {
+	Truename = "BreakfastTime";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "BreakfastTime.dne";
+	};
+
+param X_EnergyTransfer_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300549;
+	};
+
+param X_ConOfMom_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300549;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 21.732, 43.292, 72.14, INFINITY);
+	inputs = (ConOfMom, EnergyTransfer);
+	parents = (X_ConOfMom_4, X_EnergyTransfer_4);
+	probs = 
+		// Q1           Q2           Q3           Q4            // ConOfMom EnergyTransfer 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High     High           
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // High     Medium         
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // High     Low            
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // Medium   High           
+		   0.25,        0.25,        0.25,        0.25,         // Medium   Medium         
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Medium   Low            
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // Low      High           
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Low      Medium         
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low      Low            ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300549;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"97\", \
+			\"98\", \"99\"), c(\"ConOfMom\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = \
+			-0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = -0.446287102628419, \
+			EnergyTransfer = -0.0408219945202552 ))";
+		betas = "list(0L, 0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300549;
+	};
+
+param X_ConOfMom_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300549;
+	};
+
+node AppropriateSlider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (almostAlways, mostly, mostlyNot, almostNever);
+	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
+	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	inputs = (ConOfMom, EnergyTransfer);
+	parents = (X_ConOfMom_3, X_EnergyTransfer_3);
+	probs = 
+		// almost always mostly      mostlyNot    almost never  // ConOfMom EnergyTransfer 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High     High           
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // High     Medium         
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // High     Low            
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // Medium   High           
+		   0.25,        0.25,        0.25,        0.25,         // Medium   Medium         
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Medium   Low            
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // Low      High           
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Low      Medium         
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low      Low            ;
+	numcases = 10;
+	title = "Slider";
+	whenchanged = 1579300549;
+	user U1 {
+		Truename = "AppropriateSlider";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"94\", \
+			\"95\", \"96\"), c(\"ConOfMom\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = \
+			-0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = -0.446287102628419, \
+			EnergyTransfer = -0.0408219945202552 ))";
+		betas = "list(0L, 0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300548;
+	};
+
+param X_ConOfMom_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300548;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (ConOfMom, EnergyTransfer);
+	parents = (X_ConOfMom_2, X_EnergyTransfer_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // ConOfMom EnergyTransfer 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High     High           
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // High     Medium         
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // High     Low            
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // Medium   High           
+		   0.25,        0.25,        0.25,        0.25,         // Medium   Medium         
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Medium   Low            
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // Low      High           
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Low      Medium         
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low      Low            ;
+	numcases = 10;
+	title = "Number of slider adjustment";
+	whenchanged = 1579300548;
+	user U1 {
+		Truename = "SliderAdjust";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"91\", \
+			\"92\", \"93\"), c(\"ConOfMom\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = \
+			-0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = -0.446287102628419, \
+			EnergyTransfer = -0.0408219945202552 ))";
+		betas = "list(0L, 0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300547;
+	};
+
+param X_ConOfMom_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300547;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (ConOfMom, EnergyTransfer);
+	parents = (X_ConOfMom_1, X_EnergyTransfer_1);
+	probs = 
+		// Gold         Silver       None          // ConOfMom EnergyTransfer 
+		  (0.8476231,   0.1318632,   0.02051371,   // High     High           
+		   0.5879641,   0.2793309,   0.132705,     // High     Medium         
+		   0.2195038,   0.3184623,   0.4620339,    // High     Low            
+		   0.6970182,   0.2282425,   0.07473928,   // Medium   High           
+		   0.3333333,   0.3333333,   0.3333333,    // Medium   Medium         
+		   0.07473928,  0.2282425,   0.6970182,    // Medium   Low            
+		   0.4620339,   0.3184623,   0.2195038,    // Low      High           
+		   0.132705,    0.2793309,   0.5879641,    // Low      Medium         
+		   0.02051371,  0.1318632,   0.8476231);   // Low      Low            ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300547;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"89\", \"90\"),\
+			\| c(\"ConOfMom\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = \
+			-0.446287102628419, EnergyTransfer = -0.0408219945202552 ))";
+		betas = "list(0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+NodeSet Observable {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+};

@@ -1,0 +1,217 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on May 07, 2019 at 15:32:37.
+
+bnet Lollipop {
+autoupdate = TRUE;
+title = "Lollipop";
+whenchanged = 1557257557;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 286);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet HighLevel {Color = 0x00FF8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet LowLevel {Color = 0x00FF8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00C8C8C8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_PropertiesofTorque_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557257557;
+	};
+
+param X_StaticEquilibrium_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257557;
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	inputs = (StaticEquilibrium, PropertiesofTorque);
+	parents = (X_StaticEquilibrium_3, X_PropertiesofTorque_3);
+	probs = 
+		// Mass         Gravity      AirResistence  // StaticEquilibrium PropertiesofTorque 
+		  (0.7833036,   0.1767936,   0.03990279,   // High              High               
+		   0.6341299,   0.2595973,   0.1062728,    // High              Medium             
+		   0.4359478,   0.3236994,   0.2403528,    // High              Low                
+		   0.5389956,   0.2971665,   0.1638379,    // Medium            High               
+		   0.3333333,   0.3333333,   0.3333333,    // Medium            Medium             
+		   0.1638379,   0.2971665,   0.5389956,    // Medium            Low                
+		   0.2403528,   0.3236994,   0.4359478,    // Low               High               
+		   0.1062728,   0.2595973,   0.6341299,    // Low               Medium             
+		   0.03990279,  0.1767936,   0.7833036);   // Low               Low                ;
+	title = "Slider";
+	whenchanged = 1557257557;
+	visual V1 {
+		center = (74, 33);
+		height = 15;
+		link 1 {
+			labelposn = (40, 2, 130, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 210, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+
+param X_PropertiesofTorque_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557257557;
+	};
+
+param X_StaticEquilibrium_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257557;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (StaticEquilibrium, PropertiesofTorque);
+	parents = (X_StaticEquilibrium_2, X_PropertiesofTorque_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // StaticEquilibrium PropertiesofTorque 
+		  (0.776312,    0.1752156,   0.03954662,  0.008925776,  // High              High               
+		   0.6076919,   0.2487743,   0.1018421,   0.04169167,   // High              Medium             
+		   0.3699281,   0.2746785,   0.2039539,   0.1514395,    // High              Low                
+		   0.494342,    0.2725475,   0.1502646,   0.08284596,   // Medium            High               
+		   0.25,        0.25,        0.25,        0.25,         // Medium            Medium             
+		   0.08284596,  0.1502646,   0.2725475,   0.494342,     // Medium            Low                
+		   0.1514395,   0.2039539,   0.2746785,   0.3699281,    // Low               High               
+		   0.04169167,  0.1018421,   0.2487743,   0.6076919,    // Low               Medium             
+		   0.008925776, 0.03954662,  0.1752156,   0.776312);    // Low               Low                ;
+	title = "Number of slider adjustment";
+	whenchanged = 1557257557;
+	visual V1 {
+		center = (83, 50);
+		height = 16;
+		link 1 {
+			labelposn = (40, 2, 130, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (126, 2, 229, 17);
+			path = ((126, 0), (126, 0));
+			};
+		};
+	};
+
+param X_PropertiesofTorque_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557257557;
+	};
+
+param X_StaticEquilibrium_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257557;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (StaticEquilibrium, PropertiesofTorque);
+	parents = (X_StaticEquilibrium_1, X_PropertiesofTorque_1);
+	probs = 
+		// Gold         Silver       None          // StaticEquilibrium PropertiesofTorque 
+		  (0.7833036,   0.1767936,   0.03990279,   // High              High               
+		   0.6341299,   0.2595973,   0.1062728,    // High              Medium             
+		   0.4359478,   0.3236994,   0.2403528,    // High              Low                
+		   0.5389956,   0.2971665,   0.1638379,    // Medium            High               
+		   0.3333333,   0.3333333,   0.3333333,    // Medium            Medium             
+		   0.1638379,   0.2971665,   0.5389956,    // Medium            Low                
+		   0.2403528,   0.3236994,   0.4359478,    // Low               High               
+		   0.1062728,   0.2595973,   0.6341299,    // Low               Medium             
+		   0.03990279,  0.1767936,   0.7833036);   // Low               Low                ;
+	title = "Level solving status";
+	whenchanged = 1557257557;
+	visual V1 {
+		center = (74, 33);
+		height = 17;
+		link 1 {
+			labelposn = (40, 2, 130, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 210, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (Slider, SliderAdjust, TrophyLevel);};
+};

@@ -1,0 +1,162 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:33.
+
+bnet Lever {
+autoupdate = FALSE;
+title = "Lever";
+whenchanged = 1579300953;
+user U1 {
+	Truename = "Lever";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "Lever.dne";
+	};
+
+param X_PropertiesofTorque_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300900;
+	};
+
+node ApplicableAgent {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
+	inputs = (PropertiesofTorque);
+	parents = (X_PropertiesofTorque_4);
+	probs = 
+		// TRUE         FALSE         // PropertiesofTorque 
+		  (0.9855472,   0.01445281,   // High               
+		   0.9677045,   0.03229547,   // Medium             
+		   0.929412,    0.07058802);  // Low                ;
+	numcases = 10;
+	title = "Agent Type";
+	whenchanged = 1579300900;
+	user U1 {
+		Truename = "ApplicableAgent";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(PropertiesofTorque = -0.693147180559945)";
+		betas = "-2L";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300900;
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	inputs = (PropertiesofTorque);
+	parents = (X_PropertiesofTorque_3);
+	probs = 
+		// one          two          three four   more than four  // PropertiesofTorque 
+		  (0.9853353,   0.0144497,   2.119013e-4, 3.107481e-6,  // High               
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium             
+		   0.9240816,   0.07018319,  0.005330351, 4.048354e-4); // Low                ;
+	numcases = 10;
+	title = "Number of attempts";
+	whenchanged = 1579300900;
+	user U1 {
+		Truename = "NumberAttempts";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.693147180559945), c(PropertiesofTorque = -0.693147180559945), \
+			\|     c(PropertiesofTorque = -0.693147180559945))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300899;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 21.03, 31.641, 49.456, INFINITY);
+	inputs = (PropertiesofTorque);
+	parents = (X_PropertiesofTorque_2);
+	probs = 
+		// Q1           Q2           Q3           Q4            // PropertiesofTorque 
+		  (0.9853353,   0.0144497,   2.119013e-4, 3.107481e-6,  // High               
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium             
+		   0.9240816,   0.07018319,  0.005330351, 4.048354e-4); // Low                ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300899;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.693147180559945), c(PropertiesofTorque = -0.693147180559945), \
+			\|     c(PropertiesofTorque = -0.693147180559945))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300899;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (PropertiesofTorque);
+	parents = (X_PropertiesofTorque_1);
+	probs = 
+		// Gold         Silver       None          // PropertiesofTorque 
+		  (0.9853383,   0.01444974,  2.11902e-4,   // High               
+		   0.9666626,   0.03226069,  0.001076645,  // Medium             
+		   0.9244559,   0.07021161,  0.00533251);  // Low                ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300899;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE), .Dim = 2:1)";
+		lnAlphas = "list(c(PropertiesofTorque = -0.693147180559945), c(PropertiesofTorque = -0.693147180559945))";
+		betas = "list(-2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+};

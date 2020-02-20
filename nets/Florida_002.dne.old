@@ -1,0 +1,333 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on Aug 27, 2018 at 19:02:05 UTC.
+
+bnet PP_OrangeNodes_6 {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+whenchanged = 1535396518;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 48);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+node Physics {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = ();
+	probs = 
+		// High         Medium       Low          
+		  (0.3333333,   0.3333333,   0.3333333);
+	numcases = 10;
+	title = "Physics Understanding";
+	whenchanged = 1496353488;
+	belief = (0.1347365, 0.3909806, 0.4742829);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "1";
+		lnAlphas = "1";
+		betas = "0";
+		};
+	visual V1 {
+		center = (81, 216);
+		height = 2;
+		};
+	};
+
+node ForceAndMotion {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics);
+	probs = 
+		// High         Medium       Low           // Physics 
+		  (0.9816795,   0.01829091,  2.959554e-5,  // High    
+		   0.5615493,   0.4197415,   0.0187092,    // Medium  
+		   0.03754251,  0.5206256,   0.4418319);   // Low     ;
+	numcases = 10;
+	EqnDirty = TRUE;
+	title = "Force and Motion";
+	comment = "Newton's laws of motion";
+	whenchanged = 1496353488;
+	belief = (0.2743437, 0.5787864, 0.1468699);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"Physics\")";
+		betas = "-0.5";
+		};
+	visual V1 {
+		center = (258, 114);
+		height = 4;
+		link 1 {
+			path = ((155, 173), (183, 158));
+			};
+		};
+	};
+
+node Energy {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics, ForceAndMotion);
+	probs = 
+		// High         Medium       Low           // Physics ForceAndMotion 
+		  (0.9614508,   0.03843888,  1.103568e-4,  // High    High           
+		   0.6242427,   0.3633061,   0.01245118,   // High    Medium         
+		   0.1282946,   0.6574613,   0.214244,     // High    Low            
+		   0.687224,    0.3048926,   0.007883433,  // Medium  High           
+		   0.1677398,   0.6645205,   0.1677398,    // Medium  Medium         
+		   0.007883433, 0.3048926,   0.687224,     // Medium  Low            
+		   0.214244,    0.6574613,   0.1282946,    // Low     High           
+		   0.01245118,  0.3633061,   0.6242427,    // Low     Medium         
+		   1.103568e-4, 0.03843888,  0.9614508);   // Low     Low            ;
+	numcases = 10;
+	EqnDirty = TRUE;
+	title = "Energy";
+	comment = "Gravitational Potential Energy \nKinetic Energy\nElastic potential energy \nEnergy Conservation \
+		";
+	whenchanged = 1496353488;
+	belief = (0.1824857, 0.4490106, 0.3685036);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(c(-0.178337471969366, -0.0526802578289132), .Names = c(\"Physics\",  \
+			\"ForceAndMotion\"))";
+		betas = "0";
+		};
+	visual V1 {
+		center = (240, 330);
+		height = 1;
+		link 1 {
+			path = ((140, 260), (180, 287));
+			};
+		};
+	};
+
+node NTL {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (ForceAndMotion);
+	probs = 
+		// High         Medium       Low           // ForceAndMotion 
+		  (0.6182498,   0.3687819,   0.01296835,   // High           
+		   0.05113405,  0.5638431,   0.3850228,    // Medium         
+		   1.793107e-4, 0.050061,    0.9497597);   // Low            ;
+	numcases = 10;
+	title = "Newton's Third Law";
+	comment = "Force pairs act in opposite directions\nForce pairs have equal magnitudes";
+	whenchanged = 1505925836;
+	belief = (0.1207446, 0.5449081, 0.3343473);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"ForceAndMotion\")";
+		betas = "0.3";
+		};
+	visual V1 {
+		center = (462, 132);
+		height = 3;
+		};
+	};
+
+node EnergyDissipate {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Energy);
+	probs = 
+		// High         Medium       Low           // Energy 
+		  (0.7000325,   0.2928399,   0.007127648,  // High   
+		   0.07921831,  0.6178272,   0.3029545,    // Medium 
+		   4.111278e-4, 0.07754987,  0.922039);    // Low    ;
+	numcases = 10;
+	title = "Energy can Dissipate";
+	whenchanged = 1496353488;
+	belief = (0.02874288, 0.5054236, 0.4658335);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"Energy\")";
+		betas = "0.2";
+		};
+	visual V1 {
+		center = (474, 378);
+		height = 9;
+		};
+	};
+
+node Bounciness {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Yes, No);
+	parents = (EnergyDissipate, NTL);
+	probs = 
+		// Yes          No            // EnergyDissipate NTL    
+		  (0.8882681,   0.1117319,    // High            High   
+		   0.7906591,   0.2093409,    // High            Medium 
+		   0.6421331,   0.3578669,    // High            Low    
+		   0.7224743,   0.2775257,    // Medium          High   
+		   0.552926,    0.447074,     // Medium          Medium 
+		   0.3701045,   0.6298955,    // Medium          Low    
+		   0.460176,    0.539824,     // Low             High   
+		   0.2882491,   0.7117509,    // Low             Medium 
+		   0.1613563,   0.8386437);   // Low             Low    ;
+	title = "Check Bounciness";
+	whenchanged = 1535392745;
+	evidence = Yes;
+	belief = (1, 0);
+	visual V1 {
+		center = (864, 90);
+		height = 8;
+		};
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	parents = (EnergyDissipate, NTL);
+	probs = 
+		// Mass         Gravity      AirResistence  // EnergyDissipate NTL    
+		  (0.8759571,   0.1101834,   0.01385955,   // High            High   
+		   0.7491369,   0.1983472,   0.05251591,   // High            Medium 
+		   0.5353595,   0.298361,    0.1662795,    // High            Low    
+		   0.6528738,   0.2507898,   0.09633644,   // Medium          High   
+		   0.4061194,   0.328372,    0.2655086,    // Medium          Medium 
+		   0.1786181,   0.3039972,   0.5173848,    // Medium          Low    
+		   0.2817534,   0.3305198,   0.3877268,    // Low             High   
+		   0.1045339,   0.2581173,   0.6373488,    // Low             Medium 
+		   0.03011039,  0.1564977,   0.8133919);   // Low             Low    ;
+	title = "Slider";
+	whenchanged = 1535390293;
+	evidence = AirResistence;
+	belief = (0, 0, 1);
+	visual V1 {
+		center = (894, 192);
+		height = 7;
+		};
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	parents = (EnergyDissipate, NTL);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // EnergyDissipate NTL    
+		  (0.8744327,   0.1099916,   0.01383543,  0.001740306,  // High            High   
+		   0.7388633,   0.1956271,   0.05179571,  0.01371383,   // High            Medium 
+		   0.4899557,   0.273057,    0.1521773,   0.08480989,   // High            Low    
+		   0.6295757,   0.2418403,   0.09289864,  0.03568536,   // Medium          High   
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium          Medium 
+		   0.09498142,  0.1616527,   0.2751231,   0.4682429,    // Medium          Low    
+		   0.1936669,   0.2271871,   0.2665091,   0.3126369,    // Low             High   
+		   0.04061532,  0.1002882,   0.2476338,   0.6114627,    // Low             Medium 
+		   0.005759913, 0.02993696,  0.1555963,   0.8087068);   // Low             Low    ;
+	title = "Number of Slider Adjustment";
+	whenchanged = 1535396518;
+	evidence = Two;
+	belief = (0, 0, 1, 0);
+	visual V1 {
+		center = (900, 312);
+		height = 6;
+		};
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	parents = (EnergyDissipate, NTL);
+	probs = 
+		// Gold         Silver       None          // EnergyDissipate NTL    
+		  (0.8759571,   0.1101834,   0.01385955,   // High            High   
+		   0.7491369,   0.1983472,   0.05251591,   // High            Medium 
+		   0.5353595,   0.298361,    0.1662795,    // High            Low    
+		   0.6528738,   0.2507898,   0.09633644,   // Medium          High   
+		   0.4061194,   0.328372,    0.2655086,    // Medium          Medium 
+		   0.1786181,   0.3039972,   0.5173848,    // Medium          Low    
+		   0.2817534,   0.3305198,   0.3877268,    // Low             High   
+		   0.1045339,   0.2581173,   0.6373488,    // Low             Medium 
+		   0.03011039,  0.1564977,   0.8133919);   // Low             Low    ;
+	title = "Level solving status";
+	whenchanged = 1535392755;
+	evidence = Silver;
+	belief = (0, 1, 0);
+	visual V1 {
+		center = (942, 438);
+		height = 5;
+		link 2 {
+			path = ((529, 176), (890, 405));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = (Energy, ForceAndMotion);};
+NodeSet Proficiency {Nodes = (Energy, ForceAndMotion, Physics, EnergyDissipate, NTL);};
+NodeSet LowLevel {Nodes = (EnergyDissipate, NTL);};
+NodeSet pnode {Nodes = (Physics);};
+NodeSet pnodes {Nodes = (Energy, ForceAndMotion, Physics, EnergyDissipate, NTL);};
+NodeSet Proficiencies {Nodes = (Energy, ForceAndMotion, EnergyDissipate, NTL);};
+NodeSet Observable {Nodes = (Bounciness, Slider, SliderAdjust, TrophyLevel);};
+ElimOrder = (Bounciness, Physics, Slider, TrophyLevel, SliderAdjust, ForceAndMotion, Energy, NTL, EnergyDissipate);
+};

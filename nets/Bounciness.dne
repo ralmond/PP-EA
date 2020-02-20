@@ -1,0 +1,119 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:29.
+
+bnet Bounciness {
+autoupdate = FALSE;
+title = "Bounciness";
+whenchanged = 1579300949;
+user U1 {
+	Truename = "Bounciness";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "Bounciness.dne";
+	};
+
+param X_NTL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NTL";
+	whenchanged = 1579300681;
+	};
+
+param X_NSL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300681;
+	};
+
+node Bounciness {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Yes, No);
+	inputs = (NSL, NTL);
+	parents = (X_NSL_2, X_NTL_2);
+	probs = 
+		// Yes          No            // NSL    NTL    
+		  (0.9896761,   0.01032386,   // High   High   
+		   0.9816834,   0.01831662,   // High   Medium 
+		   0.9677045,   0.03229547,   // High   Low    
+		   0.9816834,   0.01831662,   // Medium High   
+		   0.9677045,   0.03229547,   // Medium Medium 
+		   0.9436695,   0.05633048,   // Medium Low    
+		   0.9677045,   0.03229547,   // Low    High   
+		   0.9436695,   0.05633048,   // Low    Medium 
+		   0.9035303,   0.09646972);  // Low    Low    ;
+	numcases = 10;
+	title = "Check Bounciness";
+	whenchanged = 1579300681;
+	user U1 {
+		Truename = "Bounciness";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(NSL = -0.693147180559945, NTL = -0.693147180559945)";
+		betas = "-2L";
+		priorWeight = "10";
+		};
+	};
+
+param X_NTL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NTL";
+	whenchanged = 1579300681;
+	};
+
+param X_NSL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300681;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (NSL, NTL);
+	parents = (X_NSL_1, X_NTL_1);
+	probs = 
+		// Gold         Silver       None          // NSL    NTL    
+		  (0.9895695,   0.01032275,  1.076824e-4,  // High   High   
+		   0.981348,    0.01831037,  3.416418e-4,  // High   Medium 
+		   0.9666626,   0.03226069,  0.001076645,  // High   Low    
+		   0.981348,    0.01831037,  3.416418e-4,  // Medium High   
+		   0.9666626,   0.03226069,  0.001076645,  // Medium Medium 
+		   0.9405071,   0.0561417,   0.003351268,  // Medium Low    
+		   0.9666626,   0.03226069,  0.001076645,  // Low    High   
+		   0.9405071,   0.0561417,   0.003351268,  // Low    Medium 
+		   0.8943188,   0.09548621,  0.01019504);  // Low    Low    ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300681;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"588\", \
+			\"589\"), c(\"NSL\", \"NTL\")))";
+		lnAlphas = "list(c(NSL = -0.693147180559945, NTL = -0.693147180559945), c(NSL = -0.693147180559945,  NTL = \
+			-0.693147180559945))";
+		betas = "list(-2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, Bounciness);};
+NodeSet Observable {Nodes = (TrophyLevel, Bounciness);};
+};

@@ -1,0 +1,314 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on Aug 27, 2018 at 17:16:04 UTC.
+
+bnet PP_OrangeNodes_6 {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+whenchanged = 1535390163;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (596, 0);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+node Physics {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = ();
+	probs = 
+		// High         Medium       Low          
+		  (0.3333333,   0.3333333,   0.3333333);
+	numcases = 10;
+	title = "Physics Understanding";
+	whenchanged = 1496353488;
+	belief = (0.525775, 0.3887617, 0.08546336);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "1";
+		lnAlphas = "1";
+		betas = "0";
+		};
+	visual V1 {
+		center = (81, 216);
+		height = 1;
+		};
+	};
+
+node ForceAndMotion {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics);
+	probs = 
+		// High         Medium       Low           // Physics 
+		  (0.9816795,   0.01829091,  2.959554e-5,  // High    
+		   0.5615493,   0.4197415,   0.0187092,    // Medium  
+		   0.03754251,  0.5206256,   0.4418319);   // Low     ;
+	numcases = 10;
+	EqnDirty = TRUE;
+	title = "Force and Motion";
+	comment = "Newton's laws of motion";
+	whenchanged = 1496353488;
+	belief = (0.8300289, 0.1682382, 0.001732906);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"Physics\")";
+		betas = "-0.5";
+		};
+	visual V1 {
+		center = (258, 114);
+		height = 3;
+		link 1 {
+			path = ((155, 173), (183, 158));
+			};
+		};
+	};
+
+node LinearMomentum {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics, ForceAndMotion);
+	probs = 
+		// High         Medium       Low           // Physics ForceAndMotion 
+		  (0.9860451,   0.0139364,   1.855112e-5,  // High    High           
+		   0.7482276,   0.2470455,   0.004726881,  // High    Medium         
+		   0.1947,      0.6619899,   0.14331,      // High    Low            
+		   0.8446385,   0.1537204,   0.001641184,  // Medium  High           
+		   0.3029545,   0.6178272,   0.07921831,   // Medium  Medium         
+		   0.02040035,  0.4321269,   0.5474727,    // Medium  Low            
+		   0.4320574,   0.5283243,   0.03961834,   // Low     High           
+		   0.04449342,  0.5447132,   0.4107934,    // Low     Medium         
+		   6.18098e-4,  0.09547768,  0.9039042);   // Low     Low            ;
+	numcases = 10;
+	EqnDirty = TRUE;
+	title = "Linear Momentum";
+	comment = "Properties of momentum\nConservation of momentum";
+	whenchanged = 1496353488;
+	belief = (0.8404627, 0.147157, 0.01238032);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(c(-0.255412811882995, 0), .Names = c(\"Physics\", \"ForceAndMotion\" ))";
+		betas = "-0.2";
+		};
+	visual V1 {
+		center = (378, 222);
+		height = 4;
+		link 2 {
+			path = ((305, 158), (329, 179));
+			};
+		};
+	};
+
+node NTL {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (ForceAndMotion);
+	probs = 
+		// High         Medium       Low           // ForceAndMotion 
+		  (0.6182498,   0.3687819,   0.01296835,   // High           
+		   0.05113405,  0.5638431,   0.3850228,    // Medium         
+		   1.793107e-4, 0.050061,    0.9497597);   // Low            ;
+	numcases = 10;
+	title = "Newton's Third Law";
+	comment = "Force pairs act in opposite directions\nForce pairs have equal magnitudes";
+	whenchanged = 1505925836;
+	belief = (0.5047582, 0.4865529, 0.008688855);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"ForceAndMotion\")";
+		betas = "0.3";
+		};
+	visual V1 {
+		center = (528, 138);
+		height = 8;
+		};
+	};
+
+node ConOfMom {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (LinearMomentum);
+	probs = 
+		// High         Medium       Low           // LinearMomentum 
+		  (0.7864209,   0.2039052,   0.009673978,  // High           
+		   0.1004937,   0.4914422,   0.4080641,    // Medium         
+		   3.206905e-4, 0.02997972,  0.9696996);   // Low            ;
+	title = "Conservation of momentum";
+	comment = "The total amount of momentum of a system \ndoes not change during a collision";
+	whenchanged = 1522900528;
+	belief = (0.6992825, 0.2584957, 0.04222175);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(c(-0.111571775657105, -0.111571775657105), .Names = c(\"LinearMomentum\",  \"POfMom\"\
+			))";
+		betas = "0.3";
+		};
+	visual V1 {
+		center = (582, 234);
+		height = 2;
+		link 1 {
+			path = ((459, 227), (491, 229));
+			};
+		};
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	parents = (NTL, ConOfMom);
+	probs = 
+		// Mass         Gravity      AirResistence  // NTL    ConOfMom 
+		  (0.9214568,   0.07279278,  0.005750447,  // High   High     
+		   0.8061903,   0.1614695,   0.03234025,   // High   Medium   
+		   0.5663602,   0.2875977,   0.1460421,    // High   Low      
+		   0.7039184,   0.224489,    0.07159255,   // Medium High     
+		   0.4061194,   0.328372,    0.2655086,    // Medium Medium   
+		   0.1378843,   0.2826617,   0.579454,     // Medium Low      
+		   0.2534856,   0.3263514,   0.420163,     // Low    High     
+		   0.06702895,  0.2187935,   0.7141776,    // Low    Medium   
+		   0.01285922,  0.1064208,   0.88072);     // Low    Low      ;
+	title = "Slider";
+	whenchanged = 1535390153;
+	evidence = Mass;
+	belief = (1, 0, 0);
+	visual V1 {
+		center = (948, 246);
+		height = 7;
+		link 1 {
+			path = ((609, 159), (851, 222));
+			};
+		link 2 {
+			path = ((674, 237), (851, 243));
+			};
+		};
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	parents = (NTL, ConOfMom);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NTL    ConOfMom 
+		  (0.9210384,   0.07275972,  0.005747835, 4.540646e-4,  // High   High     
+		   0.8010019,   0.1604303,   0.03213212,  0.006435649,  // High   Medium   
+		   0.5272587,   0.2677419,   0.1359593,   0.06904012,   // High   Low      
+		   0.6882054,   0.2194779,   0.06999446,  0.02232217,   // Medium High     
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium Medium   
+		   0.063022,    0.1291946,   0.2648478,   0.5429357,    // Medium Low      
+		   0.1645005,   0.2117871,   0.2726665,   0.351046,     // Low    High     
+		   0.02012161,  0.06568022,  0.214391,    0.6998072,    // Low    Medium   
+		   0.001551418, 0.01283927,  0.1062557,   0.8793536);   // Low    Low      ;
+	title = "Number of Slider Adjustment";
+	whenchanged = 1535390161;
+	evidence = One;
+	belief = (0, 1, 0, 0);
+	visual V1 {
+		center = (948, 378);
+		height = 6;
+		link 2 {
+			path = ((674, 270), (852, 341));
+			};
+		};
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	parents = (NTL, ConOfMom);
+	probs = 
+		// Gold         Silver       None          // NTL    ConOfMom 
+		  (0.9214568,   0.07279278,  0.005750447,  // High   High     
+		   0.8061903,   0.1614695,   0.03234025,   // High   Medium   
+		   0.5663602,   0.2875977,   0.1460421,    // High   Low      
+		   0.7039184,   0.224489,    0.07159255,   // Medium High     
+		   0.4061194,   0.328372,    0.2655086,    // Medium Medium   
+		   0.1378843,   0.2826617,   0.579454,     // Medium Low      
+		   0.2534856,   0.3263514,   0.420163,     // Low    High     
+		   0.06702895,  0.2187935,   0.7141776,    // Low    Medium   
+		   0.01285922,  0.1064208,   0.88072);     // Low    Low      ;
+	title = "Level solving status";
+	whenchanged = 1535390163;
+	evidence = Gold;
+	belief = (1, 0, 0);
+	visual V1 {
+		center = (978, 498);
+		height = 5;
+		};
+	};
+NodeSet HighLevel {Nodes = (LinearMomentum, ForceAndMotion);};
+NodeSet Proficiency {Nodes = (LinearMomentum, ForceAndMotion, Physics, ConOfMom, NTL);};
+NodeSet LowLevel {Nodes = (ConOfMom, NTL);};
+NodeSet pnode {Nodes = (Physics);};
+NodeSet pnodes {Nodes = (LinearMomentum, ForceAndMotion, Physics, ConOfMom, NTL);};
+NodeSet Proficiencies {Nodes = (LinearMomentum, ForceAndMotion, ConOfMom, NTL);};
+NodeSet Observable {Nodes = (Slider, SliderAdjust, TrophyLevel);};
+ElimOrder = (Physics, Slider, TrophyLevel, SliderAdjust, ForceAndMotion, LinearMomentum, NTL, ConOfMom);
+};

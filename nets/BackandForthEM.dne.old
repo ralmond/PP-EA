@@ -1,0 +1,264 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on May 11, 2019 at 19:57:30 UTC.
+
+bnet BackandForth {
+autoupdate = TRUE;
+title = "Back and Forth";
+whenchanged = 1557257653;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = NAME;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_StaticEquilibrium_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257653;
+	};
+
+param X_NSL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (33.3, 33.33, 33.3);
+	title = "NSL";
+	whenchanged = 1557257653;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (StaticEquilibrium, NSL);
+	parents = (X_StaticEquilibrium_1, X_NSL_1);
+	probs = 
+		// Gold         Silver       None          // StaticEquilibrium NSL    
+		  (0.7655891,   0.1881644,   0.04624652,   // High              High   
+		   0.6441845,   0.2549296,   0.1008858,    // High              Medium 
+		   0.4894206,   0.3118606,   0.1987187,    // High              Low    
+		   0.5700184,   0.2862418,   0.1437398,    // Medium            High   
+		   0.4061194,   0.328372,    0.2655086,    // Medium            Medium 
+		   0.2501953,   0.3257316,   0.424073,     // Medium            Low    
+		   0.3248155,   0.3332601,   0.3419243,    // Low               High   
+		   0.1858327,   0.3069991,   0.5071682,    // Low               Medium 
+		   0.09314752,  0.2477733,   0.6590792);   // Low               Low    ;
+	title = "Level solving status";
+	whenchanged = 1557257653;
+	visual V1 {
+		center = (558, 162);
+		height = 1;
+		link 1 {
+			labelposn = (558, 164, 651, 179);
+			path = ((558, 162), (558, 162));
+			};
+		link 2 {
+			labelposn = (558, 164, 582, 179);
+			path = ((558, 162), (558, 162));
+			};
+		};
+	};
+
+param X_StaticEquilibrium_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257653;
+	};
+
+param X_NSL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (33.3, 33.33, 33.3);
+	title = "NSL";
+	whenchanged = 1557257653;
+	};
+
+node PufferClicks {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (StaticEquilibrium, NSL);
+	parents = (X_StaticEquilibrium_2, X_NSL_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // StaticEquilibrium NSL    
+		  (0.8025259,   0.1594825,   0.03169328,  0.006298271,  // High              High   
+		   0.6872246,   0.2198979,   0.07036286,  0.02251468,   // High              Medium 
+		   0.5215312,   0.2687021,   0.13844,     0.07132674,   // High              Low    
+		   0.6105658,   0.2479071,   0.1006574,   0.04086976,   // Medium            High   
+		   0.4236183,   0.2769488,   0.1810608,   0.1183721,    // Medium            Medium 
+		   0.2310922,   0.2432644,   0.2560776,   0.2695658,    // Medium            Low    
+		   0.3237599,   0.2685851,   0.2228132,   0.1848417,    // Low               High   
+		   0.1537676,   0.2053961,   0.2743592,   0.3664771,    // Low               Medium 
+		   0.05641497,  0.1213361,   0.260967,    0.561282);    // Low               Low    ;
+	title = "Number of puffer clicks";
+	whenchanged = 1557257653;
+	visual V1 {
+		center = (270, 210);
+		height = 2;
+		link 1 {
+			labelposn = (270, 212, 363, 227);
+			path = ((270, 210), (270, 210));
+			};
+		link 2 {
+			labelposn = (270, 212, 294, 227);
+			path = ((270, 210), (270, 210));
+			};
+		};
+	};
+
+param X_StaticEquilibrium_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257653;
+	};
+
+param X_NSL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (33.3, 33.33, 33.3);
+	title = "NSL";
+	whenchanged = 1557257653;
+	};
+
+node RightBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (StaticEquilibrium, NSL);
+	parents = (X_StaticEquilibrium_3, X_NSL_3);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // StaticEquilibrium NSL    
+		  (0.7569849,   0.1860497,   0.04572678,  0.0112386,    // High              High   
+		   0.6194531,   0.2451424,   0.09701266,  0.03839179,   // High              Medium 
+		   0.4344133,   0.2768098,   0.1763842,   0.1123927,    // High              Low    
+		   0.531644,    0.2669716,   0.1340631,   0.06732142,   // Medium            High   
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium            Medium 
+		   0.1611975,   0.2098645,   0.2732245,   0.3557135,    // Medium            Low    
+		   0.2404592,   0.2467107,   0.2531247,   0.2597055,    // Low               High   
+		   0.1011141,   0.1670424,   0.2759571,   0.4558863,    // Low               Medium 
+		   0.03383298,  0.08999605,  0.2393904,   0.6367806);   // Low               Low    ;
+	title = "Blower at the right of the Screen";
+	whenchanged = 1557257653;
+	visual V1 {
+		center = (390, 102);
+		height = 3;
+		link 1 {
+			labelposn = (390, 104, 483, 119);
+			path = ((390, 102), (390, 102));
+			};
+		link 2 {
+			labelposn = (390, 104, 414, 119);
+			path = ((390, 102), (390, 102));
+			};
+		};
+	};
+
+param X_StaticEquilibrium_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "StaticEquilibrium";
+	whenchanged = 1557257653;
+	};
+
+param X_NSL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (33.3, 33.33, 33.3);
+	title = "NSL";
+	whenchanged = 1557257653;
+	};
+
+node LeftBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (StaticEquilibrium, NSL);
+	parents = (X_StaticEquilibrium_4, X_NSL_4);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // StaticEquilibrium NSL    
+		  (0.7569849,   0.1860497,   0.04572678,  0.0112386,    // High              High   
+		   0.6194531,   0.2451424,   0.09701266,  0.03839179,   // High              Medium 
+		   0.4344133,   0.2768098,   0.1763842,   0.1123927,    // High              Low    
+		   0.531644,    0.2669716,   0.1340631,   0.06732142,   // Medium            High   
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium            Medium 
+		   0.1611975,   0.2098645,   0.2732245,   0.3557135,    // Medium            Low    
+		   0.2404592,   0.2467107,   0.2531247,   0.2597055,    // Low               High   
+		   0.1011141,   0.1670424,   0.2759571,   0.4558863,    // Low               Medium 
+		   0.03383298,  0.08999605,  0.2393904,   0.6367806);   // Low               Low    ;
+	title = "Blower at the left of the Screen";
+	whenchanged = 1557257653;
+	visual V1 {
+		center = (282, 384);
+		height = 4;
+		link 1 {
+			labelposn = (282, 386, 375, 401);
+			path = ((282, 384), (282, 384));
+			};
+		link 2 {
+			labelposn = (282, 386, 306, 401);
+			path = ((282, 384), (282, 384));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (LeftBlower, RightBlower, PufferClicks, TrophyLevel);};
+};

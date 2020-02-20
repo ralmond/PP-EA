@@ -1,0 +1,295 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on Aug 27, 2018 at 17:40:00 UTC.
+
+bnet PP_OrangeNodes_6 {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+whenchanged = 1535391599;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (593, 0);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+node Physics {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = ();
+	probs = 
+		// High         Medium       Low          
+		  (0.3333333,   0.3333333,   0.3333333);
+	numcases = 10;
+	title = "Physics Understanding";
+	whenchanged = 1496353488;
+	belief = (0.2548022, 0.4529841, 0.2922137);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "1";
+		lnAlphas = "1";
+		betas = "0";
+		};
+	visual V1 {
+		center = (81, 216);
+		height = 1;
+		};
+	};
+
+node Energy {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics);
+	probs = 
+		// High         Medium       Low           // Physics 
+		  (0.9552583,   0.04439932,  3.424191e-4,  // High    
+		   0.456465,    0.4558434,   0.0876917,    // Medium  
+		   0.01457442,  0.2308127,   0.7546129);   // Low     ;
+	EqnDirty = TRUE;
+	title = "Energy";
+	comment = "Gravitational Potential Energy \nKinetic Energy\nElastic potential energy \nEnergy Conservation \
+		";
+	whenchanged = 1513027199;
+	belief = (0.4298402, 0.3568548, 0.2133051);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(c(-0.178337471969366, -0.0526802578289132), .Names = c(\"Physics\",  \
+			\"ForceAndMotion\"))";
+		betas = "0";
+		};
+	visual V1 {
+		center = (288, 270);
+		height = 7;
+		};
+	};
+
+node Torque {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Physics, Energy);
+	probs = 
+		// High         Medium       Low           // Physics Energy 
+		  (0.7377525,   0.2560389,   0.006208578,  // High    High   
+		   0.6677686,   0.3109631,   0.02126834,   // High    Medium 
+		   0.3939086,   0.5193,      0.08679134,   // High    Low    
+		   0.204026,    0.6139286,   0.1820454,    // Medium  High   
+		   0.1008107,   0.5016061,   0.3975832,    // Medium  Medium 
+		   0.02707335,  0.3791251,   0.5938015,    // Medium  Low    
+		   0.01045013,  0.2599363,   0.7296136,    // Low     High   
+		   0.002231068, 0.09714121,  0.9006277,    // Low     Medium 
+		   2.408508e-4, 0.03114739,  0.9686117);   // Low     Low    ;
+	EqnDirty = TRUE;
+	title = "Torque";
+	comment = "Properties of torque\nStatic equilibrium";
+	whenchanged = 1513027199;
+	belief = (0.17411, 0.417718, 0.4081721);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(c(-0.111571775657105, -0.111571775657105), .Names = c(\"Physics\",  \
+			\"ForceAndMotion\"))";
+		betas = "0.5";
+		};
+	visual V1 {
+		center = (228, 444);
+		height = 8;
+		};
+	};
+
+node EnergyTransfer {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Energy);
+	probs = 
+		// High         Medium       Low           // Energy 
+		  (0.834402,    0.1637201,   0.001877881,  // High   
+		   0.1677398,   0.6645205,   0.1677398,    // Medium 
+		   0.001877881, 0.1637201,   0.834402);    // Low    ;
+	numcases = 10;
+	title = "Energy can Transfer";
+	whenchanged = 1496353488;
+	belief = (0.3705162, 0.4315383, 0.1979455);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"Energy\")";
+		betas = "0";
+		};
+	visual V1 {
+		center = (528, 138);
+		height = 5;
+		};
+	};
+
+node PropertiesofTorque {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	parents = (Torque);
+	probs = 
+		// High         Medium       Low           // Torque 
+		  (0.9689887,   0.03093666,  7.459741e-5,  // High   
+		   0.4726109,   0.4957735,   0.03161557,   // Medium 
+		   0.02255906,  0.446641,    0.5308);      // Low    ;
+	numcases = 10;
+	title = "Properties of Torque";
+	whenchanged = 1496353488;
+	belief = (0.2891674, 0.6100311, 0.1008015);
+	user U1 {
+		Q = "TRUE";
+		rules = "\"Compensatory\"";
+		link = "\"normalLink\"";
+		linkScale = "0.447213595499958";
+		lnAlphas = "structure(-0.111571775657105, .Names = \"Torque\")";
+		betas = "-0.4";
+		};
+	visual V1 {
+		center = (534, 426);
+		height = 6;
+		};
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	parents = (PropertiesofTorque, EnergyTransfer);
+	probs = 
+		// one          two          three four   more than four  // PropertiesofTorque EnergyTransfer 
+		  (0.7252621,   0.2024506,   0.05651234,  0.01577493,   // High               High           
+		   0.5284212,   0.2675407,   0.1354563,   0.06858179,   // High               Medium         
+		   0.2828,      0.2597011,   0.2384891,   0.2190098,    // High               Low            
+		   0.4058683,   0.2767498,   0.1887076,   0.1286743,    // Medium             High           
+		   0.1767377,   0.2185832,   0.2703363,   0.3343428,    // Medium             Medium         
+		   0.05111607,  0.1146648,   0.257219,    0.577,        // Medium             Low            
+		   0.09939337,  0.1655532,   0.2757515,   0.4593019,    // Low                High           
+		   0.02455676,  0.07418851,  0.2241312,   0.6771235,    // Low                Medium         
+		   0.00497416,  0.02725654,  0.1493557,   0.8184136);   // Low                Low            ;
+	title = "Number of attempts";
+	whenchanged = 1535391541;
+	evidence = three_four;
+	belief = (0, 0, 1, 0);
+	visual V1 {
+		center = (906, 174);
+		height = 4;
+		};
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Very_fast, Fast, Slow, Very_slow);
+	parents = (PropertiesofTorque, EnergyTransfer);
+	probs = 
+		// Very fast    Fast         Slow         Very slow     // PropertiesofTorque EnergyTransfer 
+		  (0.7252621,   0.2024506,   0.05651234,  0.01577493,   // High               High           
+		   0.5284212,   0.2675407,   0.1354563,   0.06858179,   // High               Medium         
+		   0.2828,      0.2597011,   0.2384891,   0.2190098,    // High               Low            
+		   0.4058683,   0.2767498,   0.1887076,   0.1286743,    // Medium             High           
+		   0.1767377,   0.2185832,   0.2703363,   0.3343428,    // Medium             Medium         
+		   0.05111607,  0.1146648,   0.257219,    0.577,        // Medium             Low            
+		   0.09939337,  0.1655532,   0.2757515,   0.4593019,    // Low                High           
+		   0.02455676,  0.07418851,  0.2241312,   0.6771235,    // Low                Medium         
+		   0.00497416,  0.02725654,  0.1493557,   0.8184136);   // Low                Low            ;
+	title = "Duration to solve level";
+	whenchanged = 1535391582;
+	evidence = Fast;
+	belief = (0, 1, 0, 0);
+	visual V1 {
+		center = (918, 276);
+		height = 3;
+		};
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	parents = (PropertiesofTorque, EnergyTransfer);
+	probs = 
+		// Gold         Silver       None          // PropertiesofTorque EnergyTransfer 
+		  (0.7368864,   0.2056955,   0.0574181,    // High               High           
+		   0.5673297,   0.2872401,   0.1454302,    // High               Medium         
+		   0.3621041,   0.3325281,   0.3053678,    // High               Low            
+		   0.4658055,   0.3176192,   0.2165753,    // Medium             High           
+		   0.2655086,   0.328372,    0.4061194,    // Medium             Medium         
+		   0.1208417,   0.2710753,   0.608083,     // Medium             Low            
+		   0.1838241,   0.3061842,   0.5099916,    // Low                High           
+		   0.0760562,   0.2297737,   0.6941701,    // Low                Medium         
+		   0.0273928,   0.1501023,   0.8225049);   // Low                Low            ;
+	title = "Level solving status";
+	whenchanged = 1535391599;
+	evidence = Silver;
+	belief = (0, 1, 0);
+	visual V1 {
+		center = (948, 378);
+		height = 2;
+		};
+	};
+NodeSet HighLevel {Nodes = (Torque, Energy);};
+NodeSet Proficiency {Nodes = (Torque, Energy, Physics, PropertiesofTorque, EnergyTransfer);};
+NodeSet LowLevel {Nodes = (PropertiesofTorque, EnergyTransfer);};
+NodeSet pnode {Nodes = (Physics);};
+NodeSet pnodes {Nodes = (Torque, Energy, Physics, PropertiesofTorque, EnergyTransfer);};
+NodeSet Proficiencies {Nodes = (Torque, Energy, PropertiesofTorque, EnergyTransfer);};
+NodeSet Observable {Nodes = (NumberAttempts, Duration, TrophyLevel);};
+ElimOrder = (Physics, TrophyLevel, NumberAttempts, Duration, Energy, Torque, EnergyTransfer, PropertiesofTorque);
+};

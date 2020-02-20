@@ -1,0 +1,271 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on May 07, 2019 at 12:47:51.
+
+bnet Fireworks {
+autoupdate = TRUE;
+title = "Fireworks";
+whenchanged = 1557247671;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 286);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet HighLevel {Color = 0x00FF8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet LowLevel {Color = 0x00FF8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00C8C8C8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_EnergyDissipate_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557247671;
+	};
+
+param X_NTL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557247671;
+	};
+
+node Bounciness {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Yes, No);
+	inputs = (NTL, EnergyDissipate);
+	parents = (X_NTL_4, X_EnergyDissipate_4);
+	probs = 
+		// Yes          No            // NTL    EnergyDissipate 
+		  (0.8027117,   0.1972883,    // High   High            
+		   0.7164658,   0.2835342,    // High   Medium          
+		   0.6107975,   0.3892024,    // High   Low             
+		   0.665707,    0.334293,     // Medium High            
+		   0.552926,    0.447074,     // Medium Medium          
+		   0.434422,    0.565578,     // Medium Low             
+		   0.4935839,   0.5064161,    // Low    High            
+		   0.3770713,   0.6229287,    // Low    Medium          
+		   0.2732233,   0.7267767);   // Low    Low             ;
+	title = "Check Bounciness";
+	whenchanged = 1557247671;
+	visual V1 {
+		center = (74, 26);
+		height = 15;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (103, 2, 192, 17);
+			path = ((103, 0), (103, 0));
+			};
+		};
+	};
+
+param X_EnergyDissipate_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557247671;
+	};
+
+param X_NTL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557247671;
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	inputs = (NTL, EnergyDissipate);
+	parents = (X_NTL_3, X_EnergyDissipate_3);
+	probs = 
+		// Mass         Gravity      AirResistence  // NTL    EnergyDissipate 
+		  (0.7655891,   0.1881644,   0.04624652,   // High   High            
+		   0.6441845,   0.2549296,   0.1008858,    // High   Medium          
+		   0.4894206,   0.3118606,   0.1987187,    // High   Low             
+		   0.5700184,   0.2862418,   0.1437398,    // Medium High            
+		   0.4061194,   0.328372,    0.2655086,    // Medium Medium          
+		   0.2501953,   0.3257316,   0.424073,     // Medium Low             
+		   0.3248155,   0.3332601,   0.3419243,    // Low    High            
+		   0.1858327,   0.3069991,   0.5071682,    // Low    Medium          
+		   0.09314752,  0.2477733,   0.6590792);   // Low    Low             ;
+	title = "Slider";
+	whenchanged = 1557247671;
+	visual V1 {
+		center = (74, 33);
+		height = 16;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 196, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+
+param X_EnergyDissipate_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557247671;
+	};
+
+param X_NTL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557247671;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (NTL, EnergyDissipate);
+	parents = (X_NTL_2, X_EnergyDissipate_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NTL    EnergyDissipate 
+		  (0.7569849,   0.1860497,   0.04572678,  0.0112386,    // High   High            
+		   0.6194531,   0.2451424,   0.09701266,  0.03839179,   // High   Medium          
+		   0.4344133,   0.2768098,   0.1763842,   0.1123927,    // High   Low             
+		   0.531644,    0.2669716,   0.1340631,   0.06732142,   // Medium High            
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium Medium          
+		   0.1611975,   0.2098645,   0.2732245,   0.3557135,    // Medium Low             
+		   0.2404592,   0.2467107,   0.2531247,   0.2597055,    // Low    High            
+		   0.1011141,   0.1670424,   0.2759571,   0.4558863,    // Low    Medium          
+		   0.03383298,  0.08999605,  0.2393904,   0.6367806);   // Low    Low             ;
+	title = "Number of slider adjustment";
+	whenchanged = 1557247671;
+	visual V1 {
+		center = (83, 50);
+		height = 17;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (126, 2, 215, 17);
+			path = ((126, 0), (126, 0));
+			};
+		};
+	};
+
+param X_EnergyDissipate_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557247671;
+	};
+
+param X_NTL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557247671;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (NTL, EnergyDissipate);
+	parents = (X_NTL_1, X_EnergyDissipate_1);
+	probs = 
+		// Gold         Silver       None          // NTL    EnergyDissipate 
+		  (0.7655891,   0.1881644,   0.04624652,   // High   High            
+		   0.6441845,   0.2549296,   0.1008858,    // High   Medium          
+		   0.4894206,   0.3118606,   0.1987187,    // High   Low             
+		   0.5700184,   0.2862418,   0.1437398,    // Medium High            
+		   0.4061194,   0.328372,    0.2655086,    // Medium Medium          
+		   0.2501953,   0.3257316,   0.424073,     // Medium Low             
+		   0.3248155,   0.3332601,   0.3419243,    // Low    High            
+		   0.1858327,   0.3069991,   0.5071682,    // Low    Medium          
+		   0.09314752,  0.2477733,   0.6590792);   // Low    Low             ;
+	title = "Level solving status";
+	whenchanged = 1557247671;
+	visual V1 {
+		center = (74, 33);
+		height = 18;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 196, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (Bounciness, Slider, SliderAdjust, TrophyLevel);};
+};

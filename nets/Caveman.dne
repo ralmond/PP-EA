@@ -1,0 +1,226 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:29.
+
+bnet Caveman {
+autoupdate = FALSE;
+title = "Caveman";
+whenchanged = 1579300949;
+user U1 {
+	Truename = "Caveman";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "Caveman.dne";
+	};
+
+param X_ConOfMom_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300712;
+	};
+
+param X_NFL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300712;
+	};
+
+node ApplicableAgent {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
+	inputs = (NFL, ConOfMom);
+	parents = (X_NFL_4, X_ConOfMom_4);
+	probs = 
+		// TRUE         FALSE         // NFL    ConOfMom 
+		  (0.8653752,   0.1346248,    // High   High     
+		   0.6779286,   0.3220714,    // High   Medium   
+		   0.4080254,   0.5919746,    // High   Low      
+		   0.7533209,   0.2466791,    // Medium High     
+		   0.5,         0.5,          // Medium Medium   
+		   0.2466791,   0.7533209,    // Medium Low      
+		   0.5919746,   0.4080254,    // Low    High     
+		   0.3220714,   0.6779286,    // Low    Medium   
+		   0.1346248,   0.8653752);   // Low    Low      ;
+	numcases = 10;
+	title = "Agent Type";
+	whenchanged = 1579300712;
+	user U1 {
+		Truename = "ApplicableAgent";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552)";
+		betas = "0L";
+		priorWeight = "10";
+		};
+	};
+
+param X_ConOfMom_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300712;
+	};
+
+param X_NFL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300712;
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	inputs = (NFL, ConOfMom);
+	parents = (X_NFL_3, X_ConOfMom_3);
+	probs = 
+		// one          two          three four   more than four  // NFL    ConOfMom 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High   High     
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // High   Medium   
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // High   Low      
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // Medium High     
+		   0.25,        0.25,        0.25,        0.25,         // Medium Medium   
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Medium Low      
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // Low    High     
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Low    Medium   
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low      ;
+	numcases = 10;
+	title = "Number of attempts";
+	whenchanged = 1579300712;
+	user U1 {
+		Truename = "NumberAttempts";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"692\", \
+			\"693\", \"694\"), c(\"NFL\", \"ConOfMom\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			ConOfMom = -0.0408219945202552 ), c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552 ))";
+		betas = "list(0L, 0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_ConOfMom_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300711;
+	};
+
+param X_NFL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300711;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 30.19, 67.037, 154.893, INFINITY);
+	inputs = (NFL, ConOfMom);
+	parents = (X_NFL_2, X_ConOfMom_2);
+	probs = 
+		// Q1           Q2           Q3           Q4            // NFL    ConOfMom 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High   High     
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // High   Medium   
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // High   Low      
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // Medium High     
+		   0.25,        0.25,        0.25,        0.25,         // Medium Medium   
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Medium Low      
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // Low    High     
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Low    Medium   
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low      ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300711;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"689\", \
+			\"690\", \"691\"), c(\"NFL\", \"ConOfMom\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			ConOfMom = -0.0408219945202552 ), c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552 ))";
+		betas = "list(0L, 0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_ConOfMom_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "ConOfMom";
+	whenchanged = 1579300710;
+	};
+
+param X_NFL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300710;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (NFL, ConOfMom);
+	parents = (X_NFL_1, X_ConOfMom_1);
+	probs = 
+		// Gold         Silver       None          // NFL    ConOfMom 
+		  (0.8476231,   0.1318632,   0.02051371,   // High   High     
+		   0.5879641,   0.2793309,   0.132705,     // High   Medium   
+		   0.2195038,   0.3184623,   0.4620339,    // High   Low      
+		   0.6970182,   0.2282425,   0.07473928,   // Medium High     
+		   0.3333333,   0.3333333,   0.3333333,    // Medium Medium   
+		   0.07473928,  0.2282425,   0.6970182,    // Medium Low      
+		   0.4620339,   0.3184623,   0.2195038,    // Low    High     
+		   0.132705,    0.2793309,   0.5879641,    // Low    Medium   
+		   0.02051371,  0.1318632,   0.8476231);   // Low    Low      ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300710;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"687\", \
+			\"688\"), c(\"NFL\", \"ConOfMom\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, ConOfMom = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			ConOfMom = -0.0408219945202552 ))";
+		betas = "list(0L, 0L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+};

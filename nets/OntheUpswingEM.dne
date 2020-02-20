@@ -1,0 +1,218 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on May 09, 2019 at 06:54:09.
+
+bnet OntheUpswing {
+autoupdate = TRUE;
+title = "On the Upswing";
+whenchanged = 1557399249;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 286);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet HighLevel {Color = 0x00FF8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet LowLevel {Color = 0x00FF8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00C8C8C8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_EnergyTransfer_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557399249;
+	};
+
+param X_EnergyDissipate_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557399249;
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	inputs = (EnergyDissipate, EnergyTransfer);
+	parents = (X_EnergyDissipate_3, X_EnergyTransfer_3);
+	probs = 
+		// one          two          three four   more than four  // EnergyDissipate EnergyTransfer 
+		  (0.8744327,   0.1099916,   0.01383543,  0.001740306,  // High            High           
+		   0.7388633,   0.1956271,   0.05179571,  0.01371383,   // High            Medium         
+		   0.4899557,   0.273057,    0.1521773,   0.08480989,   // High            Low            
+		   0.6295757,   0.2418403,   0.09289864,  0.03568536,   // Medium          High           
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium          Medium         
+		   0.09498143,  0.1616527,   0.2751231,   0.4682429,    // Medium          Low            
+		   0.1936669,   0.2271871,   0.2665091,   0.3126369,    // Low             High           
+		   0.04061532,  0.1002882,   0.2476338,   0.6114627,    // Low             Medium         
+		   0.005759913, 0.02993696,  0.1555963,   0.8087068);   // Low             Low            ;
+	title = "Number of attempts";
+	whenchanged = 1557399249;
+	visual V1 {
+		center = (83, 50);
+		height = 15;
+		link 1 {
+			labelposn = (40, 2, 129, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (126, 2, 209, 17);
+			path = ((126, 0), (126, 0));
+			};
+		};
+	};
+
+param X_EnergyTransfer_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557399249;
+	};
+
+param X_EnergyDissipate_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557399249;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Very_fast, Fast, Slow, Very_slow);
+	levels = (0, 30.19, 67.037, 154.893, INFINITY);
+	inputs = (EnergyDissipate, EnergyTransfer);
+	parents = (X_EnergyDissipate_2, X_EnergyTransfer_2);
+	probs = 
+		// Very fast    Fast         Slow         Very slow     // EnergyDissipate EnergyTransfer 
+		  (0.8744327,   0.1099916,   0.01383543,  0.001740306,  // High            High           
+		   0.7388633,   0.1956271,   0.05179571,  0.01371383,   // High            Medium         
+		   0.4899557,   0.273057,    0.1521773,   0.08480989,   // High            Low            
+		   0.6295757,   0.2418403,   0.09289864,  0.03568536,   // Medium          High           
+		   0.3343428,   0.2703363,   0.2185832,   0.1767377,    // Medium          Medium         
+		   0.09498143,  0.1616527,   0.2751231,   0.4682429,    // Medium          Low            
+		   0.1936669,   0.2271871,   0.2665091,   0.3126369,    // Low             High           
+		   0.04061532,  0.1002882,   0.2476338,   0.6114627,    // Low             Medium         
+		   0.005759913, 0.02993696,  0.1555963,   0.8087068);   // Low             Low            ;
+	title = "Duration to solve level";
+	whenchanged = 1557399249;
+	visual V1 {
+		center = (107, 50);
+		height = 16;
+		link 1 {
+			labelposn = (64, 2, 153, 17);
+			path = ((64, 0), (64, 0));
+			};
+		link 2 {
+			labelposn = (150, 2, 233, 17);
+			path = ((150, 0), (150, 0));
+			};
+		};
+	};
+
+param X_EnergyTransfer_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557399249;
+	};
+
+param X_EnergyDissipate_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyDissipate";
+	whenchanged = 1557399249;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (EnergyDissipate, EnergyTransfer);
+	parents = (X_EnergyDissipate_1, X_EnergyTransfer_1);
+	probs = 
+		// Gold         Silver       None          // EnergyDissipate EnergyTransfer 
+		  (0.8759571,   0.1101834,   0.01385955,   // High            High           
+		   0.7491369,   0.1983472,   0.05251591,   // High            Medium         
+		   0.5353595,   0.298361,    0.1662795,    // High            Low            
+		   0.6528738,   0.2507898,   0.09633644,   // Medium          High           
+		   0.4061194,   0.328372,    0.2655086,    // Medium          Medium         
+		   0.1786181,   0.3039972,   0.5173848,    // Medium          Low            
+		   0.2817534,   0.3305198,   0.3877268,    // Low             High           
+		   0.1045339,   0.2581173,   0.6373488,    // Low             Medium         
+		   0.03011039,  0.1564977,   0.8133919);   // Low             Low            ;
+	title = "Level solving status";
+	whenchanged = 1557399249;
+	visual V1 {
+		center = (74, 33);
+		height = 17;
+		link 1 {
+			labelposn = (40, 2, 129, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 190, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (NumberAttempts, Duration, TrophyLevel);};
+};

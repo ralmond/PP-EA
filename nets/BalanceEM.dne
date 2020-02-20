@@ -1,0 +1,265 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on May 11, 2019 at 19:57:41 UTC.
+
+bnet Balance {
+autoupdate = TRUE;
+title = "Balance";
+whenchanged = 1557257592;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = NAME;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 8);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_NSL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257592;
+	};
+
+param X_NFL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NFL";
+	whenchanged = 1557257592;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (NSL, NFL);
+	parents = (X_NSL_1, X_NFL_1);
+	probs = 
+		// Gold         Silver       None          // NSL    NFL    
+		  (0.8076125,   0.1604934,   0.03189416,   // High   High   
+		   0.7030536,   0.2249629,   0.07198355,   // High   Medium 
+		   0.5615874,   0.2893397,   0.1490729,    // High   Low    
+		   0.6365827,   0.2584707,   0.1049465,    // Medium High   
+		   0.4804955,   0.3141335,   0.205371,     // Medium Medium 
+		   0.3163765,   0.3330407,   0.3505827,    // Medium Low    
+		   0.3971742,   0.3294884,   0.2733374,    // Low    High   
+		   0.2427183,   0.3242126,   0.4330691,    // Low    Medium 
+		   0.1285905,   0.2765696,   0.5948399);   // Low    Low    ;
+	title = "Level solving status";
+	whenchanged = 1557257592;
+	visual V1 {
+		center = (390, 354);
+		height = 1;
+		link 1 {
+			labelposn = (390, 356, 414, 371);
+			path = ((390, 354), (390, 354));
+			};
+		link 2 {
+			labelposn = (390, 356, 413, 371);
+			path = ((390, 354), (390, 354));
+			};
+		};
+	};
+
+param X_NSL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257592;
+	};
+
+param X_NFL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NFL";
+	whenchanged = 1557257592;
+	};
+
+node RightBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (NSL, NFL);
+	parents = (X_NSL_2, X_NFL_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NSL    NFL    
+		  (0.8025259,   0.1594825,   0.03169328,  0.006298271,  // High   High   
+		   0.6872246,   0.2198979,   0.07036286,  0.02251468,   // High   Medium 
+		   0.5215312,   0.2687021,   0.13844,     0.07132674,   // High   Low    
+		   0.6105658,   0.2479071,   0.1006574,   0.04086976,   // Medium High   
+		   0.4236183,   0.2769488,   0.1810608,   0.1183721,    // Medium Medium 
+		   0.2310922,   0.2432644,   0.2560776,   0.2695658,    // Medium Low    
+		   0.3237599,   0.2685851,   0.2228132,   0.1848417,    // Low    High   
+		   0.1537676,   0.2053961,   0.2743592,   0.3664771,    // Low    Medium 
+		   0.05641497,  0.1213361,   0.260967,    0.561282);    // Low    Low    ;
+	title = "Blower at the right of the Screen";
+	whenchanged = 1557257592;
+	visual V1 {
+		center = (264, 276);
+		height = 2;
+		link 1 {
+			labelposn = (264, 278, 288, 293);
+			path = ((264, 276), (264, 276));
+			};
+		link 2 {
+			labelposn = (264, 278, 287, 293);
+			path = ((264, 276), (264, 276));
+			};
+		};
+	};
+
+param X_NSL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257592;
+	};
+
+param X_NFL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NFL";
+	whenchanged = 1557257592;
+	};
+
+node LeftBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (NSL, NFL);
+	parents = (X_NSL_3, X_NFL_3);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NSL    NFL    
+		  (0.8025259,   0.1594825,   0.03169328,  0.006298271,  // High   High   
+		   0.6872246,   0.2198979,   0.07036286,  0.02251468,   // High   Medium 
+		   0.5215312,   0.2687021,   0.13844,     0.07132674,   // High   Low    
+		   0.6105658,   0.2479071,   0.1006574,   0.04086976,   // Medium High   
+		   0.4236183,   0.2769488,   0.1810608,   0.1183721,    // Medium Medium 
+		   0.2310922,   0.2432644,   0.2560776,   0.2695658,    // Medium Low    
+		   0.3237599,   0.2685851,   0.2228132,   0.1848417,    // Low    High   
+		   0.1537676,   0.2053961,   0.2743592,   0.3664771,    // Low    Medium 
+		   0.05641497,  0.1213361,   0.260967,    0.561282);    // Low    Low    ;
+	title = "Blower at the left of the Screen";
+	whenchanged = 1557257592;
+	visual V1 {
+		center = (444, 180);
+		height = 3;
+		link 1 {
+			labelposn = (444, 182, 468, 197);
+			path = ((444, 180), (444, 180));
+			};
+		link 2 {
+			labelposn = (444, 182, 467, 197);
+			path = ((444, 180), (444, 180));
+			};
+		};
+	};
+
+param X_NSL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257592;
+	};
+
+param X_NFL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NFL";
+	whenchanged = 1557257592;
+	};
+
+node BottomBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (NSL, NFL);
+	parents = (X_NSL_4, X_NFL_4);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NSL    NFL    
+		  (0.8025259,   0.1594825,   0.03169328,  0.006298271,  // High   High   
+		   0.6872246,   0.2198979,   0.07036286,  0.02251468,   // High   Medium 
+		   0.5215312,   0.2687021,   0.13844,     0.07132674,   // High   Low    
+		   0.6105658,   0.2479071,   0.1006574,   0.04086976,   // Medium High   
+		   0.4236183,   0.2769488,   0.1810608,   0.1183721,    // Medium Medium 
+		   0.2310922,   0.2432644,   0.2560776,   0.2695658,    // Medium Low    
+		   0.3237599,   0.2685851,   0.2228132,   0.1848417,    // Low    High   
+		   0.1537676,   0.2053961,   0.2743592,   0.3664771,    // Low    Medium 
+		   0.05641497,  0.1213361,   0.260967,    0.561282);    // Low    Low    ;
+	title = "Blower at the bottom of the Screen";
+	whenchanged = 1557257592;
+	visual V1 {
+		center = (120, 126);
+		height = 4;
+		link 1 {
+			labelposn = (120, 128, 144, 143);
+			path = ((120, 126), (120, 126));
+			};
+		link 2 {
+			labelposn = (120, 128, 143, 143);
+			path = ((120, 126), (120, 126));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (BottomBlower, LeftBlower, RightBlower, TrophyLevel);};
+};

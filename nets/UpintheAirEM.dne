@@ -1,0 +1,272 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on May 06, 2019 at 22:15:45.
+
+bnet UpintheAir {
+autoupdate = TRUE;
+title = "Up in the Air";
+whenchanged = 1557195345;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 286);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet HighLevel {Color = 0x00FF8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet LowLevel {Color = 0x00FF8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00C8C8C8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_EnergyTransfer_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557195345;
+	};
+
+param X_PropertiesofTorque_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557195345;
+	};
+
+node Agent {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Ramp, Springboard, Lever, Pendulum);
+	inputs = (PropertiesofTorque, EnergyTransfer);
+	parents = (X_PropertiesofTorque_4, X_EnergyTransfer_4);
+	probs = 
+		// Ramp         Springboard  Lever        Pendulum      // PropertiesofTorque EnergyTransfer 
+		  (0.6367806,   0.2393904,   0.08999605,  0.03383298,   // High               High           
+		   0.4558863,   0.2759571,   0.1670424,   0.1011141,    // High               Medium         
+		   0.2597055,   0.2531247,   0.2467107,   0.2404592,    // High               Low            
+		   0.3557135,   0.2732245,   0.2098645,   0.1611975,    // Medium             High           
+		   0.1767377,   0.2185832,   0.2703363,   0.3343428,    // Medium             Medium         
+		   0.06732142,  0.1340631,   0.2669716,   0.531644,     // Medium             Low            
+		   0.1123927,   0.1763842,   0.2768098,   0.4344133,    // Low                High           
+		   0.03839179,  0.09701266,  0.2451424,   0.6194531,    // Low                Medium         
+		   0.0112386,   0.04572678,  0.1860497,   0.7569849);   // Low                Low            ;
+	title = "Agent Type";
+	whenchanged = 1557195345;
+	visual V1 {
+		center = (74, 40);
+		height = 15;
+		link 1 {
+			labelposn = (37, 2, 140, 17);
+			path = ((37, 0), (37, 0));
+			};
+		link 2 {
+			labelposn = (111, 2, 194, 17);
+			path = ((111, 0), (111, 0));
+			};
+		};
+	};
+
+param X_EnergyTransfer_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557195345;
+	};
+
+param X_PropertiesofTorque_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557195345;
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	inputs = (PropertiesofTorque, EnergyTransfer);
+	parents = (X_PropertiesofTorque_3, X_EnergyTransfer_3);
+	probs = 
+		// one          two          three four   more than four  // PropertiesofTorque EnergyTransfer 
+		  (0.6367806,   0.2393904,   0.08999605,  0.03383298,   // High               High           
+		   0.4558863,   0.2759571,   0.1670424,   0.1011141,    // High               Medium         
+		   0.2597055,   0.2531247,   0.2467107,   0.2404592,    // High               Low            
+		   0.3557135,   0.2732245,   0.2098645,   0.1611975,    // Medium             High           
+		   0.1767377,   0.2185832,   0.2703363,   0.3343428,    // Medium             Medium         
+		   0.06732142,  0.1340631,   0.2669716,   0.531644,     // Medium             Low            
+		   0.1123927,   0.1763842,   0.2768098,   0.4344133,    // Low                High           
+		   0.03839179,  0.09701266,  0.2451424,   0.6194531,    // Low                Medium         
+		   0.0112386,   0.04572678,  0.1860497,   0.7569849);   // Low                Low            ;
+	title = "Number of attempts";
+	whenchanged = 1557195345;
+	visual V1 {
+		center = (83, 50);
+		height = 16;
+		link 1 {
+			labelposn = (40, 2, 143, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (126, 2, 209, 17);
+			path = ((126, 0), (126, 0));
+			};
+		};
+	};
+
+param X_EnergyTransfer_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557195345;
+	};
+
+param X_PropertiesofTorque_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557195345;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Very_fast, Fast, Slow, Very_slow);
+	levels = (0, 30.19, 67.037, 154.893, INFINITY);
+	inputs = (PropertiesofTorque, EnergyTransfer);
+	parents = (X_PropertiesofTorque_2, X_EnergyTransfer_2);
+	probs = 
+		// Very fast    Fast         Slow         Very slow     // PropertiesofTorque EnergyTransfer 
+		  (0.6367806,   0.2393904,   0.08999605,  0.03383298,   // High               High           
+		   0.4558863,   0.2759571,   0.1670424,   0.1011141,    // High               Medium         
+		   0.2597055,   0.2531247,   0.2467107,   0.2404592,    // High               Low            
+		   0.3557135,   0.2732245,   0.2098645,   0.1611975,    // Medium             High           
+		   0.1767377,   0.2185832,   0.2703363,   0.3343428,    // Medium             Medium         
+		   0.06732142,  0.1340631,   0.2669716,   0.531644,     // Medium             Low            
+		   0.1123927,   0.1763842,   0.2768098,   0.4344133,    // Low                High           
+		   0.03839179,  0.09701266,  0.2451424,   0.6194531,    // Low                Medium         
+		   0.0112386,   0.04572678,  0.1860497,   0.7569849);   // Low                Low            ;
+	title = "Duration to solve level";
+	whenchanged = 1557195345;
+	visual V1 {
+		center = (107, 50);
+		height = 17;
+		link 1 {
+			labelposn = (64, 2, 167, 17);
+			path = ((64, 0), (64, 0));
+			};
+		link 2 {
+			labelposn = (150, 2, 233, 17);
+			path = ((150, 0), (150, 0));
+			};
+		};
+	};
+
+param X_EnergyTransfer_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557195345;
+	};
+
+param X_PropertiesofTorque_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "PropertiesofTorque";
+	whenchanged = 1557195345;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (PropertiesofTorque, EnergyTransfer);
+	parents = (X_PropertiesofTorque_1, X_EnergyTransfer_1);
+	probs = 
+		// Gold         Silver       None          // PropertiesofTorque EnergyTransfer 
+		  (0.6590792,   0.2477733,   0.09314752,   // High               High           
+		   0.5071682,   0.3069991,   0.1858327,    // High               Medium         
+		   0.3419243,   0.3332601,   0.3248155,    // High               Low            
+		   0.424073,    0.3257316,   0.2501953,    // Medium             High           
+		   0.2655086,   0.328372,    0.4061194,    // Medium             Medium         
+		   0.1437398,   0.2862418,   0.5700184,    // Medium             Low            
+		   0.1987187,   0.3118606,   0.4894206,    // Low                High           
+		   0.1008858,   0.2549296,   0.6441845,    // Low                Medium         
+		   0.04624652,  0.1881644,   0.7655891);   // Low                Low            ;
+	title = "Level solving status";
+	whenchanged = 1557195345;
+	visual V1 {
+		center = (74, 33);
+		height = 18;
+		link 1 {
+			labelposn = (40, 2, 143, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 190, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (Agent, NumberAttempts, Duration, TrophyLevel);};
+};

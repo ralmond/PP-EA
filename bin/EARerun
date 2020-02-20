@@ -1,0 +1,5 @@
+#!/bin/bash
+## Typical args app=ecd://epls.coe.fsu.edu/P4test level=DEBUG
+## Optional args clean=FALSE (default TRUE) purge=TRUE (default FALSE)
+## evidence=<file>.json
+R  --slave "--args app=ecd://epls.coe.fsu.edu/PhysicsPlayground/Sp2019/$1" </home/ralmond/PhysicsPlayground/EARerun.R 

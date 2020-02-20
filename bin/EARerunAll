@@ -1,0 +1,3 @@
+nohup ./EARerun linear >logs/EAR_linear.Rout &
+nohup ./EARerun adaptive >logs/EAR_adaptive.Rout &
+nohup ./EARerun userControl >logs/EAR_userControl.Rout &

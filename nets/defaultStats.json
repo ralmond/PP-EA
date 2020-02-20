@@ -1,0 +1,102 @@
+[
+  {
+    "app": "ecd://epls.coe.fsu.edu/P4test",
+    "uid": "*DEFAULT*",
+    "context": "*Baseline*",
+    "sender": "EABN",
+    "mess": "Statistics",
+    "timestamp": {
+      "$date": "2019-05-07T18:48:09.556Z"
+    },
+    "processed": false,
+    "data": {
+      "Physics_EAP": 2.8831e-08,
+      "ForceAndMothion_EAP": 0.3612,
+      "LinearMomentum_EAP": 0.3108,
+      "Energy_EAP": 0.1882,
+      "Torque_EAP": -0.1277,
+      "NFL_EAP": 0.4974,
+      "NSL_EAP": 0.3007,
+      "NTL_EAP": 0.0643,
+      "POfMom_EAP": 0.2588,
+      "ConOfMom_EAP": 0.1293,
+      "EnergyTransfer_EAP": 0.1567,
+      "EnergyDissipate_EAP": 0.0155
+    }
+  },
+  {
+    "app": "ecd://epls.coe.fsu.edu/PhysicsPlayground/Sp2019/userControl",
+    "uid": "*DEFAULT*",
+    "context": "*Baseline*",
+    "sender": "EABN",
+    "mess": "Statistics",
+    "timestamp": {
+      "$date": "2019-05-07T18:48:09.556Z"
+    },
+    "processed": false,
+    "data": {
+      "Physics_EAP": 2.8831e-08,
+      "ForceAndMothion_EAP": 0.3612,
+      "LinearMomentum_EAP": 0.3108,
+      "Energy_EAP": 0.1882,
+      "Torque_EAP": -0.1277,
+      "NFL_EAP": 0.4974,
+      "NSL_EAP": 0.3007,
+      "NTL_EAP": 0.0643,
+      "POfMom_EAP": 0.2588,
+      "ConOfMom_EAP": 0.1293,
+      "EnergyTransfer_EAP": 0.1567,
+      "EnergyDissipate_EAP": 0.0155
+    }
+  },
+  {
+    "app": "ecd://epls.coe.fsu.edu/PhysicsPlayground/Sp2019/linear",
+    "uid": "*DEFAULT*",
+    "context": "*Baseline*",
+    "sender": "EABN",
+    "mess": "Statistics",
+    "timestamp": {
+      "$date": "2019-05-07T18:48:09.556Z"
+    },
+    "processed": false,
+    "data": {
+      "Physics_EAP": 2.8831e-08,
+      "ForceAndMothion_EAP": 0.3612,
+      "LinearMomentum_EAP": 0.3108,
+      "Energy_EAP": 0.1882,
+      "Torque_EAP": -0.1277,
+      "NFL_EAP": 0.4974,
+      "NSL_EAP": 0.3007,
+      "NTL_EAP": 0.0643,
+      "POfMom_EAP": 0.2588,
+      "ConOfMom_EAP": 0.1293,
+      "EnergyTransfer_EAP": 0.1567,
+      "EnergyDissipate_EAP": 0.0155
+    }
+  },
+  {
+    "app": "ecd://epls.coe.fsu.edu/PhysicsPlayground/Sp2019/adaptive",
+    "uid": "*DEFAULT*",
+    "context": "*Baseline*",
+    "sender": "EABN",
+    "mess": "Statistics",
+    "timestamp": {
+      "$date": "2019-05-07T18:48:09.556Z"
+    },
+    "processed": false,
+    "data": {
+      "Physics_EAP": 2.8831e-08,
+      "ForceAndMothion_EAP": 0.3612,
+      "LinearMomentum_EAP": 0.3108,
+      "Energy_EAP": 0.1882,
+      "Torque_EAP": -0.1277,
+      "NFL_EAP": 0.4974,
+      "NSL_EAP": 0.3007,
+      "NTL_EAP": 0.0643,
+      "POfMom_EAP": 0.2588,
+      "ConOfMom_EAP": 0.1293,
+      "EnergyTransfer_EAP": 0.1567,
+      "EnergyDissipate_EAP": 0.0155
+    }
+  }
+]

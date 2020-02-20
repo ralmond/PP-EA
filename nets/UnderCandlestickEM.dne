@@ -1,0 +1,271 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on May 07, 2019 at 15:33:36.
+
+bnet UnderCandlestick {
+autoupdate = TRUE;
+title = "Under Candlestick";
+whenchanged = 1557257616;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	scrollposn = (0, 286);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet HighLevel {Color = 0x00FF8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet LowLevel {Color = 0x00FF8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00C8C8C8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00C8C8C8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_NSL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257616;
+	};
+
+param X_NTL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557257616;
+	};
+
+node Bounciness {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Yes, No);
+	inputs = (NTL, NSL);
+	parents = (X_NTL_4, X_NSL_4);
+	probs = 
+		// Yes          No            // NTL    NSL    
+		  (0.8653752,   0.1346248,    // High   High   
+		   0.7533209,   0.2466791,    // High   Medium 
+		   0.5919746,   0.4080254,    // High   Low    
+		   0.6779286,   0.3220714,    // Medium High   
+		   0.5,         0.5,          // Medium Medium 
+		   0.3220714,   0.6779286,    // Medium Low    
+		   0.4080254,   0.5919746,    // Low    High   
+		   0.2466791,   0.7533209,    // Low    Medium 
+		   0.1346248,   0.8653752);   // Low    Low    ;
+	title = "Check Bounciness";
+	whenchanged = 1557257616;
+	visual V1 {
+		center = (74, 26);
+		height = 15;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (103, 2, 126, 17);
+			path = ((103, 0), (103, 0));
+			};
+		};
+	};
+
+param X_NSL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257616;
+	};
+
+param X_NTL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557257616;
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	inputs = (NTL, NSL);
+	parents = (X_NTL_3, X_NSL_3);
+	probs = 
+		// Mass         Gravity      AirResistence  // NTL    NSL    
+		  (0.8476231,   0.1318632,   0.02051371,   // High   High   
+		   0.6970182,   0.2282425,   0.07473928,   // High   Medium 
+		   0.4620339,   0.3184623,   0.2195038,    // High   Low    
+		   0.5879641,   0.2793309,   0.132705,     // Medium High   
+		   0.3333333,   0.3333333,   0.3333333,    // Medium Medium 
+		   0.132705,    0.2793309,   0.5879641,    // Medium Low    
+		   0.2195038,   0.3184623,   0.4620339,    // Low    High   
+		   0.07473928,  0.2282425,   0.6970182,    // Low    Medium 
+		   0.02051371,  0.1318632,   0.8476231);   // Low    Low    ;
+	title = "Slider";
+	whenchanged = 1557257616;
+	visual V1 {
+		center = (74, 33);
+		height = 16;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 130, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+
+param X_NSL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257616;
+	};
+
+param X_NTL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557257616;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (NTL, NSL);
+	parents = (X_NTL_2, X_NSL_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NTL    NSL    
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High   High   
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // High   Medium 
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // High   Low    
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // Medium High   
+		   0.25,        0.25,        0.25,        0.25,         // Medium Medium 
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Medium Low    
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // Low    High   
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Low    Medium 
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low    ;
+	title = "Number of slider adjustment";
+	whenchanged = 1557257616;
+	visual V1 {
+		center = (83, 50);
+		height = 17;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (126, 2, 149, 17);
+			path = ((126, 0), (126, 0));
+			};
+		};
+	};
+
+param X_NSL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NSL";
+	whenchanged = 1557257616;
+	};
+
+param X_NTL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "NTL";
+	whenchanged = 1557257616;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (NTL, NSL);
+	parents = (X_NTL_1, X_NSL_1);
+	probs = 
+		// Gold         Silver       None          // NTL    NSL    
+		  (0.8476231,   0.1318632,   0.02051371,   // High   High   
+		   0.6970182,   0.2282425,   0.07473928,   // High   Medium 
+		   0.4620339,   0.3184623,   0.2195038,    // High   Low    
+		   0.5879641,   0.2793309,   0.132705,     // Medium High   
+		   0.3333333,   0.3333333,   0.3333333,    // Medium Medium 
+		   0.132705,    0.2793309,   0.5879641,    // Medium Low    
+		   0.2195038,   0.3184623,   0.4620339,    // Low    High   
+		   0.07473928,  0.2282425,   0.6970182,    // Low    Medium 
+		   0.02051371,  0.1318632,   0.8476231);   // Low    Low    ;
+	title = "Level solving status";
+	whenchanged = 1557257616;
+	visual V1 {
+		center = (74, 33);
+		height = 18;
+		link 1 {
+			labelposn = (40, 2, 62, 17);
+			path = ((40, 0), (40, 0));
+			};
+		link 2 {
+			labelposn = (107, 2, 130, 17);
+			path = ((107, 0), (107, 0));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (Bounciness, Slider, SliderAdjust, TrophyLevel);};
+};

@@ -1,0 +1,129 @@
+[
+    {
+        "app" : "PP",
+        "uid" : "002",
+        "context" : "AnnoyingLever",
+        "mess" : "Accumulate",
+        "timestamp" : ISODate("2018-08-08T20:13:05.068Z"),
+        "obs" : {
+            "numberofattempts" : 5,
+            "duration" : 155,
+	      "solvestatus" : "Silver"
+        }
+    },
+    {
+        "app" : "pp",
+        "uid" : "002",
+        "context" : "AroundtheTree",
+        "mess" : "Accumulate",
+        "timestamp" : ISODate("2018-08-08T20:13:09.081Z"),
+        "obs" : {
+            "numberofattempts" : 6,
+            "duration" : 195,
+	      "solvestatus" : "None"
+
+        }
+    },
+    { "app" : "PP",
+      "uid" : "002",
+      "context" : "Attic",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:14.086Z"),
+      "obs" : {
+          "numberofattempts" : 7,
+            "duration" : 176,
+	      "solvestatus" : "Silver"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Caveman",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:19.086Z"),
+      "obs" : {
+          "numberofattempts" : 5,
+            "duration" : 205,
+	      "solvestatus" : "None"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "ChocolateFactory",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:25.086Z"),
+      "obs" : {
+          "numberofattempts" : 8,
+            "duration" : 225,
+	      "solvestatus" : "None"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Balance",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:29.086Z"),
+      "obs" : {
+          "Blower at left" : 6,
+          "Blower at right" : 7,
+	     "Blower at top" : 9,
+	      "solvestatus" : "Silver"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Bowtie",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:35.086Z"),
+      "obs" : {
+          "Slider" : "Mass",
+          "Number of slider adjustment" : 5,
+	     "Number of puffer clicks" : 9,
+	      "solvestatus" : "None"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Collusion",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:41.086Z"),
+      "obs" : {
+          "Slider" : "Mass",
+          "Number of slider adjustment" : 6,
+	      "solvestatus" : "None"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Fireworks",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:43.086Z"),
+      "obs" : {
+          "Slider" : "Mass",
+          "Check Bounciness" : "No",
+          "Number of slider adjustment" : 8,
+	      "solvestatus" : "None"
+
+      }
+    },
+{ "app" : "PP",
+      "uid" : "002",
+      "context" : "Florida",
+      "mess" : "Accumulate",
+      "timestamp" : ISODate("2018-08-08T20:13:45.086Z"),
+      "obs" : {
+          "Slider" : "AirResistence",
+          "Check Bounciness" : "Yes",
+          "Number of slider adjustment" : 9,
+	      "solvestatus" : "Silver"
+
+      }
+    },
+
+
+]

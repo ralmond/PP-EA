@@ -1,0 +1,228 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:29.
+
+bnet WindyDay {
+autoupdate = FALSE;
+title = "Windy Day";
+whenchanged = 1579300949;
+user U1 {
+	Truename = "WindyDay";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "WindyDay.dne";
+	};
+
+param X_NSL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300678;
+	};
+
+param X_NFL_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300678;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 7.49, 11.139, 12.506, INFINITY);
+	inputs = (NFL, NSL);
+	parents = (X_NFL_4, X_NSL_4);
+	probs = 
+		// Q1           Q2           Q3           Q4            // NFL    NSL    
+		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
+		   0.9816,      0.01806126,  3.323238e-4, 6.114696e-6,  // High   Medium 
+		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
+		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
+		   0.9185182,   0.07487979,  0.006104378, 4.976434e-4,  // Medium Low    
+		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // Low    High   
+		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Low    Medium 
+		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300678;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"577\", \
+			\"578\", \"579\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -0.669430653942629, NSL = -0.263965545834465), c(NFL = -0.669430653942629,  NSL = \
+			-0.263965545834465), c(NFL = -0.669430653942629, NSL = -0.263965545834465 ))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_NSL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300677;
+	};
+
+param X_NFL_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300677;
+	};
+
+node LeftBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 3, 6, 11.25, INFINITY);
+	inputs = (NFL, NSL);
+	parents = (X_NFL_3, X_NSL_3);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NFL    NSL    
+		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
+		   0.9816,      0.01806126,  3.323238e-4, 6.114696e-6,  // High   Medium 
+		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
+		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
+		   0.9185182,   0.07487979,  0.006104378, 4.976434e-4,  // Medium Low    
+		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // Low    High   
+		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Low    Medium 
+		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
+	numcases = 10;
+	title = "Blower at the left of the Screen";
+	whenchanged = 1579300677;
+	user U1 {
+		Truename = "LeftBlower";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"574\", \
+			\"575\", \"576\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -0.669430653942629, NSL = -0.263965545834465), c(NFL = -0.669430653942629,  NSL = \
+			-0.263965545834465), c(NFL = -0.669430653942629, NSL = -0.263965545834465 ))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_NSL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300676;
+	};
+
+param X_NFL_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300676;
+	};
+
+node BottomBlower {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 3, 5, 12.5, INFINITY);
+	inputs = (NFL, NSL);
+	parents = (X_NFL_2, X_NSL_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NFL    NSL    
+		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
+		   0.9816,      0.01806126,  3.323238e-4, 6.114696e-6,  // High   Medium 
+		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
+		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
+		   0.9185182,   0.07487979,  0.006104378, 4.976434e-4,  // Medium Low    
+		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // Low    High   
+		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Low    Medium 
+		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
+	numcases = 10;
+	title = "Blower at the bottom of the Screen";
+	whenchanged = 1579300676;
+	user U1 {
+		Truename = "BottomBlower";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"571\", \
+			\"572\", \"573\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -0.669430653942629, NSL = -0.263965545834465), c(NFL = -0.669430653942629,  NSL = \
+			-0.263965545834465), c(NFL = -0.669430653942629, NSL = -0.263965545834465 ))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_NSL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NSL";
+	whenchanged = 1579300676;
+	};
+
+param X_NFL_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "NFL";
+	whenchanged = 1579300676;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (NFL, NSL);
+	parents = (X_NFL_1, X_NSL_1);
+	probs = 
+		// Gold         Silver       None          // NFL    NSL    
+		  (0.992468,    0.007475699, 5.631021e-5,  // High   High   
+		   0.9816063,   0.01806137,  3.323258e-4,  // High   Medium 
+		   0.9551407,   0.04292979,  0.001929524,  // High   Low    
+		   0.9863403,   0.01347558,  1.841061e-4,  // Medium High   
+		   0.9666626,   0.03226069,  0.001076645,  // Medium Medium 
+		   0.9189755,   0.07491707,  0.006107417,  // Medium Low    
+		   0.9752346,   0.02416658,  5.988544e-4,  // Low    High   
+		   0.9396765,   0.05688038,  0.003443077,  // Low    Medium 
+		   0.8549,      0.1264088,   0.01869131);  // Low    Low    ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300676;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"569\", \
+			\"570\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -0.669430653942629, NSL = -0.263965545834465), c(NFL = -0.669430653942629,  NSL = \
+			-0.263965545834465))";
+		betas = "list(-2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, BottomBlower, LeftBlower, Duration);};
+NodeSet Observable {Nodes = (TrophyLevel, BottomBlower, LeftBlower, Duration);};
+};

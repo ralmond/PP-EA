@@ -1,0 +1,232 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:27.
+
+bnet LaundryDay {
+autoupdate = FALSE;
+title = "Laundry Day";
+whenchanged = 1579300947;
+user U1 {
+	Truename = "LaundryDay";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "LaundryDay.dne";
+	};
+
+param X_StaticEquilibrium_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "StaticEquilibrium";
+	whenchanged = 1579300605;
+	};
+
+param X_PropertiesofTorque_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300605;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 19.3, 38.042, 119.625, INFINITY);
+	inputs = (PropertiesofTorque, StaticEquilibrium);
+	parents = (X_PropertiesofTorque_4, X_StaticEquilibrium_4);
+	probs = 
+		// Q1           Q2           Q3           Q4            // PropertiesofTorque StaticEquilibrium 
+		  (0.1770609,   0.2187559,   0.2702695,   0.3339137,    // High               High              
+		   0.05124127,  0.1148266,   0.257315,    0.5766172,    // High               Medium            
+		   0.01127,     0.04580692,  0.1861826,   0.7567405,    // High               Low               
+		   0.02462187,  0.07430813,  0.2242599,   0.6768101,    // Medium             High              
+		   0.004988527, 0.02730694,  0.1494767,   0.8182278,    // Medium             Medium            
+		   9.189288e-4, 0.009123634, 0.09058449,  0.8993729,    // Medium             Low               
+		   0.002158037, 0.01590934,  0.1172858,   0.8646468,    // Low                High              
+		   3.870077e-4, 0.005174857, 0.06919537,  0.9252428,    // Low                Medium            
+		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300605;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"303\", \
+			\"304\", \"305\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ))";
+		betas = "list(1L, 1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "StaticEquilibrium";
+	whenchanged = 1579300604;
+	};
+
+param X_PropertiesofTorque_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300604;
+	};
+
+node AppropriateSlider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (almostAlways, mostly, mostlyNot, almostNever);
+	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
+	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	inputs = (PropertiesofTorque, StaticEquilibrium);
+	parents = (X_PropertiesofTorque_3, X_StaticEquilibrium_3);
+	probs = 
+		// almost always mostly      mostlyNot    almost never  // PropertiesofTorque StaticEquilibrium 
+		  (0.1770609,   0.2187559,   0.2702695,   0.3339137,    // High               High              
+		   0.05124127,  0.1148266,   0.257315,    0.5766172,    // High               Medium            
+		   0.01127,     0.04580692,  0.1861826,   0.7567405,    // High               Low               
+		   0.02462187,  0.07430813,  0.2242599,   0.6768101,    // Medium             High              
+		   0.004988527, 0.02730694,  0.1494767,   0.8182278,    // Medium             Medium            
+		   9.189288e-4, 0.009123634, 0.09058449,  0.8993729,    // Medium             Low               
+		   0.002158037, 0.01590934,  0.1172858,   0.8646468,    // Low                High              
+		   3.870077e-4, 0.005174857, 0.06919537,  0.9252428,    // Low                Medium            
+		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
+	numcases = 10;
+	title = "Slider";
+	whenchanged = 1579300604;
+	user U1 {
+		Truename = "AppropriateSlider";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"300\", \
+			\"301\", \"302\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ))";
+		betas = "list(1L, 1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "StaticEquilibrium";
+	whenchanged = 1579300604;
+	};
+
+param X_PropertiesofTorque_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300604;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (PropertiesofTorque, StaticEquilibrium);
+	parents = (X_PropertiesofTorque_2, X_StaticEquilibrium_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // PropertiesofTorque StaticEquilibrium 
+		  (0.1770609,   0.2187559,   0.2702695,   0.3339137,    // High               High              
+		   0.05124127,  0.1148266,   0.257315,    0.5766172,    // High               Medium            
+		   0.01127,     0.04580692,  0.1861826,   0.7567405,    // High               Low               
+		   0.02462187,  0.07430813,  0.2242599,   0.6768101,    // Medium             High              
+		   0.004988527, 0.02730694,  0.1494767,   0.8182278,    // Medium             Medium            
+		   9.189288e-4, 0.009123634, 0.09058449,  0.8993729,    // Medium             Low               
+		   0.002158037, 0.01590934,  0.1172858,   0.8646468,    // Low                High              
+		   3.870077e-4, 0.005174857, 0.06919537,  0.9252428,    // Low                Medium            
+		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
+	numcases = 10;
+	title = "Number of slider adjustment";
+	whenchanged = 1579300604;
+	user U1 {
+		Truename = "SliderAdjust";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"297\", \
+			\"298\", \"299\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ))";
+		betas = "list(1L, 1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "StaticEquilibrium";
+	whenchanged = 1579300603;
+	};
+
+param X_PropertiesofTorque_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300603;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (PropertiesofTorque, StaticEquilibrium);
+	parents = (X_PropertiesofTorque_1, X_StaticEquilibrium_1);
+	probs = 
+		// Gold         Silver       None          // PropertiesofTorque StaticEquilibrium 
+		  (0.2658227,   0.3284198,   0.4057575,    // High               High              
+		   0.07618392,  0.229921,    0.6938951,    // High               Medium            
+		   0.01594375,  0.1175395,   0.8665168,    // High               Low               
+		   0.1210282,   0.2712122,   0.6077595,    // Medium             High              
+		   0.02744384,  0.1502261,   0.82233,      // Medium             Medium            
+		   0.00517686,  0.06922216,  0.925601,     // Medium             Low               
+		   0.04632905,  0.1883048,   0.7653662,    // Low                High              
+		   0.009132025, 0.09066781,  0.9002,       // Low                Medium            
+		   0.001630106, 0.03953483,  0.9588351);   // Low                Low               ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300603;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"295\", \
+			\"296\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.669430653942629, StaticEquilibrium = -0.263965545834465 ), \
+			c(PropertiesofTorque = -0.669430653942629, StaticEquilibrium = -0.263965545834465 ))";
+		betas = "list(1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+NodeSet Observable {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+};

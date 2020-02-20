@@ -1,0 +1,210 @@
+// ~->[DNET-1]->~
+
+// File created by ShuteV_6 at FloridaStateU using Netica 5.24 on May 11, 2019 at 20:09:40 UTC.
+
+bnet BreakfastTime {
+autoupdate = TRUE;
+title = "Breakfast Time";
+whenchanged = 1557257585;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = NAME;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (451, 0, 902, 545);
+	resolution = 72;
+	drawingbounds = (1515, 782);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet HighLevel {Color = 0x00ff8080;};
+	NodeSet Proficiency {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet LowLevel {Color = 0x00ff8000;};
+	NodeSet pnode {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet pnodes {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Proficiencies {Disabled = 1; Color = 0x00c8c8c8;};
+	NodeSet Observable {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+user U1 {
+	priorWeight = "10";
+	};
+
+param X_EnergyTransfer_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557257585;
+	};
+
+param X_ConOfMom_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "ConOfMom";
+	whenchanged = 1557257585;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	inputs = (EnergyTransfer, ConOfMom);
+	parents = (X_EnergyTransfer_1, X_ConOfMom_1);
+	probs = 
+		// Gold         Silver       None          // EnergyTransfer ConOfMom 
+		  (0.8476231,   0.1318632,   0.02051371,   // High           High     
+		   0.6970182,   0.2282425,   0.07473928,   // High           Medium   
+		   0.4620339,   0.3184623,   0.2195038,    // High           Low      
+		   0.5879641,   0.2793309,   0.132705,     // Medium         High     
+		   0.3333333,   0.3333333,   0.3333333,    // Medium         Medium   
+		   0.132705,    0.2793309,   0.5879641,    // Medium         Low      
+		   0.2195038,   0.3184623,   0.4620339,    // Low            High     
+		   0.07473928,  0.2282425,   0.6970182,    // Low            Medium   
+		   0.02051371,  0.1318632,   0.8476231);   // Low            Low      ;
+	title = "Level solving status";
+	whenchanged = 1557257585;
+	visual V1 {
+		center = (558, 144);
+		height = 1;
+		link 1 {
+			labelposn = (558, 146, 642, 161);
+			path = ((558, 144), (558, 144));
+			};
+		link 2 {
+			labelposn = (558, 146, 620, 161);
+			path = ((558, 144), (558, 144));
+			};
+		};
+	};
+
+param X_EnergyTransfer_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557257585;
+	};
+
+param X_ConOfMom_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "ConOfMom";
+	whenchanged = 1557257585;
+	};
+
+node SliderAdjust {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	inputs = (EnergyTransfer, ConOfMom);
+	parents = (X_EnergyTransfer_2, X_ConOfMom_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // EnergyTransfer ConOfMom 
+		  (0.8449267,   0.1314437,   0.02044845,  0.003181128,  // High           High     
+		   0.6803671,   0.22279,     0.07295383,  0.02388914,   // High           Medium   
+		   0.4013165,   0.2766121,   0.1906581,   0.1314133,    // High           Low      
+		   0.5530939,   0.2627648,   0.1248347,   0.05930669,   // Medium         High     
+		   0.25,        0.25,        0.25,        0.25,         // Medium         Medium   
+		   0.05930669,  0.1248347,   0.2627648,   0.5530939,    // Medium         Low      
+		   0.1314133,   0.1906581,   0.2766121,   0.4013165,    // Low            High     
+		   0.02388914,  0.07295383,  0.22279,     0.6803671,    // Low            Medium   
+		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low            Low      ;
+	title = "Number of slider adjustment";
+	whenchanged = 1557257585;
+	visual V1 {
+		center = (306, 150);
+		height = 2;
+		link 1 {
+			labelposn = (306, 152, 390, 167);
+			path = ((306, 150), (306, 150));
+			};
+		link 2 {
+			labelposn = (306, 152, 368, 167);
+			path = ((306, 150), (306, 150));
+			};
+		};
+	};
+
+param X_EnergyTransfer_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "EnergyTransfer";
+	whenchanged = 1557257585;
+	};
+
+param X_ConOfMom_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.967421566101701, 0, -0.967421566101701);
+	title = "ConOfMom";
+	whenchanged = 1557257585;
+	};
+
+node Slider {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Mass, Gravity, AirResistence);
+	inputs = (EnergyTransfer, ConOfMom);
+	parents = (X_EnergyTransfer_3, X_ConOfMom_3);
+	probs = 
+		// Mass         Gravity      AirResistence  // EnergyTransfer ConOfMom 
+		  (0.8476231,   0.1318632,   0.02051371,   // High           High     
+		   0.6970182,   0.2282425,   0.07473928,   // High           Medium   
+		   0.4620339,   0.3184623,   0.2195038,    // High           Low      
+		   0.5879641,   0.2793309,   0.132705,     // Medium         High     
+		   0.3333333,   0.3333333,   0.3333333,    // Medium         Medium   
+		   0.132705,    0.2793309,   0.5879641,    // Medium         Low      
+		   0.2195038,   0.3184623,   0.4620339,    // Low            High     
+		   0.07473928,  0.2282425,   0.6970182,    // Low            Medium   
+		   0.02051371,  0.1318632,   0.8476231);   // Low            Low      ;
+	title = "Slider";
+	whenchanged = 1557257585;
+	visual V1 {
+		center = (234, 390);
+		height = 3;
+		link 1 {
+			labelposn = (234, 392, 318, 407);
+			path = ((234, 390), (234, 390));
+			};
+		link 2 {
+			labelposn = (234, 392, 296, 407);
+			path = ((234, 390), (234, 390));
+			};
+		};
+	};
+NodeSet HighLevel {Nodes = ();};
+NodeSet Proficiency {Nodes = ();};
+NodeSet LowLevel {Nodes = ();};
+NodeSet pnode {Nodes = ();};
+NodeSet pnodes {Nodes = ();};
+NodeSet Proficiencies {Nodes = ();};
+NodeSet Observable {Nodes = (Slider, SliderAdjust, TrophyLevel);};
+};

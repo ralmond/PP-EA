@@ -1,0 +1,228 @@
+// ~->[DNET-1]->~
+
+// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:33.
+
+bnet Springboard {
+autoupdate = FALSE;
+title = "Springboard";
+whenchanged = 1579300953;
+user U1 {
+	Truename = "Springboard";
+	Hub = "PP_OrangeNodes_6";
+	Pathname = "Springboard.dne";
+	};
+
+param X_PropertiesofTorque_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300909;
+	};
+
+param X_EnergyTransfer_4 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300909;
+	};
+
+node ApplicableAgent {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
+	inputs = (EnergyTransfer, PropertiesofTorque);
+	parents = (X_EnergyTransfer_4, X_PropertiesofTorque_4);
+	probs = 
+		// TRUE         FALSE         // EnergyTransfer PropertiesofTorque 
+		  (0.9885448,   0.01145518,   // High           High               
+		   0.9796942,   0.02030584,   // High           Medium             
+		   0.9642525,   0.03574753,   // High           Low                
+		   0.9816834,   0.01831662,   // Medium         High               
+		   0.9677045,   0.03229547,   // Medium         Medium             
+		   0.9436695,   0.05633048,   // Medium         Low                
+		   0.9708333,   0.02916668,   // Low            High               
+		   0.9490041,   0.05099589,   // Low            Medium             
+		   0.9123129,   0.08768709);  // Low            Low                ;
+	numcases = 10;
+	title = "Agent Type";
+	whenchanged = 1579300909;
+	user U1 {
+		Truename = "ApplicableAgent";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 )";
+		betas = "-2L";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300908;
+	};
+
+param X_EnergyTransfer_3 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300908;
+	};
+
+node NumberAttempts {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	inputs = (EnergyTransfer, PropertiesofTorque);
+	parents = (X_EnergyTransfer_3, X_PropertiesofTorque_3);
+	probs = 
+		// one          two          three four   more than four  // EnergyTransfer PropertiesofTorque 
+		  (0.9884121,   0.01145365,  1.32724e-4,  1.537996e-6,  // High           High               
+		   0.9792734,   0.02029712,  4.206926e-4, 8.719576e-6,  // High           Medium             
+		   0.962929,    0.03569846,  0.001323442, 4.906367e-5,  // High           Low                
+		   0.9813417,   0.01831025,  3.416396e-4, 6.374442e-6,  // Medium         High               
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium         Medium             
+		   0.9403189,   0.05613048,  0.003350598, 2.000073e-4,  // Medium         Low                
+		   0.9699579,   0.02914038,  8.754623e-4, 2.630145e-5,  // Low            High               
+		   0.9462717,   0.05084906,  0.002732436, 1.468308e-4,  // Low            Medium             
+		   0.903962,    0.08688444,  0.008350912, 8.026491e-4); // Low            Low                ;
+	numcases = 10;
+	title = "Number of attempts";
+	whenchanged = 1579300908;
+	user U1 {
+		Truename = "NumberAttempts";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"1331\", \
+			\"1332\", \"1333\"), c(\"EnergyTransfer\", \"PropertiesofTorque\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ), \
+			c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ), \
+			c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300907;
+	};
+
+param X_EnergyTransfer_2 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300907;
+	};
+
+node Duration {
+	kind = NATURE;
+	discrete = FALSE;
+	chance = CHANCE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 37.658, 60.756, 107.734, INFINITY);
+	inputs = (EnergyTransfer, PropertiesofTorque);
+	parents = (X_EnergyTransfer_2, X_PropertiesofTorque_2);
+	probs = 
+		// Q1           Q2           Q3           Q4            // EnergyTransfer PropertiesofTorque 
+		  (0.9884121,   0.01145365,  1.32724e-4,  1.537996e-6,  // High           High               
+		   0.9792734,   0.02029712,  4.206926e-4, 8.719576e-6,  // High           Medium             
+		   0.962929,    0.03569846,  0.001323442, 4.906367e-5,  // High           Low                
+		   0.9813417,   0.01831025,  3.416396e-4, 6.374442e-6,  // Medium         High               
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium         Medium             
+		   0.9403189,   0.05613048,  0.003350598, 2.000073e-4,  // Medium         Low                
+		   0.9699579,   0.02914038,  8.754623e-4, 2.630145e-5,  // Low            High               
+		   0.9462717,   0.05084906,  0.002732436, 1.468308e-4,  // Low            Medium             
+		   0.903962,    0.08688444,  0.008350912, 8.026491e-4); // Low            Low                ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1579300907;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"1328\", \
+			\"1329\", \"1330\"), c(\"EnergyTransfer\", \"PropertiesofTorque\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ), \
+			c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ), \
+			c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_PropertiesofTorque_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "PropertiesofTorque";
+	whenchanged = 1579300907;
+	};
+
+param X_EnergyTransfer_1 {
+	kind = DISCONNECTED;
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	title = "EnergyTransfer";
+	whenchanged = 1579300907;
+	};
+
+node TrophyLevel {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	inputs = (EnergyTransfer, PropertiesofTorque);
+	parents = (X_EnergyTransfer_1, X_PropertiesofTorque_1);
+	probs = 
+		// Gold         Silver       None          // EnergyTransfer PropertiesofTorque 
+		  (0.9884136,   0.01145366,  1.327242e-4,  // High           High               
+		   0.979282,    0.0202973,   4.206963e-4,  // High           Medium             
+		   0.9629763,   0.03570021,  0.001323506,  // High           Low                
+		   0.981348,    0.01831037,  3.416418e-4,  // Medium         High               
+		   0.9666626,   0.03226069,  0.001076645,  // Medium         Medium             
+		   0.9405071,   0.0561417,   0.003351268,  // Medium         Low                
+		   0.9699834,   0.02914114,  8.754853e-4,  // Low            High               
+		   0.9464107,   0.05085652,  0.002732837,  // Low            Medium             
+		   0.9046881,   0.08695424,  0.008357619); // Low            Low                ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1579300907;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"1326\", \
+			\"1327\"), c(\"EnergyTransfer\", \"PropertiesofTorque\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ), \
+			c(EnergyTransfer = -0.892574205256839, PropertiesofTorque = -0.693147180559945 ))";
+		betas = "list(-2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+};

@@ -72,9 +72,3 @@ if (interactive() && !is.null(evidenceFile)) {
 eng$activate()
 mainLoop(eng)
 
-## This is for running the loop by hand.
-if (interactive() && FALSE) {
-  eve <- eng$fetchNextEvidence()
-  rec1 <- handleEvidence(eng,eve)
-  eng$setProcessed(eve)
-}

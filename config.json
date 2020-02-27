@@ -1,0 +1,36 @@
+{
+    "ConfigName":"PP-main",
+    "Branch":"PP-main",
+    "Version":"0.5.1",
+    "Date":"2020-02-25",
+    "Tables":{
+        "TableIDComment":"This is the unique part of the spreadsheet ID.",
+        "TableID":"16LcEuCspZjiBoZ3-Y1R3jxi1COXmh9vuTa9GwH1A_7Q",
+        "NetsName":"Nets",
+        "NodesName":"Nodes",
+        "QName":"Q",
+        "StatName":"Statistics"
+    },
+    "appStem":"P4Test",
+    "logLevel":"INFO",
+    "logname":"EA_P4Test0.log",
+    "statfile":"stats-P4Test.csv",
+    "EAEngine":{
+        "manifestFile":"PPManifest.csv",
+        "statFile":"StatsticsList.csv",
+        "histNodes":["Physics"],
+        "profModel":"PPOrangeNodes",
+        "waittime":0.25,
+        "clearStudentRecords":true
+    },
+    "filter":{
+        "RemoveComment":"Records matching query are removed.",
+        "doRemove":false,
+        "remove":{},
+        "ReprocessComment":"Records matching query are set processed<-true",
+        "doReprocess":true,
+        "reprocess":{}
+    },
+    "mode":"rerun",
+    "limitNN":"Inf"
+}

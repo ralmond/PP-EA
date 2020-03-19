@@ -17,6 +17,8 @@
     "logLevel":"INFO",
     "logname":"EA_<app>0.log",
     "statfile":"stats-<app>.csv",
+    "dbname":"EARecords",
+    "P4dbname":"Proc4",
     "listeners":[
 	{
 	    "name":"ToAS",
@@ -25,7 +27,7 @@
 	    "dburi":"<dburi>",
 	    "dbname":"ASRecords",
 	    "colname":"Statistics",
-	    "messages"["Statistics"]
+	    "messages":["Statistics"]
 	},
 	{
 	    "name":"PPStats",
@@ -36,7 +38,7 @@
 	    "colname":"Statistics",
 	    "targetField":"data",
 	    "jsonEncoder":"stats2json",
-	    "messages"["Statistics"],
+	    "messages":["Statistics"]
 	}
 	    
     ],

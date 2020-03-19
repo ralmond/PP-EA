@@ -1,32 +1,46 @@
 ## Adjust this to your configuration directory.
-EAeng.config <- fromJSON("config.json")
 
 
-## These are application generic parameters
-EAeng.common <- list(host="localhost",username="EA",password="secret",
-                     ##profModel="PPOrangeNodes",
-                     dbname="EARecords",P4dbname="Proc4"
-                     ##waittime=.25
-                     )
-appstem <- basename(app)
 
-## These are for application specific parameters
-EAeng.params <- list(app=app)
+Proc4.config <- fromJSON("Proc4.json")
+apps <- Proc4.config$apps[appStem]
 
+dbhost <- "localhost"
+dbuser <- "" # "EAP"
+dbport <- "" # "27018"
 
-if (is.null(logfile) || nchar(logfile)==0L) {
-    logfile <- file.path("/usr/local/share/Proc4/logs",
-                         paste("EA_",appstem,"0.log",sep=""))
+builduri <- function (host,username,password,port) {
+    security <- ""
+    if (nchar(username) > 0L) {
+        if (nchar(password) > 0L)
+            security <- paste(username,password,sep=":")
+        else
+            security <- username
+    }
+    if (nchar(port) > 0L)
+        host <- paste(host,port,sep=":")
+    else
+        host <- host
+    if (nchar(security) > 0L)
+        host <- paste(security,host,sep="@")
+    paste("mongodb:/",host,sep="/")
 }
 
-EA.listenerSpecs <-
-  list("InjectionListener"=list(sender=paste("EA",appstem,sep="_"),
-            dbname="ASRecords",dburi="mongodb://localhost",
-            colname="Statistics",messSet="Statistics"),
-       "UpdateListener"=list(dbname="Proc4",dburi="mongodb://localhost",
-            colname="Statistics",targetField="data",
-            messSet=c("Statistics"),
-            jsonEncoder="stats2json"))
+dburi <-builduri(dbhost, dbuser,
+                 Proc4.config$pwds[[dbuser]],
+                 port)
+
+
+
+EAeng.local <- list(dburi=dburi,dbname="EARecords",P4dbname="Proc4")
+
+lognames <- sapply(appStem,
+                   function (app) sub("<app>",app,EAeng.config$logname))
+
+
+
+logfile <- file.path("/usr/local/share/Proc4/logs",lognames)
+
 
 NeticaLicenseKey <- ""
 

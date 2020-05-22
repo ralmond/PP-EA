@@ -1,8 +1,12 @@
 {
     "ConfigName":"PP-main",
     "Branch":"PP-main",
-    "Version":"0.5.1",
-    "Date":"2020-02-25",
+    "Version":"0.5.2",
+    "Date":"2020-04-27",
+    "appStem":["P4Test"],
+    "rebuildNets":false,
+    "logLevel":"INFO",
+    "logname":"EA_<app>0.log",
     "Tables":{
         "TableIDComment":"This is the unique part of the spreadsheet ID.",
         "TableID":"16LcEuCspZjiBoZ3-Y1R3jxi1COXmh9vuTa9GwH1A_7Q",
@@ -10,15 +14,13 @@
         "NodesName":"Nodes",
 	"OmegaName":"Omega",
         "QName":"Q",
-        "StatName":"Statistics"
+        "StatName":"Statistics",
+        "CMName":"PP_OrangeNodes_6"
     },
-    "rebuildNets":false,
-    "appStem":["P4Test"],
-    "logLevel":"INFO",
-    "logname":"EA_<app>0.log",
-    "statfile":"stats-<app>.csv",
+    "sender":"EA_<app>",
     "dbname":"EARecords",
-    "P4dbname":"Proc4",
+    "admindbname":"Proc4",
+    "lscolname":"Messages",
     "listeners":[
 	{
 	    "name":"ToAS",
@@ -32,7 +34,6 @@
 	{
 	    "name":"PPStats",
 	    "type":"UpdateListener",
-	    "sender":"EA_<app>",
 	    "dburi":"<dburi>",
 	    "dbname":"Proc4",
 	    "colname":"Statistics",
@@ -42,13 +43,14 @@
 	}
 	    
     ],
+    "SRreset":true,
+    "listenerReset":"ALL",
     "EAEngine":{
         "manifestFile":"PPManifest.csv",
-        "statFile":"StatsticsList.csv",
+        "statFile":"StatisticList.csv",
         "histNodes":["Physics"],
-        "profModel":"PPOrangeNodes",
-        "waittime":0.25,
-        "clearStudentRecords":true
+        "profModel":"PP_OrangeNodes_6",
+        "waittime":0.25
     },
     "filter":{
         "RemoveComment":"Records matching query are removed.",
@@ -59,7 +61,9 @@
         "doReprocess":true,
         "reprocess":{}
     },
-    "mode":"rerun",
     "extensions":"",
-    "limitNN":"Inf"
+    "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",
+    "limitNN":"Inf",
+    "statListener":"PPStats",
+    "statfile":"stats-<app>.csv"
 }

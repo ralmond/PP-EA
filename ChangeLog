@@ -1,0 +1,5 @@
+2020-03-26  Russell Almond  <ralmond@Cherry>
+
+	* config.json: Add lscolname, so we can configure the message log.
+	
+

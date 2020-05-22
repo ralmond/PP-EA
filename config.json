@@ -4,7 +4,7 @@
     "Version":"0.5.2",
     "Date":"2020-04-27",
     "appStem":["P4Test"],
-    "rebuildNets":false,
+    "rebuildNets":true,
     "logLevel":"INFO",
     "logname":"EA_<app>0.log",
     "Tables":{

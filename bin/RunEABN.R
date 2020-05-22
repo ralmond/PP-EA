@@ -25,29 +25,41 @@ if (length(apps)==0L || any (is.na(apps))) {
 sess <- NeticaSession(LicenseKey=NeticaLicenseKey)
 startSession(sess)
 
+trimTable <- function (tab, lastcol="Description") {
+    nlcol <- which(colnames(tab)==lastcol)
+    tab[,1:nlcol]
+}
+    
+
+
 if (isTRUE(EA.config$rebuildNets)) {
 
   EA.tables <- EA.config$Tables
   tid <- EA.tables$TableID
   if (!is.null(tid) && nchar(tid)>0L) {
     ## Read from Google sheet
-    templatURL <- paste("https://docs.google.com/spreadsheets/d",tid,
-                        "/gviz/tq?tqx=out:csv&sheet={%s}",
+    templateURL <- paste("https://docs.google.com/spreadsheets/d",tid,
+                        "gviz/tq?tqx=out:csv&sheet={%s}",
                         sep="/")
   } else {
     ## Read from the tables directory
     templateURL <- file.path(config.dir,"tables","%s.csv")
   }
-  stattab <- read_csv(sprintf(templateURL,EA.tables$StatName),
+  stattab <- read.csv(sprintf(templateURL,EA.tables$StatName),
                       stringsAsFactors=FALSE,strip.white=TRUE)
+  stattab <- trimTable(stattab,"Node")
   netman <- read.csv(sprintf(templateURL,EA.tables$NetsName),
                      stringsAsFactors=FALSE,strip.white=TRUE)
-  nodeman <- read.csv(sprintf(templateURL,EA.tables$NodeName),
+  netman <- trimTable(netman)
+  nodeman <- read.csv(sprintf(templateURL,EA.tables$NodesName),
                       stringsAsFactors=FALSE,strip.white=TRUE)
-  omega <- read.csv(sprintf(templateURL,EA.tables$OmegaName),
+  nodeman <- trimTable(nodeman,"UpperBound")
+  Omega <- read.csv(sprintf(templateURL,EA.tables$OmegaName),
                     stringsAsFactors=FALSE,strip.white=TRUE)
+  Omega <- trimTable(Omega,"PriorWeight")
   QQ <- read.csv(sprintf(templateURL,EA.tables$QName),
                  stringsAsFactors=FALSE,strip.white=TRUE)
+  QQ <- trimTable(QQ,"PriorWeight")
   ## Now build the models
   Nethouse <- PNetica::BNWarehouse(manifest=netman,session=sess,key="Name")
   Nodehouse <- PNetica::NNWarehouse(manifest=nodeman,

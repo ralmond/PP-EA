@@ -1,41 +1,41 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:27.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:29 PM UTC.
 
 bnet BrokenHeart {
 autoupdate = FALSE;
 title = "Broken Heart";
-whenchanged = 1579300947;
+whenchanged = 1590696209;
 user U1 {
 	Truename = "BrokenHeart";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "BrokenHeart.dne";
+	Pathname = "./BrokenHeart.dne";
 	};
 
 param X_EnergyDissipate_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300559;
+	whenchanged = 1590695245;
 	};
 
 param X_EnergyTransfer_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300559;
+	whenchanged = 1590695245;
 	};
 
 node Duration {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Q1, Q2, Q3, Q4);
 	levels = (0, 14.594, 23.913, 40.181, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (EnergyTransfer, EnergyDissipate);
 	parents = (X_EnergyTransfer_4, X_EnergyDissipate_4);
 	probs = 
@@ -51,46 +51,47 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1579300559;
+	whenchanged = 1590695994;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"136\", \
-			\"137\", \"138\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
-		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"135\",\
+			\| \"136\", \"137\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
+			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
+			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300558;
+	whenchanged = 1590695245;
 	};
 
 param X_EnergyTransfer_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300558;
+	whenchanged = 1590695245;
 	};
 
 node AppropriateSlider {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (almostAlways, mostly, mostlyNot, almostNever);
 	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
 	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (EnergyTransfer, EnergyDissipate);
 	parents = (X_EnergyTransfer_3, X_EnergyDissipate_3);
 	probs = 
@@ -106,45 +107,46 @@ node AppropriateSlider {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1579300558;
+	whenchanged = 1590695994;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"133\", \
-			\"134\", \"135\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
-		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"132\",\
+			\| \"133\", \"134\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
+			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
+			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300558;
+	whenchanged = 1590695244;
 	};
 
 param X_EnergyTransfer_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300558;
+	whenchanged = 1590695244;
 	};
 
 node SliderAdjust {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Zero, One, Two, MorethanTwo);
 	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (EnergyTransfer, EnergyDissipate);
 	parents = (X_EnergyTransfer_2, X_EnergyDissipate_2);
 	probs = 
@@ -160,45 +162,46 @@ node SliderAdjust {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1579300558;
+	whenchanged = 1590695993;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"130\", \
-			\"131\", \"132\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
-		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"129\",\
+			\| \"130\", \"131\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
+			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
+			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300557;
+	whenchanged = 1590695244;
 	};
 
 param X_EnergyTransfer_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300557;
+	whenchanged = 1590695244;
 	};
 
 node TrophyLevel {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Gold, Silver, None);
 	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (EnergyTransfer, EnergyDissipate);
 	parents = (X_EnergyTransfer_1, X_EnergyDissipate_1);
 	probs = 
@@ -214,15 +217,16 @@ node TrophyLevel {
 		   0.2814304,   0.3304834,   0.3880863);   // Low            Low             ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1579300557;
+	whenchanged = 1590695993;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"128\", \
-			\"129\"), c(\"EnergyTransfer\", \"EnergyDissipate\")))";
-		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
-			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"127\", \
+			\"128\"), c(\"EnergyTransfer\", \"EnergyDissipate\")))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
+			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"EnergyTransfer\", \"EnergyDissipate\")))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};

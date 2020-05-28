@@ -1,41 +1,41 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:27.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:30 PM UTC.
 
 bnet Fireworks {
 autoupdate = FALSE;
 title = "Fireworks";
-whenchanged = 1579300947;
+whenchanged = 1590696210;
 user U1 {
 	Truename = "Fireworks";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "Fireworks.dne";
+	Pathname = "./Fireworks.dne";
 	};
 
 param X_EnergyDissipate_5 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300574;
+	whenchanged = 1590695255;
 	};
 
 param X_NTL_5 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300574;
+	whenchanged = 1590695255;
 	};
 
 node Duration {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Q1, Q2, Q3, Q4);
 	levels = (0, 18.994, 43.953, 87.187, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, EnergyDissipate);
 	parents = (X_NTL_5, X_EnergyDissipate_5);
 	probs = 
@@ -51,44 +51,45 @@ node Duration {
 		   0.4588707,   0.2757785,   0.1657412,   0.09960949);  // Low    Low             ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1579300574;
+	whenchanged = 1590696002;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"193\", \
-			\"194\", \"195\"), c(\"NTL\", \"EnergyDissipate\")))";
-		lnAlphas = "list(c(NTL = -0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = \
-			-0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = -0.487109097148675, \
-			EnergyDissipate = -0.892574205256839 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"191\",\
+			\| \"192\", \"193\"), c(\"NTL\", \"EnergyDissipate\" )))";
+		lnAlphas = "list(structure(c(-0.487109097148675, -0.892574205256839), .Names = c(\"NTL\",  \
+			\"EnergyDissipate\")), structure(c(-0.487109097148675, -0.892574205256839 ), .Names = c(\"NTL\",\
+			\| \"EnergyDissipate\")), structure(c(-0.487109097148675,  -0.892574205256839), .Names = \
+			c(\"NTL\", \"EnergyDissipate\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300574;
+	whenchanged = 1590695255;
 	};
 
 param X_NTL_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300574;
+	whenchanged = 1590695255;
 	};
 
 node Bounciness {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Yes, No);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, EnergyDissipate);
 	parents = (X_NTL_4, X_EnergyDissipate_4);
 	probs = 
@@ -104,43 +105,44 @@ node Bounciness {
 		   0.624612,    0.375388);    // Low    Low             ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1579300574;
+	whenchanged = 1590696001;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "c(NTL = -0.487109097148675, EnergyDissipate = -0.892574205256839 )";
+		lnAlphas = "structure(c(-0.487109097148675, -0.892574205256839), .Names = c(\"NTL\",  \"EnergyDissipate\"))\
+			";
 		betas = "-1L";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300573;
+	whenchanged = 1590695254;
 	};
 
 param X_NTL_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300573;
+	whenchanged = 1590695254;
 	};
 
 node AppropriateSlider {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (almostAlways, mostly, mostlyNot, almostNever);
 	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
 	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, EnergyDissipate);
 	parents = (X_NTL_3, X_EnergyDissipate_3);
 	probs = 
@@ -156,45 +158,46 @@ node AppropriateSlider {
 		   0.4588707,   0.2757785,   0.1657412,   0.09960949);  // Low    Low             ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1579300573;
+	whenchanged = 1590696001;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"189\", \
-			\"190\", \"191\"), c(\"NTL\", \"EnergyDissipate\")))";
-		lnAlphas = "list(c(NTL = -0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = \
-			-0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = -0.487109097148675, \
-			EnergyDissipate = -0.892574205256839 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"187\",\
+			\| \"188\", \"189\"), c(\"NTL\", \"EnergyDissipate\" )))";
+		lnAlphas = "list(structure(c(-0.487109097148675, -0.892574205256839), .Names = c(\"NTL\",  \
+			\"EnergyDissipate\")), structure(c(-0.487109097148675, -0.892574205256839 ), .Names = c(\"NTL\",\
+			\| \"EnergyDissipate\")), structure(c(-0.487109097148675,  -0.892574205256839), .Names = \
+			c(\"NTL\", \"EnergyDissipate\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300572;
+	whenchanged = 1590695254;
 	};
 
 param X_NTL_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300572;
+	whenchanged = 1590695254;
 	};
 
 node SliderAdjust {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Zero, One, Two, MorethanTwo);
 	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, EnergyDissipate);
 	parents = (X_NTL_2, X_EnergyDissipate_2);
 	probs = 
@@ -210,45 +213,46 @@ node SliderAdjust {
 		   0.4588707,   0.2757785,   0.1657412,   0.09960949);  // Low    Low             ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1579300572;
+	whenchanged = 1590696001;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"186\", \
-			\"187\", \"188\"), c(\"NTL\", \"EnergyDissipate\")))";
-		lnAlphas = "list(c(NTL = -0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = \
-			-0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = -0.487109097148675, \
-			EnergyDissipate = -0.892574205256839 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"184\",\
+			\| \"185\", \"186\"), c(\"NTL\", \"EnergyDissipate\" )))";
+		lnAlphas = "list(structure(c(-0.487109097148675, -0.892574205256839), .Names = c(\"NTL\",  \
+			\"EnergyDissipate\")), structure(c(-0.487109097148675, -0.892574205256839 ), .Names = c(\"NTL\",\
+			\| \"EnergyDissipate\")), structure(c(-0.487109097148675,  -0.892574205256839), .Names = \
+			c(\"NTL\", \"EnergyDissipate\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyDissipate_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1579300572;
+	whenchanged = 1590695253;
 	};
 
 param X_NTL_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300572;
+	whenchanged = 1590695253;
 	};
 
 node TrophyLevel {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Gold, Silver, None);
 	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, EnergyDissipate);
 	parents = (X_NTL_1, X_EnergyDissipate_1);
 	probs = 
@@ -264,15 +268,16 @@ node TrophyLevel {
 		   0.5096352,   0.3062877,   0.1840771);   // Low    Low             ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1579300572;
+	whenchanged = 1590696000;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"184\", \
-			\"185\"), c(\"NTL\", \"EnergyDissipate\")))";
-		lnAlphas = "list(c(NTL = -0.487109097148675, EnergyDissipate = -0.892574205256839 ), c(NTL = \
-			-0.487109097148675, EnergyDissipate = -0.892574205256839 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"182\", \
+			\"183\"), c(\"NTL\", \"EnergyDissipate\")))";
+		lnAlphas = "list(structure(c(-0.487109097148675, -0.892574205256839), .Names = c(\"NTL\",  \
+			\"EnergyDissipate\")), structure(c(-0.487109097148675, -0.892574205256839 ), .Names = c(\"NTL\",\
+			\| \"EnergyDissipate\")))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};

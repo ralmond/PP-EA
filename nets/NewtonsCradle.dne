@@ -1,41 +1,41 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:31.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:30 PM UTC.
 
 bnet NewtonsCradle {
 autoupdate = FALSE;
 title = "Newtons Cradle";
-whenchanged = 1579300951;
+whenchanged = 1590696210;
 user U1 {
 	Truename = "NewtonsCradle";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "NewtonsCradle.dne";
+	Pathname = "./NewtonsCradle.dne";
 	};
 
 param X_ConOfMom_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1579300795;
+	whenchanged = 1590696127;
 	};
 
 param X_POfMom_8 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300795;
+	whenchanged = 1590696127;
 	};
 
 node ApplicableAgent {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (TRUE, FALSE);
 	levels = (1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
 	parents = (X_POfMom_8, X_ConOfMom_4);
 	probs = 
@@ -51,42 +51,42 @@ node ApplicableAgent {
 		   0.3484546,   0.6515454);   // Low    Low      ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1579300795;
+	whenchanged = 1590696127;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955)";
+		lnAlphas = "structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\"))";
 		betas = "-1L";
 		priorWeight = "10";
 		};
 	};
 
 param X_ConOfMom_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1579300795;
+	whenchanged = 1590696126;
 	};
 
 param X_POfMom_6 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300795;
+	whenchanged = 1590696126;
 	};
 
 node NumberAttempts {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (one, two, three_four, more_than_four);
 	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
 	parents = (X_POfMom_6, X_ConOfMom_3);
 	probs = 
@@ -102,45 +102,45 @@ node NumberAttempts {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1579300795;
+	whenchanged = 1590696126;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"962\", \
-			\"963\", \"964\"), c(\"POfMom\", \"ConOfMom\")))";
-		lnAlphas = "list(c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = \
-			-0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = -0.22314355131421, ConOfMom = \
-			0.182321556793955 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"918\",\
+			\| \"919\", \"920\"), c(\"POfMom\", \"ConOfMom\" )))";
+		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\")),\
+			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")), \
+			structure(c(-0.22314355131421,  0.182321556793955), .Names = c(\"POfMom\", \"ConOfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_ConOfMom_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1579300794;
+	whenchanged = 1590696126;
 	};
 
 param X_POfMom_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300794;
+	whenchanged = 1590696126;
 	};
 
 node Duration {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Q1, Q2, Q3, Q4);
 	levels = (0, 33.602, 82.682, 227.426, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
 	parents = (X_POfMom_4, X_ConOfMom_2);
 	probs = 
@@ -156,45 +156,45 @@ node Duration {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1579300794;
+	whenchanged = 1590696126;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"959\", \
-			\"960\", \"961\"), c(\"POfMom\", \"ConOfMom\")))";
-		lnAlphas = "list(c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = \
-			-0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = -0.22314355131421, ConOfMom = \
-			0.182321556793955 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"915\",\
+			\| \"916\", \"917\"), c(\"POfMom\", \"ConOfMom\" )))";
+		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\")),\
+			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")), \
+			structure(c(-0.22314355131421,  0.182321556793955), .Names = c(\"POfMom\", \"ConOfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_ConOfMom_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1579300793;
+	whenchanged = 1590696125;
 	};
 
 param X_POfMom_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300793;
+	whenchanged = 1590696125;
 	};
 
 node TrophyLevel {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Gold, Silver, None);
 	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
 	parents = (X_POfMom_2, X_ConOfMom_1);
 	probs = 
@@ -210,15 +210,15 @@ node TrophyLevel {
 		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1579300793;
+	whenchanged = 1590696125;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"957\", \
-			\"958\"), c(\"POfMom\", \"ConOfMom\")))";
-		lnAlphas = "list(c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = \
-			-0.22314355131421, ConOfMom = 0.182321556793955 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"913\", \
+			\"914\"), c(\"POfMom\", \"ConOfMom\")))";
+		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\")),\
+			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};

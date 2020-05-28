@@ -25,11 +25,13 @@ if (length(apps)==0L || any (is.na(apps))) {
 sess <- NeticaSession(LicenseKey=NeticaLicenseKey)
 startSession(sess)
 
+## <<HERE>> Need to load extensions.
+
 trimTable <- function (tab, lastcol="Description") {
     nlcol <- which(colnames(tab)==lastcol)
     tab[,1:nlcol]
 }
-    
+
 
 
 if (isTRUE(EA.config$rebuildNets)) {
@@ -38,13 +40,18 @@ if (isTRUE(EA.config$rebuildNets)) {
   tid <- EA.tables$TableID
   if (!is.null(tid) && nchar(tid)>0L) {
     ## Read from Google sheet
-    templateURL <- paste("https://docs.google.com/spreadsheets/d",tid,
-                        "gviz/tq?tqx=out:csv&sheet={%s}",
-                        sep="/")
-  } else {
-    ## Read from the tables directory
-    templateURL <- file.path(config.dir,"tables","%s.csv")
+    ## This should work, and indeed this URL works with curl, but it always
+    ## downloads the Nodes sheet when called directly from read.csv.
+    ## templateURL <- paste("https://docs.google.com/spreadsheets/d",tid,
+    ##                    "gviz/tq?tqx=out:csv&sheet={%s}",
+    ##                    sep="/")
+    ## Give up and just use CURL
+    system2("./tables/download.sh",tid)
+
   }
+  ## Read from the tables directory
+  templateURL <- file.path(config.dir,"tables","%s.csv")
+
   stattab <- read.csv(sprintf(templateURL,EA.tables$StatName),
                       stringsAsFactors=FALSE,strip.white=TRUE)
   stattab <- trimTable(stattab,"Node")
@@ -84,15 +91,17 @@ if (isTRUE(EA.config$rebuildNets)) {
                which(is.na(QQ$Node))+1,capture=TRUE)
   }
   Qmat2Pnet(QQ,Nethouse,Nodehouse)
+
   write.csv(netman,file.path(config.dir,"nets",
                              EA.config$EAEngine$manifestFile))
+
   for (name in netman$Name) {
     if (nchar(name)>0L) {
       net <- WarehouseSupply(Nethouse,name)
       WriteNetworks(net,file.path(config.dir,"nets",PnetPathname(net)))
     }
   }
-  write.csv(stattab,file.path(config.dir,"nets",statFile))
+  write.csv(stattab,file.path(config.dir,"nets",EA.config$EAEngine$statFile))
 
 
 }
@@ -142,6 +151,7 @@ for (app in apps) {
       eng$studentRecords()$clearAll(TRUE)   #Clear default, as we will set
                                         #it back up in a moment.
     }
+    ## Import <<HERE>>
     if (isTRUE(EA.config$filter$doReprocess)) {
       rquery <- buildJQuery(c(list(app=app,EA.config$filter$update)))
       eng$evidenceSets()$update(rquery,'{"$set":{"processed":false}}')

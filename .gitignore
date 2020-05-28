@@ -41,3 +41,7 @@ vignettes/*.pdf
 # emacs backup files
 *~
 #*#
+.#*
+
+#RunEABN.R#
+.#RunEABN.R

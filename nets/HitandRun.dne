@@ -1,41 +1,41 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:27.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:30 PM UTC.
 
 bnet HitandRun {
 autoupdate = FALSE;
 title = "Hit and Run";
-whenchanged = 1579300947;
+whenchanged = 1590696210;
 user U1 {
 	Truename = "HitandRun";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "HitandRun.dne";
+	Pathname = "./HitandRun.dne";
 	};
 
 param X_POfMom_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300592;
+	whenchanged = 1590695267;
 	};
 
 param X_NTL_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300592;
+	whenchanged = 1590695267;
 	};
 
 node Duration {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Q1, Q2, Q3, Q4);
 	levels = (0, 8.337, 20.987, 37.569, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, POfMom);
 	parents = (X_NTL_4, X_POfMom_4);
 	probs = 
@@ -51,45 +51,46 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1579300592;
+	whenchanged = 1590696010;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"256\", \
-			\"257\", \"258\"), c(\"NTL\", \"POfMom\")))";
-		lnAlphas = "list(c(NTL = -0.0408219945202552, POfMom = -0.446287102628419 ), c(NTL = -0.0408219945202552, \
-			POfMom = -0.446287102628419),      c(NTL = -0.0408219945202552, POfMom = -0.446287102628419))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"254\",\
+			\| \"255\", \"256\"), c(\"NTL\", \"POfMom\" )))";
+		lnAlphas = "list(structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NTL\",  \"POfMom\")), \
+			structure(c(-0.0408219945202552, -0.446287102628419 ), .Names = c(\"NTL\", \"POfMom\")), \
+			structure(c(-0.0408219945202552,  -0.446287102628419), .Names = c(\"NTL\", \"POfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_POfMom_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300591;
+	whenchanged = 1590695266;
 	};
 
 param X_NTL_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300591;
+	whenchanged = 1590695266;
 	};
 
 node AppropriateSlider {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (almostAlways, mostly, mostlyNot, almostNever);
 	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
 	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, POfMom);
 	parents = (X_NTL_3, X_POfMom_3);
 	probs = 
@@ -105,44 +106,45 @@ node AppropriateSlider {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1579300591;
+	whenchanged = 1590696010;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"253\", \
-			\"254\", \"255\"), c(\"NTL\", \"POfMom\")))";
-		lnAlphas = "list(c(NTL = -0.0408219945202552, POfMom = -0.446287102628419 ), c(NTL = -0.0408219945202552, \
-			POfMom = -0.446287102628419),      c(NTL = -0.0408219945202552, POfMom = -0.446287102628419))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"251\",\
+			\| \"252\", \"253\"), c(\"NTL\", \"POfMom\" )))";
+		lnAlphas = "list(structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NTL\",  \"POfMom\")), \
+			structure(c(-0.0408219945202552, -0.446287102628419 ), .Names = c(\"NTL\", \"POfMom\")), \
+			structure(c(-0.0408219945202552,  -0.446287102628419), .Names = c(\"NTL\", \"POfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_POfMom_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300590;
+	whenchanged = 1590695266;
 	};
 
 param X_NTL_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300590;
+	whenchanged = 1590695266;
 	};
 
 node SliderAdjust {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Zero, One, Two, MorethanTwo);
 	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, POfMom);
 	parents = (X_NTL_2, X_POfMom_2);
 	probs = 
@@ -158,44 +160,45 @@ node SliderAdjust {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1579300590;
+	whenchanged = 1590696009;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"250\", \
-			\"251\", \"252\"), c(\"NTL\", \"POfMom\")))";
-		lnAlphas = "list(c(NTL = -0.0408219945202552, POfMom = -0.446287102628419 ), c(NTL = -0.0408219945202552, \
-			POfMom = -0.446287102628419),      c(NTL = -0.0408219945202552, POfMom = -0.446287102628419))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"248\",\
+			\| \"249\", \"250\"), c(\"NTL\", \"POfMom\" )))";
+		lnAlphas = "list(structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NTL\",  \"POfMom\")), \
+			structure(c(-0.0408219945202552, -0.446287102628419 ), .Names = c(\"NTL\", \"POfMom\")), \
+			structure(c(-0.0408219945202552,  -0.446287102628419), .Names = c(\"NTL\", \"POfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_POfMom_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1579300590;
+	whenchanged = 1590695266;
 	};
 
 param X_NTL_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1579300590;
+	whenchanged = 1590695266;
 	};
 
 node TrophyLevel {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Gold, Silver, None);
 	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NTL, POfMom);
 	parents = (X_NTL_1, X_POfMom_1);
 	probs = 
@@ -211,15 +214,15 @@ node TrophyLevel {
 		   0.2814304,   0.3304834,   0.3880863);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1579300590;
+	whenchanged = 1590696009;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"248\", \
-			\"249\"), c(\"NTL\", \"POfMom\")))";
-		lnAlphas = "list(c(NTL = -0.0408219945202552, POfMom = -0.446287102628419 ), c(NTL = -0.0408219945202552, \
-			POfMom = -0.446287102628419))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"246\", \
+			\"247\"), c(\"NTL\", \"POfMom\")))";
+		lnAlphas = "list(structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NTL\",  \"POfMom\")), \
+			structure(c(-0.0408219945202552, -0.446287102628419 ), .Names = c(\"NTL\", \"POfMom\")))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};

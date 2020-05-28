@@ -1,41 +1,41 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR_2 at FLStateU using Netica 5.10 on Jan 17, 2020 at 17:42:26.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:29 PM UTC.
 
 bnet BlockedbyBlocks {
 autoupdate = FALSE;
 title = "Blocked by Blocks";
-whenchanged = 1579300946;
+whenchanged = 1590696209;
 user U1 {
 	Truename = "BlockedbyBlocks";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "BlockedbyBlocks.dne";
+	Pathname = "./BlockedbyBlocks.dne";
 	};
 
 param X_EnergyTransfer_5 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300543;
+	whenchanged = 1590695234;
 	};
 
 param X_NSL_5 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1579300543;
+	whenchanged = 1590695234;
 	};
 
 node Duration {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Q1, Q2, Q3, Q4);
 	levels = (0, 11.036, 20.923, 34.193, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
 	parents = (X_NSL_5, X_EnergyTransfer_5);
 	probs = 
@@ -51,45 +51,46 @@ node Duration {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1579300543;
+	whenchanged = 1590695986;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"72\", \
-			\"73\", \"74\"), c(\"NSL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(c(NSL = -0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = \
-			-0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = -0.263965545834465, \
-			EnergyTransfer = -0.669430653942629 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"71\", \
+			\"72\", \"73\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyTransfer_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300542;
+	whenchanged = 1590695234;
 	};
 
 param X_NSL_4 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1579300542;
+	whenchanged = 1590695234;
 	};
 
 node LeftBlower {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Zero, One, Two, MorethanTwo);
 	levels = (0, 6.25, 13, 23, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
 	parents = (X_NSL_4, X_EnergyTransfer_4);
 	probs = 
@@ -105,46 +106,47 @@ node LeftBlower {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Blower at the left of the Screen";
-	whenchanged = 1579300542;
+	whenchanged = 1590695986;
 	user U1 {
 		Truename = "LeftBlower";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"69\", \
-			\"70\", \"71\"), c(\"NSL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(c(NSL = -0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = \
-			-0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = -0.263965545834465, \
-			EnergyTransfer = -0.669430653942629 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"68\", \
+			\"69\", \"70\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyTransfer_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300542;
+	whenchanged = 1590695233;
 	};
 
 param X_NSL_3 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1579300542;
+	whenchanged = 1590695233;
 	};
 
 node AppropriateSlider {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (almostAlways, mostly, mostlyNot, almostNever);
 	statetitles = ("almost always", "mostly", "mostlyNot", "almost never");
 	StateComments = ("#Irrelvant < 2", "#Irrelvant < #Relevant", "#relevant <= #Irrevalnt", "#relevant < 2");
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
 	parents = (X_NSL_3, X_EnergyTransfer_3);
 	probs = 
@@ -160,45 +162,46 @@ node AppropriateSlider {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1579300542;
+	whenchanged = 1590695986;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"66\", \
-			\"67\", \"68\"), c(\"NSL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(c(NSL = -0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = \
-			-0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = -0.263965545834465, \
-			EnergyTransfer = -0.669430653942629 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"65\", \
+			\"66\", \"67\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyTransfer_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300541;
+	whenchanged = 1590695233;
 	};
 
 param X_NSL_2 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1579300541;
+	whenchanged = 1590695233;
 	};
 
 node SliderAdjust {
-	kind = NATURE;
 	discrete = FALSE;
-	chance = CHANCE;
 	states = (Zero, One, Two, MorethanTwo);
 	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
 	parents = (X_NSL_2, X_EnergyTransfer_2);
 	probs = 
@@ -214,45 +217,46 @@ node SliderAdjust {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1579300541;
+	whenchanged = 1590695985;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"63\", \
-			\"64\", \"65\"), c(\"NSL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(c(NSL = -0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = \
-			-0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = -0.263965545834465, \
-			EnergyTransfer = -0.669430653942629 ))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"62\", \
+			\"63\", \"64\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
 param X_EnergyTransfer_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1579300540;
+	whenchanged = 1590695232;
 	};
 
 param X_NSL_1 {
-	kind = DISCONNECTED;
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1579300540;
+	whenchanged = 1590695232;
 	};
 
 node TrophyLevel {
-	kind = NATURE;
 	discrete = TRUE;
-	chance = CHANCE;
 	states = (Gold, Silver, None);
 	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
 	parents = (X_NSL_1, X_EnergyTransfer_1);
 	probs = 
@@ -268,15 +272,16 @@ node TrophyLevel {
 		   0.4057575,   0.3284198,   0.2658227);   // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1579300540;
+	whenchanged = 1590695985;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"61\", \"62\"),\
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"60\", \"61\"),\
 			\| c(\"NSL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(c(NSL = -0.263965545834465, EnergyTransfer = -0.669430653942629 ), c(NSL = \
-			-0.263965545834465, EnergyTransfer = -0.669430653942629 ))";
+		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};

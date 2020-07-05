@@ -33,7 +33,6 @@ trimTable <- function (tab, lastcol="Description") {
 }
 
 
-
 if (isTRUE(EA.config$rebuildNets)) {
 
   EA.tables <- EA.config$Tables

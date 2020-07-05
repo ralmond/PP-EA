@@ -1,96 +1,45 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:30 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
 
 bnet RabbitsHole {
 autoupdate = FALSE;
 title = "Rabbit's Hole";
-whenchanged = 1590696210;
+whenchanged = 1593810431;
 user U1 {
 	Truename = "RabbitsHole";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "./RabbitsHole.dne";
+	Pathname = "/home/ralmond/Projects/PP-EA/nets/RabbitsHole.dne";
 	};
 
-param X_NSL_5 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695816;
-	};
-
-param X_NFL_5 {
+param X_NFL_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
-	whenchanged = 1590695816;
+	whenchanged = 1590695292;
 	};
 
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, None);
-	levels = (2, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NFL, NSL);
-	parents = (X_NFL_5, X_NSL_5);
-	probs = 
-		// Gold         None          // NFL    NSL    
-		  (0.99675,     0.003250019,  // High   High   
-		   0.9870079,   0.01299211,   // High   Medium 
-		   0.9495417,   0.0504583,    // High   Low    
-		   0.991801,    0.008199055,  // Medium High   
-		   0.9677045,   0.03229547,   // Medium Medium 
-		   0.8812684,   0.1187316,    // Medium Low    
-		   0.9794708,   0.02052913,   // Low    High   
-		   0.9219877,   0.07801238,   // Low    Medium 
-		   0.7453874,   0.2546126);   // Low    Low    ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1590696029;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\"))";
-		betas = "-2L";
-		priorWeight = "10";
-		};
-	};
-
-param X_NSL_4 {
+param X_NSL_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NSL";
-	whenchanged = 1590695294;
+	whenchanged = 1590695292;
 	};
 
-param X_NFL_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NFL";
-	whenchanged = 1590695294;
-	};
-
-node Duration {
+node PufferClicks {
 	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 9.409, 12.334, 17.701, INFINITY);
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NFL, NSL);
-	parents = (X_NFL_4, X_NSL_4);
+	parents = (X_NFL_1, X_NSL_1);
 	probs = 
-		// Q1           Q2           Q3           Q4            // NFL    NSL    
+		// Zero         One          Two          MorethanTwo   // NFL    NSL    
 		  (0.9967394,   0.003249984, 1.059695e-5, 3.455258e-8,  // High   High   
 		   0.9868369,   0.01298986,  1.709872e-4, 2.250727e-6,  // High   Medium 
 		   0.9468679,   0.05031622,  0.002673786, 1.42084e-4,   // High   Low    
@@ -101,14 +50,14 @@ node Duration {
 		   0.9154336,   0.07745782,  0.006553959, 5.545518e-4,  // Low    Medium 
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1590696030;
+	title = "Number of puffer clicks";
+	whenchanged = 1593810430;
 	user U1 {
-		Truename = "Duration";
+		Truename = "PufferClicks";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"404\",\
-			\| \"405\", \"406\"), c(\"NFL\", \"NSL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"395\",\
+			\| \"396\", \"397\"), c(\"NFL\", \"NSL\")))";
 		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
 			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
 			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")))";
@@ -117,7 +66,16 @@ node Duration {
 		};
 	};
 
-param X_NSL_3 {
+param X_NFL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NFL";
+	whenchanged = 1590695293;
+	};
+
+param X_NSL_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
@@ -126,12 +84,57 @@ param X_NSL_3 {
 	whenchanged = 1590695293;
 	};
 
+node SliderAdjust {
+	discrete = FALSE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NFL, NSL);
+	parents = (X_NFL_2, X_NSL_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NFL    NSL    
+		  (0.9967394,   0.003249984, 1.059695e-5, 3.455258e-8,  // High   High   
+		   0.9868369,   0.01298986,  1.709872e-4, 2.250727e-6,  // High   Medium 
+		   0.9468679,   0.05031622,  0.002673786, 1.42084e-4,   // High   Low    
+		   0.9917332,   0.008198495, 6.77756e-5,  5.602898e-7,  // Medium High   
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
+		   0.8655571,   0.1166149,   0.0157113,   0.002116754,  // Medium Low    
+		   0.9790408,   0.02052011,  4.300893e-4, 9.014416e-6,  // Low    High   
+		   0.9154336,   0.07745782,  0.006553959, 5.545518e-4,  // Low    Medium 
+		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
+	numcases = 10;
+	title = "Number of slider adjustment";
+	whenchanged = 1593810430;
+	user U1 {
+		Truename = "SliderAdjust";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"398\",\
+			\| \"399\", \"400\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
+			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
+			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
 param X_NFL_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
+	whenchanged = 1590695293;
+	};
+
+param X_NSL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
 	whenchanged = 1590695293;
 	};
 
@@ -157,7 +160,7 @@ node AppropriateSlider {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1590696030;
+	whenchanged = 1593810431;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -172,34 +175,34 @@ node AppropriateSlider {
 		};
 	};
 
-param X_NSL_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695293;
-	};
-
-param X_NFL_2 {
+param X_NFL_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
-	whenchanged = 1590695293;
+	whenchanged = 1590695294;
 	};
 
-node SliderAdjust {
+param X_NSL_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695294;
+	};
+
+node Duration {
 	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 9.409, 12.334, 17.701, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NFL, NSL);
-	parents = (X_NFL_2, X_NSL_2);
+	parents = (X_NFL_4, X_NSL_4);
 	probs = 
-		// Zero         One          Two          MorethanTwo   // NFL    NSL    
+		// Q1           Q2           Q3           Q4            // NFL    NSL    
 		  (0.9967394,   0.003249984, 1.059695e-5, 3.455258e-8,  // High   High   
 		   0.9868369,   0.01298986,  1.709872e-4, 2.250727e-6,  // High   Medium 
 		   0.9468679,   0.05031622,  0.002673786, 1.42084e-4,   // High   Low    
@@ -210,14 +213,14 @@ node SliderAdjust {
 		   0.9154336,   0.07745782,  0.006553959, 5.545518e-4,  // Low    Medium 
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
-	title = "Number of slider adjustment";
-	whenchanged = 1590696030;
+	title = "Duration to solve level";
+	whenchanged = 1593810431;
 	user U1 {
-		Truename = "SliderAdjust";
+		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"398\",\
-			\| \"399\", \"400\"), c(\"NFL\", \"NSL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"404\",\
+			\| \"405\", \"406\"), c(\"NFL\", \"NSL\")))";
 		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
 			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
 			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")))";
@@ -226,56 +229,53 @@ node SliderAdjust {
 		};
 	};
 
-param X_NSL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695292;
-	};
-
-param X_NFL_1 {
+param X_NFL_5 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
-	whenchanged = 1590695292;
+	whenchanged = 1590695816;
 	};
 
-node PufferClicks {
-	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+param X_NSL_5 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695816;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, None);
+	levels = (2, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NFL, NSL);
-	parents = (X_NFL_1, X_NSL_1);
+	parents = (X_NFL_5, X_NSL_5);
 	probs = 
-		// Zero         One          Two          MorethanTwo   // NFL    NSL    
-		  (0.9967394,   0.003249984, 1.059695e-5, 3.455258e-8,  // High   High   
-		   0.9868369,   0.01298986,  1.709872e-4, 2.250727e-6,  // High   Medium 
-		   0.9468679,   0.05031622,  0.002673786, 1.42084e-4,   // High   Low    
-		   0.9917332,   0.008198495, 6.77756e-5,  5.602898e-7,  // Medium High   
-		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
-		   0.8655571,   0.1166149,   0.0157113,   0.002116754,  // Medium Low    
-		   0.9790408,   0.02052011,  4.300893e-4, 9.014416e-6,  // Low    High   
-		   0.9154336,   0.07745782,  0.006553959, 5.545518e-4,  // Low    Medium 
-		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
+		// Gold         None          // NFL    NSL    
+		  (0.99675,     0.003250019,  // High   High   
+		   0.9870079,   0.01299211,   // High   Medium 
+		   0.9495417,   0.0504583,    // High   Low    
+		   0.991801,    0.008199055,  // Medium High   
+		   0.9677045,   0.03229547,   // Medium Medium 
+		   0.8812684,   0.1187316,    // Medium Low    
+		   0.9794708,   0.02052913,   // Low    High   
+		   0.9219877,   0.07801238,   // Low    Medium 
+		   0.7453874,   0.2546126);   // Low    Low    ;
 	numcases = 10;
-	title = "Number of puffer clicks";
-	whenchanged = 1590696029;
+	title = "Level solving status";
+	whenchanged = 1593810430;
 	user U1 {
-		Truename = "PufferClicks";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"395\",\
-			\| \"396\", \"397\"), c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\")))";
-		betas = "list(-2L, -2L, -2L)";
+		Q = "TRUE";
+		lnAlphas = "structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"NFL\",  \"NSL\"))";
+		betas = "-2L";
 		priorWeight = "10";
 		};
 	};

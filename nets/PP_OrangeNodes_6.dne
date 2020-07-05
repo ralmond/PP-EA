@@ -1,14 +1,14 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:29 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
 
 bnet PP_OrangeNodes_6 {
 autoupdate = FALSE;
 title = "Physics competency";
-whenchanged = 1590695972;
+whenchanged = 1593810368;
 user U1 {
 	Truename = "PP_OrangeNodes_6";
-	Pathname = "./PP_OrangeNodes_6.dne";
+	Pathname = "/home/ralmond/Projects/PP-EA/nets/PP_OrangeNodes_6.dne";
 	};
 
 node Physics {
@@ -23,7 +23,7 @@ node Physics {
 		  (0.3333333,   0.3333333,   0.3333333);
 	numcases = 10;
 	title = "Physics Understanding";
-	whenchanged = 1590695969;
+	whenchanged = 1593810364;
 	user U1 {
 		Truename = "Physics";
 		rules = "structure(\"Compensatory\", .Names = \"Physics\")";
@@ -51,7 +51,7 @@ node ForceAndMotion {
 	numcases = 10;
 	title = "Force and Motion";
 	comment = "Newton's laws of motion";
-	whenchanged = 1590695969;
+	whenchanged = 1593810364;
 	user U1 {
 		Truename = "ForceAndMotion";
 		rules = "structure(\"Compensatory\", .Names = \"ForceAndMotion\")";
@@ -75,7 +75,7 @@ node LinearMomentum {
 		// High         Medium       Low           // Physics ForceAndMotion 
 		  (0.9860451,   0.0139364,   1.855112e-5,  // High    High           
 		   0.7482276,   0.2470455,   0.004726881,  // High    Medium         
-		   0.1947,      0.6619898,   0.14331,      // High    Low            
+		   0.1947,      0.6619899,   0.14331,      // High    Low            
 		   0.8446385,   0.1537204,   0.001641184,  // Medium  High           
 		   0.3029545,   0.6178272,   0.07921831,   // Medium  Medium         
 		   0.02040035,  0.4321269,   0.5474727,    // Medium  Low            
@@ -85,7 +85,7 @@ node LinearMomentum {
 	numcases = 10;
 	title = "Linear Momentum";
 	comment = "Properties of momentum\nConservation of momentum";
-	whenchanged = 1590695969;
+	whenchanged = 1593810365;
 	user U1 {
 		Truename = "LinearMomentum";
 		rules = "structure(\"Compensatory\", .Names = \"LinearMomentum\")";
@@ -120,7 +120,7 @@ node Energy {
 	title = "Energy";
 	comment = "Gravitational Potential Energy \nKinetic Energy\nElastic potential energy \nEnergy Conservation \
 		";
-	whenchanged = 1590695970;
+	whenchanged = 1593810365;
 	user U1 {
 		Truename = "Energy";
 		rules = "structure(\"Compensatory\", .Names = \"Energy\")";
@@ -155,7 +155,7 @@ node Torque {
 	numcases = 10;
 	title = "Torque";
 	comment = "Properties of torque\nStatic equilibrium";
-	whenchanged = 1590695970;
+	whenchanged = 1593810365;
 	user U1 {
 		Truename = "Torque";
 		rules = "structure(\"Compensatory\", .Names = \"Torque\")";
@@ -184,7 +184,7 @@ node NFL {
 	numcases = 10;
 	title = "Newton's First Law";
 	comment = "\D1\8F\D1\8ES";
-	whenchanged = 1590695970;
+	whenchanged = 1593810366;
 	user U1 {
 		Truename = "NFL";
 		rules = "structure(\"Compensatory\", .Names = \"NFL\")";
@@ -212,7 +212,7 @@ node NSL {
 	numcases = 10;
 	title = "Newton's Second Law";
 	comment = "Mass and acceleration are inversely related\n\nNet force and acceleration are directly related";
-	whenchanged = 1590695970;
+	whenchanged = 1593810366;
 	user U1 {
 		Truename = "NSL";
 		rules = "structure(\"Compensatory\", .Names = \"NSL\")";
@@ -240,7 +240,7 @@ node NTL {
 	numcases = 10;
 	title = "Newton's Third Law";
 	comment = "Force pairs act in opposite directions\nForce pairs have equal magnitudes";
-	whenchanged = 1590695971;
+	whenchanged = 1593810366;
 	user U1 {
 		Truename = "NTL";
 		rules = "structure(\"Compensatory\", .Names = \"NTL\")";
@@ -270,7 +270,7 @@ node POfMom {
 	comment = "Momentum is directly related to mass\n\
 		Momentum is directly related to velocity\n\
 		Momentum is parallel to velocity";
-	whenchanged = 1590695971;
+	whenchanged = 1593810366;
 	user U1 {
 		Truename = "POfMom";
 		rules = "structure(\"Compensatory\", .Names = \"POfMom\")";
@@ -304,7 +304,7 @@ node ConOfMom {
 	numcases = 10;
 	title = "Conservation of momentum";
 	comment = "The total amount of momentum of a system \ndoes not change during a collision";
-	whenchanged = 1590695972;
+	whenchanged = 1593810368;
 	user U1 {
 		Truename = "ConOfMom";
 		rules = "structure(\"Compensatory\", .Names = \"ConOfMom\")";
@@ -332,7 +332,7 @@ node EnergyTransfer {
 		   0.001877881, 0.1637201,   0.834402);    // Low    ;
 	numcases = 10;
 	title = "Energy can Transfer";
-	whenchanged = 1590695971;
+	whenchanged = 1593810367;
 	user U1 {
 		Truename = "EnergyTransfer";
 		rules = "structure(\"Compensatory\", .Names = \"EnergyTransfer\")";
@@ -359,7 +359,7 @@ node EnergyDissipate {
 		   4.111278e-4, 0.07754987,  0.922039);    // Low    ;
 	numcases = 10;
 	title = "Energy can Dissipate";
-	whenchanged = 1590695971;
+	whenchanged = 1593810367;
 	user U1 {
 		Truename = "EnergyDissipate";
 		rules = "structure(\"Compensatory\", .Names = \"EnergyDissipate\")";
@@ -383,10 +383,10 @@ node PropertiesofTorque {
 		// High         Medium       Low           // Torque 
 		  (0.9689887,   0.03093666,  7.459741e-5,  // High   
 		   0.4726109,   0.4957735,   0.03161557,   // Medium 
-		   0.02255907,  0.4466412,   0.5308);      // Low    ;
+		   0.02255906,  0.446641,    0.5308);      // Low    ;
 	numcases = 10;
 	title = "Properties of Torque";
-	whenchanged = 1590695972;
+	whenchanged = 1593810367;
 	user U1 {
 		Truename = "PropertiesofTorque";
 		rules = "structure(\"Compensatory\", .Names = \"PropertiesofTorque\")";
@@ -410,10 +410,10 @@ node StaticEquilibrium {
 		// High         Medium       Low           // Torque 
 		  (0.8840179,   0.1150827,   8.994e-4,     // High   
 		   0.229793,    0.6525424,   0.1176646,    // Medium 
-		   0.003743469, 0.2234562,   0.7728);      // Low    ;
+		   0.003743476, 0.2234563,   0.7728);      // Low    ;
 	numcases = 10;
 	title = "Static Equilibrium";
-	whenchanged = 1590695972;
+	whenchanged = 1593810367;
 	user U1 {
 		Truename = "StaticEquilibrium";
 		rules = "structure(\"Compensatory\", .Names = \"StaticEquilibrium\")";

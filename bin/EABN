@@ -1,4 +1,4 @@
 #!/bin/bash
 ## Typical args app=ecd://epls.coe.fsu.edu/P4test level=DEBUG
 ## Optional args clean=TRUE (default FALSE) evidence=<file>.json
-R  --slave "--args $1" </usr/local/share/Proc4/bin/EABN.R 
+R  --slave "--args app=$1" <"/usr/local/share/Proc4/bin/EABNrun.R" >& $3

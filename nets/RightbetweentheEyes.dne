@@ -1,18 +1,80 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 05/28/2020 at 08:03:30 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
 
 bnet RightbetweentheEyes {
 autoupdate = FALSE;
 title = "Right Between the Eyes";
-whenchanged = 1590696210;
+whenchanged = 1593810432;
 user U1 {
 	Truename = "RightbetweentheEyes";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "./RightbetweentheEyes.dne";
+	Pathname = "/home/ralmond/Projects/PP-EA/nets/RightbetweentheEyes.dne";
 	};
 
-param X_NTL_3 {
+param X_NSL_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695294;
+	};
+
+param X_NTL_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NTL";
+	whenchanged = 1590695294;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NSL, NTL);
+	parents = (X_NSL_1, X_NTL_1);
+	probs = 
+		// Gold         Silver       None          // NSL    NTL    
+		  (0.9948083,   0.005164864, 2.681503e-5,  // High   High   
+		   0.9841489,   0.01560371,  2.473973e-4,  // High   Medium 
+		   0.9516892,   0.04607971,  0.002231127,  // High   Low    
+		   0.989073,    0.01080885,  1.18122e-4,   // Medium High   
+		   0.9666626,   0.03226069,  0.001076645,  // Medium Medium 
+		   0.8990348,   0.09162687,  0.00933833,   // Medium Low    
+		   0.977009,    0.02247406,  5.169688e-4,  // Low    High   
+		   0.930075,    0.06533539,  0.004589643,  // Low    Medium 
+		   0.793307,    0.1701842,   0.03650879);  // Low    Low    ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1593810432;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"407\", \
+			\"408\"), c(\"NSL\", \"NTL\")))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")), \
+			structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")))";
+		betas = "list(-2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_NSL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695295;
+	};
+
+param X_NTL_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
@@ -21,12 +83,53 @@ param X_NTL_3 {
 	whenchanged = 1590695295;
 	};
 
+node Bounciness {
+	discrete = TRUE;
+	states = (Yes, No);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NSL, NTL);
+	parents = (X_NSL_2, X_NTL_2);
+	probs = 
+		// Yes          No            // NSL    NTL    
+		  (0.994835,    0.005165,     // High   High   
+		   0.9843924,   0.01560757,   // High   Medium 
+		   0.9538172,   0.04618275,   // High   Low    
+		   0.9891899,   0.01081013,   // Medium High   
+		   0.9677045,   0.03229547,   // Medium Medium 
+		   0.9075094,   0.09249058,   // Medium Low    
+		   0.9775143,   0.02248568,   // Low    High   
+		   0.9343634,   0.06563663,   // Low    Medium 
+		   0.8233671,   0.1766329);   // Low    Low    ;
+	numcases = 10;
+	title = "Check Bounciness";
+	whenchanged = 1593810432;
+	user U1 {
+		Truename = "Bounciness";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\"))";
+		betas = "-2L";
+		priorWeight = "10";
+		};
+	};
+
 param X_NSL_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NSL";
+	whenchanged = 1590695295;
+	};
+
+param X_NTL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NTL";
 	whenchanged = 1590695295;
 	};
 
@@ -51,7 +154,7 @@ node Duration {
 		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1590696032;
+	whenchanged = 1593810432;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -62,109 +165,6 @@ node Duration {
 			structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")), \
 			structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")))";
 		betas = "list(-2L, -2L, -2L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_NTL_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NTL";
-	whenchanged = 1590695295;
-	};
-
-param X_NSL_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695295;
-	};
-
-node Bounciness {
-	discrete = TRUE;
-	states = (Yes, No);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NSL, NTL);
-	parents = (X_NSL_2, X_NTL_2);
-	probs = 
-		// Yes          No            // NSL    NTL    
-		  (0.994835,    0.005165,     // High   High   
-		   0.9843924,   0.01560757,   // High   Medium 
-		   0.9538172,   0.04618275,   // High   Low    
-		   0.9891899,   0.01081013,   // Medium High   
-		   0.9677045,   0.03229547,   // Medium Medium 
-		   0.9075094,   0.09249058,   // Medium Low    
-		   0.9775143,   0.02248568,   // Low    High   
-		   0.9343634,   0.06563663,   // Low    Medium 
-		   0.8233671,   0.1766329);   // Low    Low    ;
-	numcases = 10;
-	title = "Check Bounciness";
-	whenchanged = 1590696031;
-	user U1 {
-		Truename = "Bounciness";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\"))";
-		betas = "-2L";
-		priorWeight = "10";
-		};
-	};
-
-param X_NTL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NTL";
-	whenchanged = 1590695294;
-	};
-
-param X_NSL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695294;
-	};
-
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NSL, NTL);
-	parents = (X_NSL_1, X_NTL_1);
-	probs = 
-		// Gold         Silver       None          // NSL    NTL    
-		  (0.9948083,   0.005164864, 2.681503e-5,  // High   High   
-		   0.9841489,   0.01560371,  2.473973e-4,  // High   Medium 
-		   0.9516892,   0.04607971,  0.002231127,  // High   Low    
-		   0.989073,    0.01080885,  1.18122e-4,   // Medium High   
-		   0.9666626,   0.03226069,  0.001076645,  // Medium Medium 
-		   0.8990348,   0.09162687,  0.00933833,   // Medium Low    
-		   0.977009,    0.02247406,  5.169688e-4,  // Low    High   
-		   0.930075,    0.06533539,  0.004589643,  // Low    Medium 
-		   0.7933069,   0.1701842,   0.03650879);  // Low    Low    ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1590696031;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"407\", \
-			\"408\"), c(\"NSL\", \"NTL\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")), \
-			structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"NTL\")))";
-		betas = "list(-2L, -2L)";
 		priorWeight = "10";
 		};
 	};

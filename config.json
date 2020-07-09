@@ -71,7 +71,7 @@
     },
     "extensions":"",
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",
-    "limitNN":"Inf",
+    "limitNN":"ALL",
     "statListener":"PPStats",
     "statfile":"stats-<app>.csv"
 }

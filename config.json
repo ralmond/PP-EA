@@ -1,6 +1,6 @@
 {
-    "ConfigName":"PP-main-FormA",
-    "Branch":"PP-main-FormA",
+    "ConfigName":"PP-FormA",
+    "Branch":"PP-FormA",
     "Version":"0.5.2",
     "Date":"2020-07-30",
     "appStem":["userControl","linear","adaptive"],

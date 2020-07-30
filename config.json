@@ -5,7 +5,7 @@
     "Date":"2020-06-09",
     "appStem":["userControl","linear","adaptive"],
     "rebuildNets":true,
-    "logLevel":"INFO",
+    "logLevel":"DEBUG",
     "logname":"EA_<app>0.log",
     "Tables":{
         "netdir":"nets",

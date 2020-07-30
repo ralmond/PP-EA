@@ -1,12 +1,12 @@
 {
-    "ConfigName":"PP-main",
-    "Branch":"PP-main",
+    "ConfigName":"PP-main-FormA",
+    "Branch":"PP-main-FormA",
     "Version":"0.5.2",
-    "Date":"2020-06-09",
+    "Date":"2020-07-30",
     "appStem":["userControl","linear","adaptive"],
     "rebuildNets":true,
     "logLevel":"INFO",
-    "logname":"EA_<app>0.log",
+    "logname":"EA_A-<app>0.log",
     "Tables":{
         "netdir":"nets",
         "tabdir":"tables",
@@ -67,11 +67,11 @@
         "purge":{},
         "ReprocessComment":"Records matching query are set processed<-false",
         "doReprocess":true,
-        "reprocess":{}
+        "reprocess":{"context":{"$in":["Lever", "Pendulum", "Down Hill", "Puffer & Blowers", "Gravity", "Bounciness", "Lighthouse", "Through the Cracks", "Volcano", "UFO2", "Back and Forth", "Little Mermaid", "Stairs", "Spider Web", "Yippie!", "Wavy", "Work It Up", "Lightning", "Skate Park", "Broken Heart", "Whale", "Shelves", "Collision", "Spring", "Glacier View", "Break the maze", "Newton's Cradle", "Tetherball", "Cosmic Cave", "Green Apple ", "Timing is Everything", "Not too Far", "Lollipop", "Mobile", "Laundry Day", "Pipes", "Spiral", "Chain", "Balance", "Blocked by Blocks", "The Museum", "Cookie Monster", "Angels", "Invisible Chef", "Fireworks", "Breakfast time"]}}
     },
     "extensions":"",
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",
     "limitNN":"ALL",
     "statListener":"PPStats",
-    "statfile":"stats-<app>.csv"
+    "statfile":"statsA-<app>.csv"
 }

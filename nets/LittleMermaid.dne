@@ -1,88 +1,49 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
 
 bnet LittleMermaid {
 autoupdate = FALSE;
 title = "Little Mermaid";
-whenchanged = 1593810510;
+whenchanged = 1594053028;
 user U1 {
 	Truename = "LittleMermaid";
 	Hub = "PP_OrangeNodes_6";
 	Pathname = "/home/ralmond/Projects/PP-EA/nets/LittleMermaid.dne";
 	};
 
-param X_EnergyTransfer_1 {
+param X_EnergyTransfer_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590696114;
+	whenchanged = 1590696115;
 	};
 
-node TrophyLevel {
+node ApplicableAgent {
 	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
+	states = (TRUE, FALSE);
+	levels = (1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (EnergyTransfer);
-	parents = (X_EnergyTransfer_1);
+	parents = (X_EnergyTransfer_4);
 	probs = 
-		// Gold         Silver       None          // EnergyTransfer 
-		  (0.9511,      0.0466152,   0.002284695,  // High           
-		   0.82233,     0.1502261,   0.02744384,   // Medium         
-		   0.4662922,   0.3175089,   0.216199);    // Low            ;
+		// TRUE         FALSE         // EnergyTransfer 
+		  (0.9532781,   0.04672192,   // High           
+		   0.8455347,   0.1544653,    // Medium         
+		   0.5949114,   0.4050886);   // Low            ;
 	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1593810509;
+	title = "Agent Type";
+	whenchanged = 1594053028;
 	user U1 {
-		Truename = "TrophyLevel";
+		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE), .Dim = c(2L, 1L))";
-		lnAlphas = "list(structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      \
-			structure(-0.22314355131421, .Names = \"EnergyTransfer\"))";
-		betas = "list(-1L, -1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_EnergyTransfer_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590696114;
-	};
-
-node Duration {
-	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 91.358, 287.19, 512.053, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (EnergyTransfer);
-	parents = (X_EnergyTransfer_2);
-	probs = 
-		// Q1           Q2           Q3           Q4            // EnergyTransfer 
-		  (0.9509937,   0.04660995,  0.00228444,  1.119646e-4,  // High           
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         
-		   0.4064559,   0.276765,    0.1884555,   0.1283236);   // Low            ;
-	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1593810510;
-	user U1 {
-		Truename = "Duration";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
-		lnAlphas = "list(structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      \
-			structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      structure(-0.22314355131421, \
-			.Names = \"EnergyTransfer\"))";
-		betas = "list(-1L, -1L, -1L)";
+		Q = "TRUE";
+		lnAlphas = "structure(-0.22314355131421, .Names = \"EnergyTransfer\")";
+		betas = "-1L";
 		priorWeight = "10";
 		};
 	};
@@ -111,7 +72,7 @@ node NumberAttempts {
 		   0.4064559,   0.276765,    0.1884555,   0.1283236);   // Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1593810510;
+	whenchanged = 1594053027;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -125,38 +86,77 @@ node NumberAttempts {
 		};
 	};
 
-param X_EnergyTransfer_4 {
+param X_EnergyTransfer_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590696115;
+	whenchanged = 1590696114;
 	};
 
-node ApplicableAgent {
-	discrete = TRUE;
-	states = (TRUE, FALSE);
-	levels = (1, 0);
+node Duration {
+	discrete = FALSE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 91.358, 287.19, 512.053, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (EnergyTransfer);
-	parents = (X_EnergyTransfer_4);
+	parents = (X_EnergyTransfer_2);
 	probs = 
-		// TRUE         FALSE         // EnergyTransfer 
-		  (0.9532781,   0.04672192,   // High           
-		   0.8455347,   0.1544653,    // Medium         
-		   0.5949114,   0.4050886);   // Low            ;
+		// Q1           Q2           Q3           Q4            // EnergyTransfer 
+		  (0.9509937,   0.04660995,  0.00228444,  1.119646e-4,  // High           
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         
+		   0.4064559,   0.276765,    0.1884555,   0.1283236);   // Low            ;
 	numcases = 10;
-	title = "Agent Type";
-	whenchanged = 1593810510;
+	title = "Duration to solve level";
+	whenchanged = 1594053027;
 	user U1 {
-		Truename = "ApplicableAgent";
+		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(-0.22314355131421, .Names = \"EnergyTransfer\")";
-		betas = "-1L";
+		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
+		lnAlphas = "list(structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      \
+			structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      structure(-0.22314355131421, \
+			.Names = \"EnergyTransfer\"))";
+		betas = "list(-1L, -1L, -1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590696114;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (EnergyTransfer);
+	parents = (X_EnergyTransfer_1);
+	probs = 
+		// Gold         Silver       None          // EnergyTransfer 
+		  (0.9511,      0.0466152,   0.002284695,  // High           
+		   0.82233,     0.1502261,   0.02744384,   // Medium         
+		   0.4662922,   0.3175089,   0.216199);    // Low            ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1594053026;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE), .Dim = c(2L, 1L))";
+		lnAlphas = "list(structure(-0.22314355131421, .Names = \"EnergyTransfer\"),      \
+			structure(-0.22314355131421, .Names = \"EnergyTransfer\"))";
+		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
 	};

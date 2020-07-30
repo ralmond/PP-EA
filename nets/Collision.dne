@@ -1,98 +1,45 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
 
 bnet Collision {
 autoupdate = FALSE;
 title = "Collision";
-whenchanged = 1593810392;
+whenchanged = 1594052901;
 user U1 {
 	Truename = "Collision";
 	Hub = "PP_OrangeNodes_6";
 	Pathname = "/home/ralmond/Projects/PP-EA/nets/Collision.dne";
 	};
 
-param X_NTL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NTL";
-	whenchanged = 1590695247;
-	};
-
-param X_ConOfMom_1 {
+param X_ConOfMom_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590695247;
+	whenchanged = 1590695249;
 	};
 
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NTL, ConOfMom);
-	parents = (X_NTL_1, X_ConOfMom_1);
-	probs = 
-		// Gold         Silver       None          // NTL    ConOfMom 
-		  (0.9821572,   0.01753,     3.128827e-4,  // High   High     
-		   0.9548362,   0.04320846,  0.001955279,  // High   Medium   
-		   0.8866083,   0.1017212,   0.01167054,   // High   Low      
-		   0.928293,    0.06688748,  0.004819528,  // Medium High     
-		   0.82233,     0.1502261,   0.02744384,   // Medium Medium   
-		   0.5960564,   0.2760746,   0.127869,     // Medium Low      
-		   0.72701,     0.2114753,   0.06151469,   // Low    High     
-		   0.4383287,   0.323265,    0.2384062,    // Low    Medium   
-		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1593810390;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"148\", \
-			\"149\"), c(\"NTL\", \"ConOfMom\")))";
-		lnAlphas = "list(structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NTL\",  \"ConOfMom\")), \
-			structure(c(0.182321556793955, -0.22314355131421 ), .Names = c(\"NTL\", \"ConOfMom\")))";
-		betas = "list(-1L, -1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_NTL_2 {
+param X_NTL_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NTL";
-	whenchanged = 1590695248;
+	whenchanged = 1590695249;
 	};
 
-param X_ConOfMom_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590695248;
-	};
-
-node SliderAdjust {
+node Duration {
 	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 13.81, 20.908, 36.334, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NTL, ConOfMom);
-	parents = (X_NTL_2, X_ConOfMom_2);
+	parents = (X_NTL_4, X_ConOfMom_4);
 	probs = 
-		// Zero         One          Two          MorethanTwo   // NTL    ConOfMom 
+		// Q1           Q2           Q3           Q4            // NTL    ConOfMom 
 		  (0.9821517,   0.01752988,  3.128809e-4, 5.584436e-6,  // High   High     
 		   0.9547518,   0.04320464,  0.001955106, 8.847289e-5,  // High   Medium   
 		   0.8854228,   0.1015851,   0.01165493,  0.001337178,  // High   Low      
@@ -103,14 +50,14 @@ node SliderAdjust {
 		   0.3727845,   0.2749265,   0.2027569,   0.1495321,    // Low    Medium   
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
-	title = "Number of slider adjustment";
-	whenchanged = 1593810391;
+	title = "Duration to solve level";
+	whenchanged = 1594052901;
 	user U1 {
-		Truename = "SliderAdjust";
+		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"150\",\
-			\| \"151\", \"152\"), c(\"NTL\", \"ConOfMom\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"156\",\
+			\| \"157\", \"158\"), c(\"NTL\", \"ConOfMom\" )))";
 		lnAlphas = "list(structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NTL\",  \"ConOfMom\")), \
 			structure(c(0.182321556793955, -0.22314355131421 ), .Names = c(\"NTL\", \"ConOfMom\")), \
 			structure(c(0.182321556793955,  -0.22314355131421), .Names = c(\"NTL\", \"ConOfMom\")))";
@@ -119,21 +66,21 @@ node SliderAdjust {
 		};
 	};
 
-param X_NTL_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NTL";
-	whenchanged = 1590695248;
-	};
-
 param X_ConOfMom_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
+	whenchanged = 1590695248;
+	};
+
+param X_NTL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NTL";
 	whenchanged = 1590695248;
 	};
 
@@ -159,7 +106,7 @@ node AppropriateSlider {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810391;
+	whenchanged = 1594052901;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -174,34 +121,34 @@ node AppropriateSlider {
 		};
 	};
 
-param X_NTL_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NTL";
-	whenchanged = 1590695249;
-	};
-
-param X_ConOfMom_4 {
+param X_ConOfMom_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590695249;
+	whenchanged = 1590695248;
 	};
 
-node Duration {
+param X_NTL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NTL";
+	whenchanged = 1590695248;
+	};
+
+node SliderAdjust {
 	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 13.81, 20.908, 36.334, INFINITY);
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NTL, ConOfMom);
-	parents = (X_NTL_4, X_ConOfMom_4);
+	parents = (X_NTL_2, X_ConOfMom_2);
 	probs = 
-		// Q1           Q2           Q3           Q4            // NTL    ConOfMom 
+		// Zero         One          Two          MorethanTwo   // NTL    ConOfMom 
 		  (0.9821517,   0.01752988,  3.128809e-4, 5.584436e-6,  // High   High     
 		   0.9547518,   0.04320464,  0.001955106, 8.847289e-5,  // High   Medium   
 		   0.8854228,   0.1015851,   0.01165493,  0.001337178,  // High   Low      
@@ -212,18 +159,71 @@ node Duration {
 		   0.3727845,   0.2749265,   0.2027569,   0.1495321,    // Low    Medium   
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1593810392;
+	title = "Number of slider adjustment";
+	whenchanged = 1594052900;
 	user U1 {
-		Truename = "Duration";
+		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"156\",\
-			\| \"157\", \"158\"), c(\"NTL\", \"ConOfMom\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"150\",\
+			\| \"151\", \"152\"), c(\"NTL\", \"ConOfMom\" )))";
 		lnAlphas = "list(structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NTL\",  \"ConOfMom\")), \
 			structure(c(0.182321556793955, -0.22314355131421 ), .Names = c(\"NTL\", \"ConOfMom\")), \
 			structure(c(0.182321556793955,  -0.22314355131421), .Names = c(\"NTL\", \"ConOfMom\")))";
 		betas = "list(-1L, -1L, -1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_ConOfMom_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
+	whenchanged = 1590695247;
+	};
+
+param X_NTL_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NTL";
+	whenchanged = 1590695247;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NTL, ConOfMom);
+	parents = (X_NTL_1, X_ConOfMom_1);
+	probs = 
+		// Gold         Silver       None          // NTL    ConOfMom 
+		  (0.9821572,   0.01753,     3.128827e-4,  // High   High     
+		   0.9548362,   0.04320846,  0.001955279,  // High   Medium   
+		   0.8866083,   0.1017212,   0.01167054,   // High   Low      
+		   0.928293,    0.06688748,  0.004819528,  // Medium High     
+		   0.82233,     0.1502261,   0.02744384,   // Medium Medium   
+		   0.5960564,   0.2760746,   0.127869,     // Medium Low      
+		   0.72701,     0.2114753,   0.06151469,   // Low    High     
+		   0.4383287,   0.323265,    0.2384062,    // Low    Medium   
+		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1594052900;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"148\", \
+			\"149\"), c(\"NTL\", \"ConOfMom\")))";
+		lnAlphas = "list(structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NTL\",  \"ConOfMom\")), \
+			structure(c(0.182321556793955, -0.22314355131421 ), .Names = c(\"NTL\", \"ConOfMom\")))";
+		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
 	};

@@ -1,99 +1,45 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
 
 bnet Tricks {
 autoupdate = FALSE;
 title = "Tricks";
-whenchanged = 1593810449;
+whenchanged = 1594052963;
 user U1 {
 	Truename = "Tricks";
 	Hub = "PP_OrangeNodes_6";
 	Pathname = "/home/ralmond/Projects/PP-EA/nets/Tricks.dne";
 	};
 
-param X_EnergyDissipate_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695833;
-	};
-
-param X_StaticEquilibrium_1 {
+param X_StaticEquilibrium_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "StaticEquilibrium";
-	whenchanged = 1590695833;
+	whenchanged = 1590695835;
 	};
 
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (EnergyDissipate, StaticEquilibrium);
-	parents = (X_EnergyDissipate_1, X_StaticEquilibrium_1);
-	probs = 
-		// Gold         Silver       None          // EnergyDissipate StaticEquilibrium 
-		  (0.3880863,   0.3304834,   0.2814304,    // High            High              
-		   0.09649206,  0.2509345,   0.6525734,    // High            Medium            
-		   0.01388634,  0.1102819,   0.8758318,    // High            Low               
-		   0.1665157,   0.2984751,   0.5350091,    // Medium          High              
-		   0.02744384,  0.1502261,   0.82233,      // Medium          Medium            
-		   0.003365172, 0.05625426,  0.9403806,    // Medium          Low               
-		   0.05260839,  0.1984905,   0.7489011,    // Low             High              
-		   0.006883197, 0.07930901,  0.9138078,    // Low             Medium            
-		   7.847454e-4, 0.02761269,  0.9716026);   // Low             Low               ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1593810448;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"512\", \
-			\"513\"), c(\"EnergyDissipate\", \"StaticEquilibrium\"     )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyDissipate\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"EnergyDissipate\", \"StaticEquilibrium\")))";
-		betas = "list(1L, 1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_EnergyDissipate_2 {
+param X_EnergyDissipate_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1590695834;
+	whenchanged = 1590695835;
 	};
 
-param X_StaticEquilibrium_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "StaticEquilibrium";
-	whenchanged = 1590695834;
-	};
-
-node SliderAdjust {
+node Duration {
 	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 24.091, 38.926, 62.904, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (EnergyDissipate, StaticEquilibrium);
-	parents = (X_EnergyDissipate_2, X_StaticEquilibrium_2);
+	parents = (X_EnergyDissipate_4, X_StaticEquilibrium_4);
 	probs = 
-		// Zero         One          Two          MorethanTwo   // EnergyDissipate StaticEquilibrium 
+		// Q1           Q2           Q3           Q4            // EnergyDissipate StaticEquilibrium 
 		  (0.3130591,   0.2665923,   0.2270225,   0.193326,     // High            High              
 		   0.0357767,   0.09303989,  0.2419569,   0.6292264,    // High            Medium            
 		   0.001745471, 0.0138621,   0.1100894,   0.874303,     // High            Low               
@@ -104,14 +50,14 @@ node SliderAdjust {
 		   5.970332e-4, 0.006879087, 0.07926166,  0.9132622,    // Low             Medium            
 		   2.230176e-5, 7.84728e-4,  0.02761208,  0.9715809);   // Low             Low               ;
 	numcases = 10;
-	title = "Number of slider adjustment";
-	whenchanged = 1593810448;
+	title = "Duration to solve level";
+	whenchanged = 1594052963;
 	user U1 {
-		Truename = "SliderAdjust";
+		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"514\",\
-			\| \"515\", \"516\"), c(\"EnergyDissipate\",  \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"520\",\
+			\| \"521\", \"522\"), c(\"EnergyDissipate\",  \"StaticEquilibrium\")))";
 		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyDissipate\",  \
 			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
 			c(\"EnergyDissipate\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  \
@@ -121,21 +67,21 @@ node SliderAdjust {
 		};
 	};
 
-param X_EnergyDissipate_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695834;
-	};
-
 param X_StaticEquilibrium_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "StaticEquilibrium";
+	whenchanged = 1590695834;
+	};
+
+param X_EnergyDissipate_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
 	whenchanged = 1590695834;
 	};
 
@@ -161,7 +107,7 @@ node AppropriateSlider {
 		   2.230176e-5, 7.84728e-4,  0.02761208,  0.9715809);   // Low             Low               ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810449;
+	whenchanged = 1594052962;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -177,34 +123,34 @@ node AppropriateSlider {
 		};
 	};
 
-param X_EnergyDissipate_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695835;
-	};
-
-param X_StaticEquilibrium_4 {
+param X_StaticEquilibrium_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "StaticEquilibrium";
-	whenchanged = 1590695835;
+	whenchanged = 1590695834;
 	};
 
-node Duration {
+param X_EnergyDissipate_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
+	whenchanged = 1590695834;
+	};
+
+node SliderAdjust {
 	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 24.091, 38.926, 62.904, INFINITY);
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (EnergyDissipate, StaticEquilibrium);
-	parents = (X_EnergyDissipate_4, X_StaticEquilibrium_4);
+	parents = (X_EnergyDissipate_2, X_StaticEquilibrium_2);
 	probs = 
-		// Q1           Q2           Q3           Q4            // EnergyDissipate StaticEquilibrium 
+		// Zero         One          Two          MorethanTwo   // EnergyDissipate StaticEquilibrium 
 		  (0.3130591,   0.2665923,   0.2270225,   0.193326,     // High            High              
 		   0.0357767,   0.09303989,  0.2419569,   0.6292264,    // High            Medium            
 		   0.001745471, 0.0138621,   0.1100894,   0.874303,     // High            Low               
@@ -215,19 +161,73 @@ node Duration {
 		   5.970332e-4, 0.006879087, 0.07926166,  0.9132622,    // Low             Medium            
 		   2.230176e-5, 7.84728e-4,  0.02761208,  0.9715809);   // Low             Low               ;
 	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1593810449;
+	title = "Number of slider adjustment";
+	whenchanged = 1594052962;
 	user U1 {
-		Truename = "Duration";
+		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"520\",\
-			\| \"521\", \"522\"), c(\"EnergyDissipate\",  \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"514\",\
+			\| \"515\", \"516\"), c(\"EnergyDissipate\",  \"StaticEquilibrium\")))";
 		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyDissipate\",  \
 			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
 			c(\"EnergyDissipate\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  \
 			-0.0408219945202552), .Names = c(\"EnergyDissipate\", \"StaticEquilibrium\" )))";
 		betas = "list(1L, 1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "StaticEquilibrium";
+	whenchanged = 1590695833;
+	};
+
+param X_EnergyDissipate_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
+	whenchanged = 1590695833;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (EnergyDissipate, StaticEquilibrium);
+	parents = (X_EnergyDissipate_1, X_StaticEquilibrium_1);
+	probs = 
+		// Gold         Silver       None          // EnergyDissipate StaticEquilibrium 
+		  (0.3880863,   0.3304834,   0.2814304,    // High            High              
+		   0.09649206,  0.2509345,   0.6525734,    // High            Medium            
+		   0.01388634,  0.1102819,   0.8758318,    // High            Low               
+		   0.1665157,   0.2984751,   0.5350091,    // Medium          High              
+		   0.02744384,  0.1502261,   0.82233,      // Medium          Medium            
+		   0.003365172, 0.05625426,  0.9403806,    // Medium          Low               
+		   0.05260839,  0.1984905,   0.7489011,    // Low             High              
+		   0.006883197, 0.07930901,  0.9138078,    // Low             Medium            
+		   7.847454e-4, 0.02761269,  0.9716026);   // Low             Low               ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1594052962;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"512\", \
+			\"513\"), c(\"EnergyDissipate\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyDissipate\",  \
+			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"EnergyDissipate\", \"StaticEquilibrium\")))";
+		betas = "list(1L, 1L)";
 		priorWeight = "10";
 		};
 	};

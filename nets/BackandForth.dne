@@ -1,134 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:41 PM UTC.
 
 bnet BackandForth {
 autoupdate = FALSE;
 title = "Back and Forth";
-whenchanged = 1593810371;
+whenchanged = 1594052880;
 user U1 {
 	Truename = "BackandForth";
 	Hub = "PP_OrangeNodes_6";
 	Pathname = "/home/ralmond/Projects/PP-EA/nets/BackandForth.dne";
-	};
-
-param X_NSL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695224;
-	};
-
-param X_StaticEquilibrium_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "StaticEquilibrium";
-	whenchanged = 1590695224;
-	};
-
-node PufferClicks {
-	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NSL, StaticEquilibrium);
-	parents = (X_NSL_1, X_StaticEquilibrium_1);
-	probs = 
-		// Zero         One          Two          MorethanTwo   // NSL    StaticEquilibrium 
-		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High              
-		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // High   Medium            
-		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // High   Low               
-		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // Medium High              
-		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium            
-		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Medium Low               
-		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // Low    High              
-		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Low    Medium            
-		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low               ;
-	numcases = 10;
-	title = "Number of puffer clicks";
-	whenchanged = 1593810371;
-	user U1 {
-		Truename = "PufferClicks";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"14\", \
-			\"15\", \"16\"), c(\"NSL\", \"StaticEquilibrium\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NSL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
-			.Names = c(\"NSL\", \"StaticEquilibrium\")))";
-		betas = "list(-2L, -2L, -2L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_NSL_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695225;
-	};
-
-param X_StaticEquilibrium_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "StaticEquilibrium";
-	whenchanged = 1590695225;
-	};
-
-node Duration {
-	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 12.963, 19.773, 35.667, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NSL, StaticEquilibrium);
-	parents = (X_NSL_2, X_StaticEquilibrium_2);
-	probs = 
-		// Q1           Q2           Q3           Q4            // NSL    StaticEquilibrium 
-		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High              
-		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // High   Medium            
-		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // High   Low               
-		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // Medium High              
-		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium            
-		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Medium Low               
-		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // Low    High              
-		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Low    Medium            
-		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low               ;
-	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1593810371;
-	user U1 {
-		Truename = "Duration";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"17\", \
-			\"18\", \"19\"), c(\"NSL\", \"StaticEquilibrium\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NSL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
-			.Names = c(\"NSL\", \"StaticEquilibrium\")))";
-		betas = "list(-2L, -2L, -2L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_NSL_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695765;
 	};
 
 param X_StaticEquilibrium_3 {
@@ -137,6 +18,15 @@ param X_StaticEquilibrium_3 {
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "StaticEquilibrium";
+	whenchanged = 1590695765;
+	};
+
+param X_NSL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
 	whenchanged = 1590695765;
 	};
 
@@ -161,7 +51,7 @@ node TrophyLevel {
 		   0.8233671,   0.1766329);   // Low    Low               ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810370;
+	whenchanged = 1594052879;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -170,6 +60,116 @@ node TrophyLevel {
 		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \
 			\"StaticEquilibrium\"))";
 		betas = "-2L";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "StaticEquilibrium";
+	whenchanged = 1590695225;
+	};
+
+param X_NSL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695225;
+	};
+
+node Duration {
+	discrete = FALSE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 12.963, 19.773, 35.667, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NSL, StaticEquilibrium);
+	parents = (X_NSL_2, X_StaticEquilibrium_2);
+	probs = 
+		// Q1           Q2           Q3           Q4            // NSL    StaticEquilibrium 
+		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High              
+		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // High   Medium            
+		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // High   Low               
+		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // Medium High              
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium            
+		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Medium Low               
+		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // Low    High              
+		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Low    Medium            
+		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low               ;
+	numcases = 10;
+	title = "Duration to solve level";
+	whenchanged = 1594052880;
+	user U1 {
+		Truename = "Duration";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"17\", \
+			\"18\", \"19\"), c(\"NSL\", \"StaticEquilibrium\" )))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \
+			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"NSL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
+			.Names = c(\"NSL\", \"StaticEquilibrium\")))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_StaticEquilibrium_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "StaticEquilibrium";
+	whenchanged = 1590695224;
+	};
+
+param X_NSL_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695224;
+	};
+
+node PufferClicks {
+	discrete = FALSE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NSL, StaticEquilibrium);
+	parents = (X_NSL_1, X_StaticEquilibrium_1);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NSL    StaticEquilibrium 
+		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High              
+		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // High   Medium            
+		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // High   Low               
+		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // Medium High              
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium            
+		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Medium Low               
+		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // Low    High              
+		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Low    Medium            
+		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low               ;
+	numcases = 10;
+	title = "Number of puffer clicks";
+	whenchanged = 1594052879;
+	user U1 {
+		Truename = "PufferClicks";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"14\", \
+			\"15\", \"16\"), c(\"NSL\", \"StaticEquilibrium\" )))";
+		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \
+			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
+			c(\"NSL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
+			.Names = c(\"NSL\", \"StaticEquilibrium\")))";
+		betas = "list(-2L, -2L, -2L)";
 		priorWeight = "10";
 		};
 	};

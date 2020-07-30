@@ -1,97 +1,98 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:41 PM UTC.
 
 bnet BlockedbyBlocks {
 autoupdate = FALSE;
 title = "Blocked by Blocks";
-whenchanged = 1593810379;
+whenchanged = 1594052888;
 user U1 {
 	Truename = "BlockedbyBlocks";
 	Hub = "PP_OrangeNodes_6";
 	Pathname = "/home/ralmond/Projects/PP-EA/nets/BlockedbyBlocks.dne";
 	};
 
-param X_NSL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695232;
-	};
-
-param X_EnergyTransfer_1 {
+param X_EnergyTransfer_5 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590695232;
+	whenchanged = 1590695234;
 	};
 
-node TrophyLevel {
+param X_NSL_5 {
 	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695234;
+	};
+
+node Duration {
+	discrete = FALSE;
+	states = (Q1, Q2, Q3, Q4);
+	levels = (0, 11.036, 20.923, 34.193, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
-	parents = (X_NSL_1, X_EnergyTransfer_1);
+	parents = (X_NSL_5, X_EnergyTransfer_5);
 	probs = 
-		// Gold         Silver       None          // NSL    EnergyTransfer 
-		  (0.9588351,   0.03953483,  0.001630106,  // High   High           
-		   0.925601,    0.06922216,  0.00517686,   // High   Medium         
-		   0.8665168,   0.1175395,   0.01594375,   // High   Low            
-		   0.9002,      0.09066785,  0.009132029,  // Medium High           
-		   0.82233,     0.1502261,   0.02744384,   // Medium Medium         
-		   0.6938951,   0.229921,    0.07618392,   // Medium Low            
-		   0.7653662,   0.1883048,   0.04632905,   // Low    High           
-		   0.6077595,   0.2712122,   0.1210282,    // Low    Medium         
-		   0.4057575,   0.3284198,   0.2658227);   // Low    Low            ;
+		// Q1           Q2           Q3           Q4            // NSL    EnergyTransfer 
+		  (0.9587706,   0.03953217,  0.001629996, 6.720825e-5,  // High   High           
+		   0.9252428,   0.06919537,  0.005174857, 3.870077e-4,  // High   Medium         
+		   0.8646468,   0.1172858,   0.01590934,  0.002158037,  // High   Low            
+		   0.8993729,   0.09058449,  0.009123634, 9.189288e-4,  // Medium High           
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium Medium         
+		   0.6768101,   0.2242599,   0.07430813,  0.02462187,   // Medium Low            
+		   0.7567405,   0.1861826,   0.04580692,  0.01127,      // Low    High           
+		   0.5766172,   0.257315,    0.1148266,   0.05124127,   // Low    Medium         
+		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1593810377;
+	title = "Duration to solve level";
+	whenchanged = 1594052888;
 	user U1 {
-		Truename = "TrophyLevel";
+		Truename = "Duration";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"60\", \"61\"),\
-			\| c(\"NSL\", \"EnergyTransfer\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"71\", \
+			\"72\", \"73\"), c(\"NSL\", \"EnergyTransfer\" )))";
 		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
+			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
 			\"EnergyTransfer\")))";
-		betas = "list(-1L, -1L)";
+		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
 
-param X_NSL_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695233;
-	};
-
-param X_EnergyTransfer_2 {
+param X_EnergyTransfer_4 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590695233;
+	whenchanged = 1590695234;
 	};
 
-node SliderAdjust {
+param X_NSL_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695234;
+	};
+
+node LeftBlower {
 	discrete = FALSE;
 	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	levels = (0, 6.25, 13, 23, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
-	parents = (X_NSL_2, X_EnergyTransfer_2);
+	parents = (X_NSL_4, X_EnergyTransfer_4);
 	probs = 
 		// Zero         One          Two          MorethanTwo   // NSL    EnergyTransfer 
 		  (0.9587706,   0.03953217,  0.001629996, 6.720825e-5,  // High   High           
@@ -104,14 +105,14 @@ node SliderAdjust {
 		   0.5766172,   0.257315,    0.1148266,   0.05124127,   // Low    Medium         
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
-	title = "Number of slider adjustment";
-	whenchanged = 1593810378;
+	title = "Blower at the left of the Screen";
+	whenchanged = 1594052888;
 	user U1 {
-		Truename = "SliderAdjust";
+		Truename = "LeftBlower";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"62\", \
-			\"63\", \"64\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"68\", \
+			\"69\", \"70\"), c(\"NSL\", \"EnergyTransfer\" )))";
 		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
@@ -121,21 +122,21 @@ node SliderAdjust {
 		};
 	};
 
-param X_NSL_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695233;
-	};
-
 param X_EnergyTransfer_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
+	whenchanged = 1590695233;
+	};
+
+param X_NSL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
 	whenchanged = 1590695233;
 	};
 
@@ -161,7 +162,7 @@ node AppropriateSlider {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810378;
+	whenchanged = 1594052887;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -177,32 +178,32 @@ node AppropriateSlider {
 		};
 	};
 
-param X_NSL_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695234;
-	};
-
-param X_EnergyTransfer_4 {
+param X_EnergyTransfer_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590695234;
+	whenchanged = 1590695233;
 	};
 
-node LeftBlower {
+param X_NSL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695233;
+	};
+
+node SliderAdjust {
 	discrete = FALSE;
 	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 6.25, 13, 23, INFINITY);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
-	parents = (X_NSL_4, X_EnergyTransfer_4);
+	parents = (X_NSL_2, X_EnergyTransfer_2);
 	probs = 
 		// Zero         One          Two          MorethanTwo   // NSL    EnergyTransfer 
 		  (0.9587706,   0.03953217,  0.001629996, 6.720825e-5,  // High   High           
@@ -215,14 +216,14 @@ node LeftBlower {
 		   0.5766172,   0.257315,    0.1148266,   0.05124127,   // Low    Medium         
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
-	title = "Blower at the left of the Screen";
-	whenchanged = 1593810379;
+	title = "Number of slider adjustment";
+	whenchanged = 1594052887;
 	user U1 {
-		Truename = "LeftBlower";
+		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"68\", \
-			\"69\", \"70\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"62\", \
+			\"63\", \"64\"), c(\"NSL\", \"EnergyTransfer\" )))";
 		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
@@ -232,57 +233,56 @@ node LeftBlower {
 		};
 	};
 
-param X_NSL_5 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695234;
-	};
-
-param X_EnergyTransfer_5 {
+param X_EnergyTransfer_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590695234;
+	whenchanged = 1590695232;
 	};
 
-node Duration {
-	discrete = FALSE;
-	states = (Q1, Q2, Q3, Q4);
-	levels = (0, 11.036, 20.923, 34.193, INFINITY);
+param X_NSL_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695232;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NSL, EnergyTransfer);
-	parents = (X_NSL_5, X_EnergyTransfer_5);
+	parents = (X_NSL_1, X_EnergyTransfer_1);
 	probs = 
-		// Q1           Q2           Q3           Q4            // NSL    EnergyTransfer 
-		  (0.9587706,   0.03953217,  0.001629996, 6.720825e-5,  // High   High           
-		   0.9252428,   0.06919537,  0.005174857, 3.870077e-4,  // High   Medium         
-		   0.8646468,   0.1172858,   0.01590934,  0.002158037,  // High   Low            
-		   0.8993729,   0.09058449,  0.009123634, 9.189288e-4,  // Medium High           
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium Medium         
-		   0.6768101,   0.2242599,   0.07430813,  0.02462187,   // Medium Low            
-		   0.7567405,   0.1861826,   0.04580692,  0.01127,      // Low    High           
-		   0.5766172,   0.257315,    0.1148266,   0.05124127,   // Low    Medium         
-		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
+		// Gold         Silver       None          // NSL    EnergyTransfer 
+		  (0.9588351,   0.03953483,  0.001630106,  // High   High           
+		   0.925601,    0.06922216,  0.00517686,   // High   Medium         
+		   0.8665168,   0.1175395,   0.01594375,   // High   Low            
+		   0.9002,      0.09066785,  0.009132029,  // Medium High           
+		   0.82233,     0.1502261,   0.02744384,   // Medium Medium         
+		   0.6938951,   0.229921,    0.07618392,   // Medium Low            
+		   0.7653662,   0.1883048,   0.04632905,   // Low    High           
+		   0.6077595,   0.2712122,   0.1210282,    // Low    Medium         
+		   0.4057575,   0.3284198,   0.2658227);   // Low    Low            ;
 	numcases = 10;
-	title = "Duration to solve level";
-	whenchanged = 1593810379;
+	title = "Level solving status";
+	whenchanged = 1594052886;
 	user U1 {
-		Truename = "Duration";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"71\", \
-			\"72\", \"73\"), c(\"NSL\", \"EnergyTransfer\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"60\", \"61\"),\
+			\| c(\"NSL\", \"EnergyTransfer\")))";
 		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"NSL\",  \
 			\"EnergyTransfer\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = c(\"NSL\", \
-			\"EnergyTransfer\")), structure(c(-0.263965545834465,  -0.669430653942629), .Names = c(\"NSL\", \
 			\"EnergyTransfer\")))";
-		betas = "list(-1L, -1L, -1L)";
+		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
 	};

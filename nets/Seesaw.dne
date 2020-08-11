@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet Seesaw {
 autoupdate = FALSE;
 title = "Seesaw";
-whenchanged = 1594052948;
+whenchanged = 1597173177;
 user U1 {
 	Truename = "Seesaw";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   8.415743e-4, 0.008613736, 0.08816388,  0.9023808);   // Low                Low               ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052948;
+	whenchanged = 1597173177;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -107,7 +107,7 @@ node AppropriateSlider {
 		   8.415743e-4, 0.008613736, 0.08816388,  0.9023808);   // Low                Low               ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052948;
+	whenchanged = 1597173176;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -162,7 +162,7 @@ node SliderAdjust {
 		   8.415743e-4, 0.008613736, 0.08816388,  0.9023808);   // Low                Low               ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052947;
+	whenchanged = 1597173176;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -217,7 +217,7 @@ node TrophyLevel {
 		   0.008620992, 0.08823814,  0.9031408);   // Low                Low               ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052947;
+	whenchanged = 1597173175;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

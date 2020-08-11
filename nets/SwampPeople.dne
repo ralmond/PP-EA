@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:29 PM UTC.
 
 bnet SwampPeople {
 autoupdate = FALSE;
 title = "Swamp People";
-whenchanged = 1594053069;
+whenchanged = 1597173295;
 user U1 {
 	Truename = "SwampPeople";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node ApplicableAgent {
 		   0.4599183,   0.5400816);   // Low    Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053069;
+	whenchanged = 1597173295;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -103,7 +103,7 @@ node NumberAttempts {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053068;
+	whenchanged = 1597173295;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -158,7 +158,7 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053068;
+	whenchanged = 1597173294;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -213,7 +213,7 @@ node TrophyLevel {
 		   0.2814304,   0.3304834,   0.3880863);   // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053067;
+	whenchanged = 1597173294;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:29 PM UTC.
 
 bnet TimingisEverything {
 autoupdate = FALSE;
 title = "Timing is Everything";
-whenchanged = 1594053077;
+whenchanged = 1597173303;
 user U1 {
 	Truename = "TimingisEverything";
 	Hub = "PP_OrangeNodes_6";
@@ -36,7 +36,7 @@ node ApplicableAgent {
 		   0.6564345,   0.3435655);   // Low                ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053077;
+	whenchanged = 1597173303;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -72,7 +72,7 @@ node NumberAttempts {
 		   0.5152839,   0.2696899,   0.1411506,   0.07387556);  // Low                ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053077;
+	whenchanged = 1597173303;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -110,7 +110,7 @@ node Duration {
 		   0.5152839,   0.2696899,   0.1411506,   0.07387556);  // Low                ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053076;
+	whenchanged = 1597173303;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -148,7 +148,7 @@ node TrophyLevel {
 		   0.5563874,   0.2912027,   0.15241);     // Low                ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053076;
+	whenchanged = 1597173302;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

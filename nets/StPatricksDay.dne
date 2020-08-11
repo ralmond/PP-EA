@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet StPatricksDay {
 autoupdate = FALSE;
 title = "St. Patrick's Day";
-whenchanged = 1594052959;
+whenchanged = 1597173187;
 user U1 {
 	Truename = "StPatricksDay";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low      ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052959;
+	whenchanged = 1597173187;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -107,7 +107,7 @@ node AppropriateSlider {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low      ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052958;
+	whenchanged = 1597173186;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -162,7 +162,7 @@ node SliderAdjust {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low      ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052958;
+	whenchanged = 1597173186;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -217,7 +217,7 @@ node TrophyLevel {
 		   0.4057575,   0.3284198,   0.2658227);   // Low    Low      ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052958;
+	whenchanged = 1597173186;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

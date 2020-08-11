@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:29 PM UTC.
 
 bnet SpaceTravel {
 autoupdate = FALSE;
 title = "Space Travel";
-whenchanged = 1594053058;
+whenchanged = 1597173285;
 user U1 {
 	Truename = "SpaceTravel";
 	Hub = "PP_OrangeNodes_6";
@@ -36,7 +36,7 @@ node ApplicableAgent {
 		   0.7362106,   0.2637894);   // Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053058;
+	whenchanged = 1597173285;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -72,7 +72,7 @@ node NumberAttempts {
 		   0.6524469,   0.2337763,   0.0837637,   0.03001312);  // Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053058;
+	whenchanged = 1597173284;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -110,7 +110,7 @@ node Duration {
 		   0.6524469,   0.2337763,   0.0837637,   0.03001312);  // Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053058;
+	whenchanged = 1597173284;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -148,7 +148,7 @@ node TrophyLevel {
 		   0.6726347,   0.2410098,   0.08635549);  // Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053057;
+	whenchanged = 1597173284;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

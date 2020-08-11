@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet NeedforSpeed {
 autoupdate = FALSE;
 title = "Need for Speed";
-whenchanged = 1594052936;
+whenchanged = 1597173164;
 user U1 {
 	Truename = "NeedforSpeed";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node TrophyLevel {
 		   0.8233671,   0.1766329);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052935;
+	whenchanged = 1597173163;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node Duration {
 		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052936;
+	whenchanged = 1597173164;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -156,7 +156,7 @@ node PufferClicks {
 		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
 	numcases = 10;
 	title = "Number of puffer clicks";
-	whenchanged = 1594052935;
+	whenchanged = 1597173163;
 	user U1 {
 		Truename = "PufferClicks";
 		link = "\"partialCredit\"";

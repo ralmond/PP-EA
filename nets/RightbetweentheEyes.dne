@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet RightbetweentheEyes {
 autoupdate = FALSE;
 title = "Right Between the Eyes";
-whenchanged = 1594052945;
+whenchanged = 1597173173;
 user U1 {
 	Truename = "RightbetweentheEyes";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052945;
+	whenchanged = 1597173173;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -104,7 +104,7 @@ node Bounciness {
 		   0.8233671,   0.1766329);   // Low    Low    ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1594052944;
+	whenchanged = 1597173172;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
@@ -155,7 +155,7 @@ node TrophyLevel {
 		   0.793307,    0.1701842,   0.03650879);  // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052944;
+	whenchanged = 1597173172;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

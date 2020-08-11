@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet RabbitsHole {
 autoupdate = FALSE;
-title = "Rabbit's Hole";
-whenchanged = 1594052943;
+title = "Rabbits' Hole";
+whenchanged = 1597173172;
 user U1 {
 	Truename = "RabbitsHole";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node TrophyLevel {
 		   0.7453874,   0.2546126);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052942;
+	whenchanged = 1597173170;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node Duration {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052943;
+	whenchanged = 1597173172;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -157,7 +157,7 @@ node AppropriateSlider {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052943;
+	whenchanged = 1597173171;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -211,7 +211,7 @@ node SliderAdjust {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052943;
+	whenchanged = 1597173171;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -265,7 +265,7 @@ node PufferClicks {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Number of puffer clicks";
-	whenchanged = 1594052942;
+	whenchanged = 1597173170;
 	user U1 {
 		Truename = "PufferClicks";
 		link = "\"partialCredit\"";

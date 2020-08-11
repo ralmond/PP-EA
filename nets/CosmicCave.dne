@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet CosmicCave {
 autoupdate = FALSE;
 title = "Cosmic Cave";
-whenchanged = 1594052995;
+whenchanged = 1597173223;
 user U1 {
 	Truename = "CosmicCave";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node ApplicableAgent {
 		   0.06582502,  0.934175);    // Low    Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594052995;
+	whenchanged = 1597173223;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node NumberAttempts {
 		   3.252113e-4, 0.004615331, 0.06549981,  0.9295596);   // Low    Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594052995;
+	whenchanged = 1597173222;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -157,7 +157,7 @@ node Duration {
 		   3.252113e-4, 0.004615331, 0.06549981,  0.9295596);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052994;
+	whenchanged = 1597173222;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -212,7 +212,7 @@ node TrophyLevel {
 		   0.004616832, 0.06552112,  0.929862);    // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052994;
+	whenchanged = 1597173221;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

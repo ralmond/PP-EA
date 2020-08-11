@@ -3,6 +3,7 @@
     "Branch":"PP-main",
     "Version":"0.5.2",
     "Date":"2020-06-09",
+    "appStemOne":["userControl"],
     "appStem":["userControl","linear","adaptive"],
     "rebuildNets":true,
     "logLevel":"DEBUG",
@@ -67,7 +68,8 @@
         "purge":{},
         "ReprocessComment":"Records matching query are set processed<-false",
         "doReprocess":true,
-        "reprocess":{}
+        "reprocess":{},
+        "reprocessX":{"uid":["219c3","218c3"]}
     },
     "extensions":"",
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",

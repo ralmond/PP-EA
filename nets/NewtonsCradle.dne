@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet NewtonsCradle {
 autoupdate = FALSE;
-title = "Newtons Cradle";
-whenchanged = 1594053038;
+title = "Newton's Cradle";
+whenchanged = 1597173264;
 user U1 {
 	Truename = "NewtonsCradle";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node ApplicableAgent {
 		   0.3484546,   0.6515454);   // Low    Low      ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053038;
+	whenchanged = 1597173264;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node NumberAttempts {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053037;
+	whenchanged = 1597173264;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -156,7 +156,7 @@ node Duration {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053037;
+	whenchanged = 1597173264;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -210,7 +210,7 @@ node TrophyLevel {
 		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053037;
+	whenchanged = 1597173263;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

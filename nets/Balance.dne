@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:41 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:27 PM UTC.
 
 bnet Balance {
 autoupdate = FALSE;
 title = "Balance";
-whenchanged = 1594052882;
+whenchanged = 1597173109;
 user U1 {
 	Truename = "Balance";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.8903376,   0.09775168,  0.01073232,  0.00117832);  // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052882;
+	whenchanged = 1597173109;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -105,7 +105,7 @@ node BottomBlower {
 		   0.8903376,   0.09775168,  0.01073232,  0.00117832);  // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the bottom of the Screen";
-	whenchanged = 1594052881;
+	whenchanged = 1597173109;
 	user U1 {
 		Truename = "BottomBlower";
 		link = "\"partialCredit\"";
@@ -159,7 +159,7 @@ node LeftBlower {
 		   0.8903376,   0.09775168,  0.01073232,  0.00117832);  // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the left of the Screen";
-	whenchanged = 1594052881;
+	whenchanged = 1597173108;
 	user U1 {
 		Truename = "LeftBlower";
 		link = "\"partialCredit\"";
@@ -213,7 +213,7 @@ node RightBlower {
 		   0.8903376,   0.09775168,  0.01073232,  0.00117832);  // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the right of the Screen";
-	whenchanged = 1594052881;
+	whenchanged = 1597173108;
 	user U1 {
 		Truename = "RightBlower";
 		link = "\"partialCredit\"";
@@ -267,7 +267,7 @@ node TrophyLevel {
 		   0.891388,    0.097867,    0.01074499);  // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052880;
+	whenchanged = 1597173108;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

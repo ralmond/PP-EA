@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet FlyingBrooms {
 autoupdate = FALSE;
 title = "Flying Brooms";
-whenchanged = 1594052911;
+whenchanged = 1597173139;
 user U1 {
 	Truename = "FlyingBrooms";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052911;
+	whenchanged = 1597173139;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -104,7 +104,7 @@ node Bounciness {
 		   0.9203665,   0.07963356);  // Low    Low    ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1594052910;
+	whenchanged = 1597173138;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
@@ -155,7 +155,7 @@ node TrophyLevel {
 		   0.9140683,   0.07908863,  0.006843045); // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052910;
+	whenchanged = 1597173138;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet Lighthouse {
 autoupdate = FALSE;
 title = "Lighthouse";
-whenchanged = 1594052929;
+whenchanged = 1597173157;
 user U1 {
 	Truename = "Lighthouse";
 	Hub = "PP_OrangeNodes_6";
@@ -43,7 +43,7 @@ node Duration {
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // High   Medium 
 		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // High   Low    
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // Medium High   
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
 		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Medium Low    
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // Low    High   
@@ -51,7 +51,7 @@ node Duration {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052929;
+	whenchanged = 1597173157;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -104,7 +104,7 @@ node Bounciness {
 		   0.8711834,   0.1288166);   // Low    Low    ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1594052928;
+	whenchanged = 1597173156;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
@@ -148,7 +148,7 @@ node AppropriateSlider {
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // High   Medium 
 		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // High   Low    
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // Medium High   
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
 		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Medium Low    
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // Low    High   
@@ -156,7 +156,7 @@ node AppropriateSlider {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052928;
+	whenchanged = 1597173156;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -202,7 +202,7 @@ node SliderAdjust {
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // High   Medium 
 		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // High   Low    
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // Medium High   
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
 		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Medium Low    
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // Low    High   
@@ -210,7 +210,7 @@ node SliderAdjust {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052927;
+	whenchanged = 1597173156;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -256,7 +256,7 @@ node PufferClicks {
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // High   Medium 
 		   0.9752201,   0.02416622,  5.988455e-4, 1.483955e-5,  // High   Low    
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // Medium High   
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
 		   0.9394807,   0.05686853,  0.003442359, 2.083725e-4,  // Medium Low    
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // Low    High   
@@ -264,7 +264,7 @@ node PufferClicks {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Number of puffer clicks";
-	whenchanged = 1594052927;
+	whenchanged = 1597173155;
 	user U1 {
 		Truename = "PufferClicks";
 		link = "\"partialCredit\"";
@@ -318,7 +318,7 @@ node TrophyLevel {
 		   0.8549,      0.1264088,   0.01869131);  // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052927;
+	whenchanged = 1597173155;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

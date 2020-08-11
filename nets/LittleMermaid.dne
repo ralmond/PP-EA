@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet LittleMermaid {
 autoupdate = FALSE;
 title = "Little Mermaid";
-whenchanged = 1594053028;
+whenchanged = 1597173254;
 user U1 {
 	Truename = "LittleMermaid";
 	Hub = "PP_OrangeNodes_6";
@@ -36,7 +36,7 @@ node ApplicableAgent {
 		   0.5949114,   0.4050886);   // Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053028;
+	whenchanged = 1597173254;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -72,7 +72,7 @@ node NumberAttempts {
 		   0.4064559,   0.276765,    0.1884555,   0.1283236);   // Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053027;
+	whenchanged = 1597173254;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -110,7 +110,7 @@ node Duration {
 		   0.4064559,   0.276765,    0.1884555,   0.1283236);   // Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053027;
+	whenchanged = 1597173254;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -148,7 +148,7 @@ node TrophyLevel {
 		   0.4662922,   0.3175089,   0.216199);    // Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053026;
+	whenchanged = 1597173253;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

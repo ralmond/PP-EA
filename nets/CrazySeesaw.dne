@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet CrazySeesaw {
 autoupdate = FALSE;
 title = "Crazy Seesaw";
-whenchanged = 1594052997;
+whenchanged = 1597173224;
 user U1 {
 	Truename = "CrazySeesaw";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node ApplicableAgent {
 		   0.03959938,  0.9604006);   // Low            Low                ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594052997;
+	whenchanged = 1597173224;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -103,7 +103,7 @@ node NumberAttempts {
 		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low            Low                ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594052996;
+	whenchanged = 1597173224;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -158,7 +158,7 @@ node Duration {
 		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low            Low                ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052996;
+	whenchanged = 1597173224;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -213,7 +213,7 @@ node TrophyLevel {
 		   0.001630106, 0.03953483,  0.9588351);   // Low            Low                ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052996;
+	whenchanged = 1597173223;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

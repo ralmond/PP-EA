@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet Pipes {
 autoupdate = FALSE;
 title = "Pipes";
-whenchanged = 1594052937;
+whenchanged = 1597173165;
 user U1 {
 	Truename = "Pipes";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node TrophyLevel {
 		   0.7453874,   0.2546126);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052936;
+	whenchanged = 1597173164;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node Duration {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052937;
+	whenchanged = 1597173165;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -157,7 +157,7 @@ node AppropriateSlider {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052937;
+	whenchanged = 1597173165;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -211,7 +211,7 @@ node SliderAdjust {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052937;
+	whenchanged = 1597173165;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";

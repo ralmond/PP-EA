@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:27 PM UTC.
 
 bnet Chain {
 autoupdate = FALSE;
 title = "Chain";
-whenchanged = 1594052900;
+whenchanged = 1597173127;
 user U1 {
 	Truename = "Chain";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node TrophyLevel {
 		   0.8711834,   0.1288166);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052898;
+	whenchanged = 1597173126;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -92,7 +92,7 @@ node Duration {
 	probs = 
 		// Q1           Q2           Q3           Q4            // NFL    NSL    
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // High   Medium 
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // High   Medium 
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
@@ -102,7 +102,7 @@ node Duration {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052900;
+	whenchanged = 1597173127;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -146,7 +146,7 @@ node TopBlower {
 	probs = 
 		// Zero         One          Two          MorethanTwo   // NFL    NSL    
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // High   Medium 
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // High   Medium 
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
@@ -156,7 +156,7 @@ node TopBlower {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the top of the Screen";
-	whenchanged = 1594052899;
+	whenchanged = 1597173127;
 	user U1 {
 		Truename = "TopBlower";
 		link = "\"partialCredit\"";
@@ -200,7 +200,7 @@ node BottomBlower {
 	probs = 
 		// Zero         One          Two          MorethanTwo   // NFL    NSL    
 		  (0.9924676,   0.007475696, 5.631019e-5, 4.241527e-7,  // High   High   
-		   0.9816,      0.01806127,  3.32324e-4,  6.1147e-6,    // High   Medium 
+		   0.9816,      0.01806127,  3.323242e-4, 6.114704e-6,  // High   Medium 
 		   0.9550579,   0.04292607,  0.001929357, 8.671696e-5,  // High   Low    
 		   0.9863378,   0.01347555,  1.841056e-4, 2.515288e-6,  // Medium High   
 		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
@@ -210,7 +210,7 @@ node BottomBlower {
 		   0.8525436,   0.1260604,   0.01863979,  0.002756152); // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the bottom of the Screen";
-	whenchanged = 1594052899;
+	whenchanged = 1597173126;
 	user U1 {
 		Truename = "BottomBlower";
 		link = "\"partialCredit\"";

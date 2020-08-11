@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet RollingStone {
 autoupdate = FALSE;
 title = "Rolling Stone";
-whenchanged = 1594052947;
+whenchanged = 1597173175;
 user U1 {
 	Truename = "RollingStone";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052947;
+	whenchanged = 1597173175;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -106,7 +106,7 @@ node AppropriateSlider {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052946;
+	whenchanged = 1597173174;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -160,7 +160,7 @@ node SliderAdjust {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052946;
+	whenchanged = 1597173174;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -214,7 +214,7 @@ node TrophyLevel {
 		   0.157084,    0.293718,    0.549198);    // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052945;
+	whenchanged = 1597173173;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

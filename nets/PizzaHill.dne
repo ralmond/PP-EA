@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
 
 bnet PizzaHill {
 autoupdate = FALSE;
 title = "Pizza Hill";
-whenchanged = 1594052939;
+whenchanged = 1597173167;
 user U1 {
 	Truename = "PizzaHill";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node TrophyLevel {
 		   0.4599183,   0.5400816);   // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052938;
+	whenchanged = 1597173166;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
@@ -103,7 +103,7 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052939;
+	whenchanged = 1597173167;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -158,7 +158,7 @@ node BottomBlower {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low            ;
 	numcases = 10;
 	title = "Blower at the bottom of the Screen";
-	whenchanged = 1594052939;
+	whenchanged = 1597173167;
 	user U1 {
 		Truename = "BottomBlower";
 		link = "\"partialCredit\"";
@@ -213,7 +213,7 @@ node LeftBlower {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low            ;
 	numcases = 10;
 	title = "Blower at the left of the Screen";
-	whenchanged = 1594052938;
+	whenchanged = 1597173166;
 	user U1 {
 		Truename = "LeftBlower";
 		link = "\"partialCredit\"";

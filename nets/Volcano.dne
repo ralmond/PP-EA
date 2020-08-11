@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:29 PM UTC.
 
 bnet Volcano {
 autoupdate = FALSE;
 title = "Volcano";
-whenchanged = 1594053091;
+whenchanged = 1597173317;
 user U1 {
 	Truename = "Volcano";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node ApplicableAgent {
 		   0.5526696,   0.4473304);   // Low    Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1594053091;
+	whenchanged = 1597173317;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
@@ -102,7 +102,7 @@ node NumberAttempts {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1594053090;
+	whenchanged = 1597173316;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -157,7 +157,7 @@ node Duration {
 		   0.3339137,   0.2702695,   0.2187559,   0.1770609);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594053090;
+	whenchanged = 1597173316;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -212,7 +212,7 @@ node TrophyLevel {
 		   0.4057575,   0.3284198,   0.2658227);   // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594053089;
+	whenchanged = 1597173315;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

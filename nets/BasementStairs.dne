@@ -1,11 +1,11 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/06/2020 at 04:31:41 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:27 PM UTC.
 
 bnet BasementStairs {
 autoupdate = FALSE;
 title = "Basement Stairs";
-whenchanged = 1594052884;
+whenchanged = 1597173111;
 user U1 {
 	Truename = "BasementStairs";
 	Hub = "PP_OrangeNodes_6";
@@ -51,7 +51,7 @@ node Duration {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1594052884;
+	whenchanged = 1597173111;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -104,7 +104,7 @@ node Bounciness {
 		   0.7453874,   0.2546126);   // Low    Low    ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1594052883;
+	whenchanged = 1597173111;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
@@ -156,7 +156,7 @@ node AppropriateSlider {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1594052883;
+	whenchanged = 1597173111;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
@@ -210,7 +210,7 @@ node SliderAdjust {
 		   0.6675032,   0.2280086,   0.07788416,  0.02660401);  // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1594052883;
+	whenchanged = 1597173110;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
@@ -264,7 +264,7 @@ node TrophyLevel {
 		   0.6857468,   0.2342403,   0.08001282);  // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1594052882;
+	whenchanged = 1597173110;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";

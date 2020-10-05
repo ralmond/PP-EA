@@ -6,7 +6,7 @@
     "appStemOne":["userControl"],
     "appStem":["userControl","linear","adaptive"],
     "rebuildNets":true,
-    "logLevel":"DEBUG",
+    "logLevel":"INFO",
     "logname":"EA_<app>0.log",
     "Tables":{
         "netdir":"nets",

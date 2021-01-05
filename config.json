@@ -21,7 +21,10 @@
         "StatName":"Statistics",
         "profModel":"PP_OrangeNodes_6",
         "manifestFile":"PPManifest.csv",
-        "statFile":"StatisticList.csv"
+        "statFile":"StatisticList.csv",
+	"OverrideComment":"Setting to false prevents accidentally changing structure of graphs.",
+	"profOverride":true,
+	"emOverride":true
     },
     "sender":"EA_<app>",
     "dbname":"EARecords",

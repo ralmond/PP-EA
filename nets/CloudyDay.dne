@@ -1,131 +1,68 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet CloudyDay {
 autoupdate = FALSE;
 title = "Cloudy Day";
-whenchanged = 1597173217;
+whenchanged = 1610461566;
 user U1 {
 	Truename = "CloudyDay";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/CloudyDay.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/CloudyDay.dne";
 	};
 
-param X_EnergyTransfer_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590696075;
-	};
-
-param X_ConOfMom_4 {
+param X_ConOfMom_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590696075;
+	whenchanged = 1590696073;
 	};
 
-node NumberAttempts {
-	discrete = FALSE;
-	states = (one, two, three_four, more_than_four);
-	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (ConOfMom, EnergyTransfer);
-	parents = (X_ConOfMom_4, X_EnergyTransfer_4);
-	probs = 
-		// one          two          three four   more than four  // ConOfMom EnergyTransfer 
-		  (0.1770609,   0.2187559,   0.2702695,   0.3339137,    // High     High           
-		   0.02462187,  0.07430813,  0.2242599,   0.6768101,    // High     Medium         
-		   0.002158037, 0.01590934,  0.1172858,   0.8646468,    // High     Low            
-		   0.05124127,  0.1148266,   0.257315,    0.5766172,    // Medium   High           
-		   0.004988527, 0.02730694,  0.1494767,   0.8182278,    // Medium   Medium         
-		   3.870077e-4, 0.005174857, 0.06919537,  0.9252428,    // Medium   Low            
-		   0.01127,     0.04580692,  0.1861826,   0.7567405,    // Low      High           
-		   9.189288e-4, 0.009123634, 0.09058449,  0.8993729,    // Low      Medium         
-		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low      Low            ;
-	numcases = 10;
-	title = "Number of attempts";
-	whenchanged = 1597173217;
-	user U1 {
-		Truename = "NumberAttempts";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"667\",\
-			\| \"668\", \"669\"), c(\"ConOfMom\", \"EnergyTransfer\" )))";
-		lnAlphas = "list(structure(c(-0.669430653942629, -0.263965545834465), .Names = c(\"ConOfMom\",  \
-			\"EnergyTransfer\")), structure(c(-0.669430653942629, -0.263965545834465 ), .Names = \
-			c(\"ConOfMom\", \"EnergyTransfer\")), structure(c(-0.669430653942629,  -0.263965545834465), \
-			.Names = c(\"ConOfMom\", \"EnergyTransfer\")))";
-		betas = "list(1L, 1L, 1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_EnergyTransfer_3 {
+param X_EnergyTransfer_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
-	whenchanged = 1590696074;
+	whenchanged = 1590696073;
 	};
 
-param X_ConOfMom_3 {
+node TrophyLevel {
 	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590696074;
-	};
-
-node ApplicableAgent {
-	discrete = TRUE;
-	states = (TRUE, FALSE);
-	levels = (1, 0);
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (ConOfMom, EnergyTransfer);
-	parents = (X_ConOfMom_3, X_EnergyTransfer_3);
+	parents = (X_ConOfMom_1, X_EnergyTransfer_1);
 	probs = 
-		// TRUE         FALSE         // ConOfMom EnergyTransfer 
-		  (0.5400816,   0.4599183,    // High     High           
-		   0.2777337,   0.7222664,    // High     Medium         
-		   0.1118349,   0.8881651,    // High     Low            
-		   0.3581053,   0.6418947,    // Medium   High           
-		   0.1544653,   0.8455347,    // Medium   Medium         
-		   0.05644421,  0.9435558,    // Medium   Low            
-		   0.2095126,   0.7904874,    // Low      High           
-		   0.07985869,  0.9201413,    // Low      Medium         
-		   0.02763438,  0.9723656);   // Low      Low            ;
+		// Gold         Silver       None          // ConOfMom EnergyTransfer 
+		  (0.3880863,   0.3304834,   0.2814304,    // High     High           
+		   0.09649206,  0.2509345,   0.6525734,    // High     Medium         
+		   0.01388634,  0.1102819,   0.8758318,    // High     Low            
+		   0.1665157,   0.2984751,   0.5350091,    // Medium   High           
+		   0.02744384,  0.1502261,   0.82233,      // Medium   Medium         
+		   0.003365172, 0.05625426,  0.9403806,    // Medium   Low            
+		   0.05260839,  0.1984905,   0.7489011,    // Low      High           
+		   0.006883197, 0.07930901,  0.9138078,    // Low      Medium         
+		   7.847454e-4, 0.02761269,  0.9716026);   // Low      Low            ;
 	numcases = 10;
-	title = "Agent Type";
-	whenchanged = 1597173217;
+	title = "Level solving status";
+	whenchanged = 1610461566;
 	user U1 {
-		Truename = "ApplicableAgent";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"ConOfMom\",  \
-			\"EnergyTransfer\"))";
-		betas = "1L";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"448\", \
+			\"449\"), c(\"ConOfMom\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 ), c(ConOfMom = \
+			-0.446287102628419, EnergyTransfer = -0.0408219945202552 ))";
+		betas = "list(1L, 1L)";
 		priorWeight = "10";
 		};
-	};
-
-param X_EnergyTransfer_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590696074;
 	};
 
 param X_ConOfMom_2 {
@@ -134,6 +71,15 @@ param X_ConOfMom_2 {
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
+	whenchanged = 1590696074;
+	};
+
+param X_EnergyTransfer_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
 	whenchanged = 1590696074;
 	};
 
@@ -174,59 +120,111 @@ node Duration {
 		};
 	};
 
-param X_EnergyTransfer_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590696073;
-	};
-
-param X_ConOfMom_1 {
+param X_ConOfMom_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590696073;
+	whenchanged = 1590696074;
 	};
 
-node TrophyLevel {
+param X_EnergyTransfer_3 {
 	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590696074;
+	};
+
+node ApplicableAgent {
+	discrete = TRUE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (ConOfMom, EnergyTransfer);
-	parents = (X_ConOfMom_1, X_EnergyTransfer_1);
+	parents = (X_ConOfMom_3, X_EnergyTransfer_3);
 	probs = 
-		// Gold         Silver       None          // ConOfMom EnergyTransfer 
-		  (0.3880863,   0.3304834,   0.2814304,    // High     High           
-		   0.09649206,  0.2509345,   0.6525734,    // High     Medium         
-		   0.01388634,  0.1102819,   0.8758318,    // High     Low            
-		   0.1665157,   0.2984751,   0.5350091,    // Medium   High           
-		   0.02744384,  0.1502261,   0.82233,      // Medium   Medium         
-		   0.003365172, 0.05625426,  0.9403806,    // Medium   Low            
-		   0.05260839,  0.1984905,   0.7489011,    // Low      High           
-		   0.006883197, 0.07930901,  0.9138078,    // Low      Medium         
-		   7.847454e-4, 0.02761269,  0.9716026);   // Low      Low            ;
+		// TRUE         FALSE         // ConOfMom EnergyTransfer 
+		  (0.5400816,   0.4599183,    // High     High           
+		   0.2777337,   0.7222664,    // High     Medium         
+		   0.1118349,   0.8881651,    // High     Low            
+		   0.3581053,   0.6418947,    // Medium   High           
+		   0.1544653,   0.8455347,    // Medium   Medium         
+		   0.05644421,  0.9435558,    // Medium   Low            
+		   0.2095126,   0.7904874,    // Low      High           
+		   0.07985869,  0.9201413,    // Low      Medium         
+		   0.02763438,  0.9723656);   // Low      Low            ;
 	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1597173216;
+	title = "Agent Type";
+	whenchanged = 1610461566;
 	user U1 {
-		Truename = "TrophyLevel";
+		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"661\", \
-			\"662\"), c(\"ConOfMom\", \"EnergyTransfer\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"ConOfMom\",  \
-			\"EnergyTransfer\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"ConOfMom\", \"EnergyTransfer\")))";
-		betas = "list(1L, 1L)";
+		Q = "TRUE";
+		lnAlphas = "c(ConOfMom = -0.446287102628419, EnergyTransfer = -0.0408219945202552 )";
+		betas = "1L";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Duration, ApplicableAgent, NumberAttempts);};
-NodeSet Observable {Nodes = (TrophyLevel, Duration, ApplicableAgent, NumberAttempts);};
+
+param X_ConOfMom_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
+	whenchanged = 1590696075;
+	};
+
+param X_EnergyTransfer_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590696075;
+	};
+
+node NumberAttempts {
+	discrete = FALSE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (ConOfMom, EnergyTransfer);
+	parents = (X_ConOfMom_4, X_EnergyTransfer_4);
+	probs = 
+		// one          two          three four   more than four  // ConOfMom EnergyTransfer 
+		  (0.1770609,   0.2187559,   0.2702695,   0.3339137,    // High     High           
+		   0.02462187,  0.07430813,  0.2242599,   0.6768101,    // High     Medium         
+		   0.002158037, 0.01590934,  0.1172858,   0.8646468,    // High     Low            
+		   0.05124127,  0.1148266,   0.257315,    0.5766172,    // Medium   High           
+		   0.004988527, 0.02730694,  0.1494767,   0.8182278,    // Medium   Medium         
+		   3.870077e-4, 0.005174857, 0.06919537,  0.9252428,    // Medium   Low            
+		   0.01127,     0.04580692,  0.1861826,   0.7567405,    // Low      High           
+		   9.189288e-4, 0.009123634, 0.09058449,  0.8993729,    // Low      Medium         
+		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low      Low            ;
+	numcases = 10;
+	title = "Number of attempts";
+	whenchanged = 1597173217;
+	user U1 {
+		Truename = "NumberAttempts";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"667\",\
+			\| \"668\", \"669\"), c(\"ConOfMom\", \"EnergyTransfer\" )))";
+		lnAlphas = "list(structure(c(-0.669430653942629, -0.263965545834465), .Names = c(\"ConOfMom\",  \
+			\"EnergyTransfer\")), structure(c(-0.669430653942629, -0.263965545834465 ), .Names = \
+			c(\"ConOfMom\", \"EnergyTransfer\")), structure(c(-0.669430653942629,  -0.263965545834465), \
+			.Names = c(\"ConOfMom\", \"EnergyTransfer\")))";
+		betas = "list(1L, 1L, 1L)";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
+NodeSet Observable {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
 };

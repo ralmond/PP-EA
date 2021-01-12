@@ -1,86 +1,49 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet Freefall {
 autoupdate = FALSE;
 title = "Freefall";
-whenchanged = 1597173239;
+whenchanged = 1610461580;
 user U1 {
 	Truename = "Freefall";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Freefall.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Freefall.dne";
 	};
 
-param X_ConOfMom_4 {
+param X_ConOfMom_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590696099;
+	whenchanged = 1590696097;
 	};
 
-node ApplicableAgent {
+node TrophyLevel {
 	discrete = TRUE;
-	states = (TRUE, FALSE);
-	levels = (1, 0);
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (ConOfMom);
-	parents = (X_ConOfMom_4);
+	parents = (X_ConOfMom_1);
 	probs = 
-		// TRUE         FALSE         // ConOfMom 
-		  (0.9400575,   0.05994254,   // High     
-		   0.8455347,   0.1544653,    // Medium   
-		   0.6564345,   0.3435655);   // Low      ;
+		// Gold         Silver       None          // ConOfMom 
+		  (0.936478,    0.05971429,  0.003807667,  // High     
+		   0.82233,     0.1502261,   0.02744384,   // Medium   
+		   0.5563874,   0.2912027,   0.15241);     // Low      ;
 	numcases = 10;
-	title = "Agent Type";
-	whenchanged = 1597173239;
+	title = "Level solving status";
+	whenchanged = 1610461579;
 	user U1 {
-		Truename = "ApplicableAgent";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(-0.446287102628419, .Names = \"ConOfMom\")";
-		betas = "-1L";
-		priorWeight = "10";
-		};
-	};
-
-param X_ConOfMom_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590696098;
-	};
-
-node NumberAttempts {
-	discrete = FALSE;
-	states = (one, two, three_four, more_than_four);
-	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (ConOfMom);
-	parents = (X_ConOfMom_3);
-	probs = 
-		// one          two          three four   more than four  // ConOfMom 
-		  (0.9362507,   0.0596998,   0.003806743, 2.42736e-4,   // High     
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium   
-		   0.5152839,   0.2696899,   0.1411506,   0.07387556);  // Low      ;
-	numcases = 10;
-	title = "Number of attempts";
-	whenchanged = 1597173239;
-	user U1 {
-		Truename = "NumberAttempts";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
-		lnAlphas = "list(structure(-0.446287102628419, .Names = \"ConOfMom\"), structure(-0.446287102628419, \
-			.Names = \"ConOfMom\"),      structure(-0.446287102628419, .Names = \"ConOfMom\"))";
-		betas = "list(-1L, -1L, -1L)";
+		Q = "structure(c(TRUE, TRUE), .Dim = 2:1)";
+		lnAlphas = "list(c(ConOfMom = -0.446287102628419), c(ConOfMom = -0.446287102628419))";
+		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
 	};
@@ -122,42 +85,78 @@ node Duration {
 		};
 	};
 
-param X_ConOfMom_1 {
+param X_ConOfMom_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590696097;
+	whenchanged = 1590696098;
 	};
 
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
+node NumberAttempts {
+	discrete = FALSE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (ConOfMom);
-	parents = (X_ConOfMom_1);
+	parents = (X_ConOfMom_3);
 	probs = 
-		// Gold         Silver       None          // ConOfMom 
-		  (0.936478,    0.05971429,  0.003807667,  // High     
-		   0.82233,     0.1502261,   0.02744384,   // Medium   
-		   0.5563874,   0.2912027,   0.15241);     // Low      ;
+		// one          two          three four   more than four  // ConOfMom 
+		  (0.9362507,   0.0596998,   0.003806743, 2.42736e-4,   // High     
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium   
+		   0.5152839,   0.2696899,   0.1411506,   0.07387556);  // Low      ;
 	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1597173238;
+	title = "Number of attempts";
+	whenchanged = 1597173239;
 	user U1 {
-		Truename = "TrophyLevel";
+		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE), .Dim = c(2L, 1L))";
+		Q = "structure(c(TRUE, TRUE, TRUE), .Dim = c(3L, 1L))";
 		lnAlphas = "list(structure(-0.446287102628419, .Names = \"ConOfMom\"), structure(-0.446287102628419, \
-			.Names = \"ConOfMom\"))";
-		betas = "list(-1L, -1L)";
+			.Names = \"ConOfMom\"),      structure(-0.446287102628419, .Names = \"ConOfMom\"))";
+		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
-NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+
+param X_ConOfMom_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
+	whenchanged = 1590696099;
+	};
+
+node ApplicableAgent {
+	discrete = TRUE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (ConOfMom);
+	parents = (X_ConOfMom_4);
+	probs = 
+		// TRUE         FALSE         // ConOfMom 
+		  (0.9400575,   0.05994254,   // High     
+		   0.8455347,   0.1544653,    // Medium   
+		   0.6564345,   0.3435655);   // Low      ;
+	numcases = 10;
+	title = "Agent Type";
+	whenchanged = 1610461580;
+	user U1 {
+		Truename = "ApplicableAgent";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(ConOfMom = -0.446287102628419)";
+		betas = "-1L";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
+NodeSet Observable {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
 };

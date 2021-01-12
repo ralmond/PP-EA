@@ -1,24 +1,174 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet Spiral {
 autoupdate = FALSE;
 title = "Spiral";
-whenchanged = 1597173183;
+whenchanged = 1610461539;
 user U1 {
 	Truename = "Spiral";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Spiral.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Spiral.dne";
 	};
 
-param X_EnergyDissipate_4 {
+param X_EnergyTransfer_1 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590695826;
+	};
+
+param X_EnergyDissipate_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyDissipate";
-	whenchanged = 1590695827;
+	whenchanged = 1590695826;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, None);
+	levels = (2, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (EnergyTransfer, EnergyDissipate);
+	parents = (X_EnergyTransfer_1, X_EnergyDissipate_1);
+	probs = 
+		// Gold         None          // EnergyTransfer EnergyDissipate 
+		  (0.9723656,   0.02763438,   // High           High            
+		   0.9201413,   0.07985869,   // High           Medium          
+		   0.7904874,   0.2095126,    // High           Low             
+		   0.9435558,   0.05644421,   // Medium         High            
+		   0.8455347,   0.1544653,    // Medium         Medium          
+		   0.6418947,   0.3581053,    // Medium         Low             
+		   0.8881651,   0.1118349,    // Low            High            
+		   0.7222664,   0.2777337,    // Low            Medium          
+		   0.4599183,   0.5400816);   // Low            Low             ;
+	numcases = 10;
+	title = "Level solving status";
+	whenchanged = 1610461538;
+	user U1 {
+		Truename = "TrophyLevel";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 )";
+		betas = "-1L";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590695826;
+	};
+
+param X_EnergyDissipate_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
+	whenchanged = 1590695826;
+	};
+
+node LeftBlower {
+	discrete = FALSE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 4, 9, 16, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (EnergyTransfer, EnergyDissipate);
+	parents = (X_EnergyTransfer_2, X_EnergyDissipate_2);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // EnergyTransfer EnergyDissipate 
+		  (0.9715809,   0.02761208,  7.84728e-4,  2.230176e-5,  // High           High            
+		   0.9132622,   0.07926166,  0.006879087, 5.970332e-4,  // High           Medium          
+		   0.7386025,   0.1957609,   0.05188493,  0.0137517,    // High           Low             
+		   0.9401913,   0.05624294,  0.003364495, 2.012666e-4,  // Medium         High            
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         Medium          
+		   0.489533,    0.2731045,   0.1523617,   0.08500077,   // Medium         Low             
+		   0.874303,    0.1100894,   0.0138621,   0.001745471,  // Low            High            
+		   0.6292264,   0.2419569,   0.09303989,  0.0357767,    // Low            Medium          
+		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
+	numcases = 10;
+	title = "Blower at the left of the Screen";
+	whenchanged = 1610461538;
+	user U1 {
+		Truename = "LeftBlower";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"346\", \
+			\"347\", \"348\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		betas = "list(-1L, -1L, -1L)";
+		priorWeight = "10";
+		};
+	};
+
+param X_EnergyTransfer_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyTransfer";
+	whenchanged = 1590695826;
+	};
+
+param X_EnergyDissipate_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
+	whenchanged = 1590695826;
+	};
+
+node BottomBlower {
+	discrete = FALSE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 6, 9, 14.5, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (EnergyTransfer, EnergyDissipate);
+	parents = (X_EnergyTransfer_3, X_EnergyDissipate_3);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // EnergyTransfer EnergyDissipate 
+		  (0.9715809,   0.02761208,  7.84728e-4,  2.230176e-5,  // High           High            
+		   0.9132622,   0.07926166,  0.006879087, 5.970332e-4,  // High           Medium          
+		   0.7386025,   0.1957609,   0.05188493,  0.0137517,    // High           Low             
+		   0.9401913,   0.05624294,  0.003364495, 2.012666e-4,  // Medium         High            
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         Medium          
+		   0.489533,    0.2731045,   0.1523617,   0.08500077,   // Medium         Low             
+		   0.874303,    0.1100894,   0.0138621,   0.001745471,  // Low            High            
+		   0.6292264,   0.2419569,   0.09303989,  0.0357767,    // Low            Medium          
+		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
+	numcases = 10;
+	title = "Blower at the bottom of the Screen";
+	whenchanged = 1610461539;
+	user U1 {
+		Truename = "BottomBlower";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"349\", \
+			\"350\", \"351\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
+		betas = "list(-1L, -1L, -1L)";
+		priorWeight = "10";
+		};
 	};
 
 param X_EnergyTransfer_4 {
@@ -27,6 +177,15 @@ param X_EnergyTransfer_4 {
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "EnergyTransfer";
+	whenchanged = 1590695827;
+	};
+
+param X_EnergyDissipate_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "EnergyDissipate";
 	whenchanged = 1590695827;
 	};
 
@@ -66,168 +225,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-
-param X_EnergyDissipate_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695826;
-	};
-
-param X_EnergyTransfer_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590695826;
-	};
-
-node BottomBlower {
-	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 6, 9, 14.5, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (EnergyTransfer, EnergyDissipate);
-	parents = (X_EnergyTransfer_3, X_EnergyDissipate_3);
-	probs = 
-		// Zero         One          Two          MorethanTwo   // EnergyTransfer EnergyDissipate 
-		  (0.9715809,   0.02761208,  7.84728e-4,  2.230176e-5,  // High           High            
-		   0.9132622,   0.07926166,  0.006879087, 5.970332e-4,  // High           Medium          
-		   0.7386025,   0.1957609,   0.05188493,  0.0137517,    // High           Low             
-		   0.9401913,   0.05624294,  0.003364495, 2.012666e-4,  // Medium         High            
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         Medium          
-		   0.489533,    0.2731045,   0.1523617,   0.08500077,   // Medium         Low             
-		   0.874303,    0.1100894,   0.0138621,   0.001745471,  // Low            High            
-		   0.6292264,   0.2419569,   0.09303989,  0.0357767,    // Low            Medium          
-		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
-	numcases = 10;
-	title = "Blower at the bottom of the Screen";
-	whenchanged = 1597173183;
-	user U1 {
-		Truename = "BottomBlower";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"472\",\
-			\| \"473\", \"474\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
-			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
-		betas = "list(-1L, -1L, -1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_EnergyDissipate_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695826;
-	};
-
-param X_EnergyTransfer_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590695826;
-	};
-
-node LeftBlower {
-	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 4, 9, 16, INFINITY);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (EnergyTransfer, EnergyDissipate);
-	parents = (X_EnergyTransfer_2, X_EnergyDissipate_2);
-	probs = 
-		// Zero         One          Two          MorethanTwo   // EnergyTransfer EnergyDissipate 
-		  (0.9715809,   0.02761208,  7.84728e-4,  2.230176e-5,  // High           High            
-		   0.9132622,   0.07926166,  0.006879087, 5.970332e-4,  // High           Medium          
-		   0.7386025,   0.1957609,   0.05188493,  0.0137517,    // High           Low             
-		   0.9401913,   0.05624294,  0.003364495, 2.012666e-4,  // Medium         High            
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium         Medium          
-		   0.489533,    0.2731045,   0.1523617,   0.08500077,   // Medium         Low             
-		   0.874303,    0.1100894,   0.0138621,   0.001745471,  // Low            High            
-		   0.6292264,   0.2419569,   0.09303989,  0.0357767,    // Low            Medium          
-		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
-	numcases = 10;
-	title = "Blower at the left of the Screen";
-	whenchanged = 1597173183;
-	user U1 {
-		Truename = "LeftBlower";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"469\",\
-			\| \"470\", \"471\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
-			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
-		betas = "list(-1L, -1L, -1L)";
-		priorWeight = "10";
-		};
-	};
-
-param X_EnergyDissipate_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyDissipate";
-	whenchanged = 1590695826;
-	};
-
-param X_EnergyTransfer_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "EnergyTransfer";
-	whenchanged = 1590695826;
-	};
-
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, None);
-	levels = (2, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (EnergyTransfer, EnergyDissipate);
-	parents = (X_EnergyTransfer_1, X_EnergyDissipate_1);
-	probs = 
-		// Gold         None          // EnergyTransfer EnergyDissipate 
-		  (0.9723656,   0.02763438,   // High           High            
-		   0.9201413,   0.07985869,   // High           Medium          
-		   0.7904874,   0.2095126,    // High           Low             
-		   0.9435558,   0.05644421,   // Medium         High            
-		   0.8455347,   0.1544653,    // Medium         Medium          
-		   0.6418947,   0.3581053,    // Medium         Low             
-		   0.8881651,   0.1118349,    // Low            High            
-		   0.7222664,   0.2777337,    // Low            Medium          
-		   0.4599183,   0.5400816);   // Low            Low             ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1597173182;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\"))";
-		betas = "-1L";
-		priorWeight = "10";
-		};
-	};
-NodeSet pnodes {Nodes = (TrophyLevel, LeftBlower, BottomBlower, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, LeftBlower, BottomBlower, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, LeftBlower, BottomBlower);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, LeftBlower, BottomBlower);};
 };

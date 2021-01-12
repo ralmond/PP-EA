@@ -1,129 +1,68 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet NewtonsCradle {
 autoupdate = FALSE;
 title = "Newton's Cradle";
-whenchanged = 1597173264;
+whenchanged = 1610461596;
 user U1 {
 	Truename = "NewtonsCradle";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/NewtonsCradle.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/NewtonsCradle.dne";
 	};
 
-param X_ConOfMom_4 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590696127;
-	};
-
-param X_POfMom_8 {
+param X_POfMom_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1590696127;
+	whenchanged = 1590696125;
 	};
 
-node ApplicableAgent {
-	discrete = TRUE;
-	states = (TRUE, FALSE);
-	levels = (1, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (POfMom, ConOfMom);
-	parents = (X_POfMom_8, X_ConOfMom_4);
-	probs = 
-		// TRUE         FALSE         // POfMom ConOfMom 
-		  (0.9824646,   0.01753546,   // High   High     
-		   0.9327886,   0.0672114,    // High   Medium   
-		   0.7746632,   0.2253368,    // High   Low      
-		   0.9567069,   0.04329311,   // Medium High     
-		   0.8455347,   0.1544653,    // Medium Medium   
-		   0.5755414,   0.4244587,    // Medium Low      
-		   0.8970777,   0.1029223,    // Low    High     
-		   0.6834483,   0.3165517,    // Low    Medium   
-		   0.3484546,   0.6515454);   // Low    Low      ;
-	numcases = 10;
-	title = "Agent Type";
-	whenchanged = 1597173264;
-	user U1 {
-		Truename = "ApplicableAgent";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\"))";
-		betas = "-1L";
-		priorWeight = "10";
-		};
-	};
-
-param X_ConOfMom_3 {
+param X_ConOfMom_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "ConOfMom";
-	whenchanged = 1590696126;
+	whenchanged = 1590696125;
 	};
 
-param X_POfMom_6 {
+node TrophyLevel {
 	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "POfMom";
-	whenchanged = 1590696126;
-	};
-
-node NumberAttempts {
-	discrete = FALSE;
-	states = (one, two, three_four, more_than_four);
-	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
+	states = (Gold, Silver, None);
+	levels = (2, 1, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
-	parents = (X_POfMom_6, X_ConOfMom_3);
+	parents = (X_POfMom_2, X_ConOfMom_1);
 	probs = 
-		// one          two          three four   more than four  // POfMom ConOfMom 
-		  (0.9821517,   0.01752988,  3.128809e-4, 5.584436e-6,  // High   High     
-		   0.9279708,   0.06686425,  0.004817855, 3.471471e-4,  // High   Medium   
-		   0.7142299,   0.2077577,   0.06043332,  0.01757906,   // High   Low      
-		   0.9547518,   0.04320464,  0.001955106, 8.847289e-5,  // Medium High     
-		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium Medium   
-		   0.3727845,   0.2749265,   0.2027569,   0.1495321,    // Medium Low      
-		   0.8854228,   0.1015851,   0.01165493,  0.001337178,  // Low    High     
-		   0.5627288,   0.2606383,   0.1207194,   0.05591344,   // Low    Medium   
-		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
+		// Gold         Silver       None          // POfMom ConOfMom 
+		  (0.9821572,   0.01753,     3.128827e-4,  // High   High     
+		   0.928293,    0.06688748,  0.004819528,  // High   Medium   
+		   0.72701,     0.2114753,   0.06151469,   // High   Low      
+		   0.9548362,   0.04320846,  0.001955279,  // Medium High     
+		   0.82233,     0.1502261,   0.02744384,   // Medium Medium   
+		   0.4383287,   0.323265,    0.2384062,    // Medium Low      
+		   0.8866083,   0.1017212,   0.01167054,   // Low    High     
+		   0.5960564,   0.2760746,   0.127869,     // Low    Medium   
+		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
 	numcases = 10;
-	title = "Number of attempts";
-	whenchanged = 1597173264;
+	title = "Level solving status";
+	whenchanged = 1610461596;
 	user U1 {
-		Truename = "NumberAttempts";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"918\",\
-			\| \"919\", \"920\"), c(\"POfMom\", \"ConOfMom\" )))";
-		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\")),\
-			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")), \
-			structure(c(-0.22314355131421,  0.182321556793955), .Names = c(\"POfMom\", \"ConOfMom\")))";
-		betas = "list(-1L, -1L, -1L)";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"532\", \
+			\"533\"), c(\"POfMom\", \"ConOfMom\")))";
+		lnAlphas = "list(c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955 ), c(POfMom = \
+			-0.22314355131421, ConOfMom = 0.182321556793955 ))";
+		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
-	};
-
-param X_ConOfMom_2 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590696126;
 	};
 
 param X_POfMom_4 {
@@ -132,6 +71,15 @@ param X_POfMom_4 {
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "POfMom";
+	whenchanged = 1590696126;
+	};
+
+param X_ConOfMom_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
 	whenchanged = 1590696126;
 	};
 
@@ -171,58 +119,110 @@ node Duration {
 		};
 	};
 
-param X_ConOfMom_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "ConOfMom";
-	whenchanged = 1590696125;
-	};
-
-param X_POfMom_2 {
+param X_POfMom_6 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "POfMom";
-	whenchanged = 1590696125;
+	whenchanged = 1590696126;
 	};
 
-node TrophyLevel {
+param X_ConOfMom_3 {
 	discrete = TRUE;
-	states = (Gold, Silver, None);
-	levels = (2, 1, 0);
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
+	whenchanged = 1590696126;
+	};
+
+node NumberAttempts {
+	discrete = FALSE;
+	states = (one, two, three_four, more_than_four);
+	levels = (0.1, 1.1, 2.1, 4.1, INFINITY);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (POfMom, ConOfMom);
-	parents = (X_POfMom_2, X_ConOfMom_1);
+	parents = (X_POfMom_6, X_ConOfMom_3);
 	probs = 
-		// Gold         Silver       None          // POfMom ConOfMom 
-		  (0.9821572,   0.01753,     3.128827e-4,  // High   High     
-		   0.928293,    0.06688748,  0.004819528,  // High   Medium   
-		   0.72701,     0.2114753,   0.06151469,   // High   Low      
-		   0.9548362,   0.04320846,  0.001955279,  // Medium High     
-		   0.82233,     0.1502261,   0.02744384,   // Medium Medium   
-		   0.4383287,   0.323265,    0.2384062,    // Medium Low      
-		   0.8866083,   0.1017212,   0.01167054,   // Low    High     
-		   0.5960564,   0.2760746,   0.127869,     // Low    Medium   
-		   0.157084,    0.293718,    0.549198);    // Low    Low      ;
+		// one          two          three four   more than four  // POfMom ConOfMom 
+		  (0.9821517,   0.01752988,  3.128809e-4, 5.584436e-6,  // High   High     
+		   0.9279708,   0.06686425,  0.004817855, 3.471471e-4,  // High   Medium   
+		   0.7142299,   0.2077577,   0.06043332,  0.01757906,   // High   Low      
+		   0.9547518,   0.04320464,  0.001955106, 8.847289e-5,  // Medium High     
+		   0.8182278,   0.1494767,   0.02730694,  0.004988527,  // Medium Medium   
+		   0.3727845,   0.2749265,   0.2027569,   0.1495321,    // Medium Low      
+		   0.8854228,   0.1015851,   0.01165493,  0.001337178,  // Low    High     
+		   0.5627288,   0.2606383,   0.1207194,   0.05591344,   // Low    Medium   
+		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low      ;
 	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1597173263;
+	title = "Number of attempts";
+	whenchanged = 1597173264;
 	user U1 {
-		Truename = "TrophyLevel";
+		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"913\", \
-			\"914\"), c(\"POfMom\", \"ConOfMom\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"918\",\
+			\| \"919\", \"920\"), c(\"POfMom\", \"ConOfMom\" )))";
 		lnAlphas = "list(structure(c(-0.22314355131421, 0.182321556793955), .Names = c(\"POfMom\",  \"ConOfMom\")),\
-			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")))";
-		betas = "list(-1L, -1L)";
+			\| structure(c(-0.22314355131421, 0.182321556793955 ), .Names = c(\"POfMom\", \"ConOfMom\")), \
+			structure(c(-0.22314355131421,  0.182321556793955), .Names = c(\"POfMom\", \"ConOfMom\")))";
+		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
-NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+
+param X_POfMom_8 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "POfMom";
+	whenchanged = 1590696127;
+	};
+
+param X_ConOfMom_4 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "ConOfMom";
+	whenchanged = 1590696127;
+	};
+
+node ApplicableAgent {
+	discrete = TRUE;
+	states = (TRUE, FALSE);
+	levels = (1, 0);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (POfMom, ConOfMom);
+	parents = (X_POfMom_8, X_ConOfMom_4);
+	probs = 
+		// TRUE         FALSE         // POfMom ConOfMom 
+		  (0.9824646,   0.01753546,   // High   High     
+		   0.9327886,   0.0672114,    // High   Medium   
+		   0.7746632,   0.2253368,    // High   Low      
+		   0.9567069,   0.04329311,   // Medium High     
+		   0.8455347,   0.1544653,    // Medium Medium   
+		   0.5755414,   0.4244587,    // Medium Low      
+		   0.8970777,   0.1029223,    // Low    High     
+		   0.6834483,   0.3165517,    // Low    Medium   
+		   0.3484546,   0.6515454);   // Low    Low      ;
+	numcases = 10;
+	title = "Agent Type";
+	whenchanged = 1610461596;
+	user U1 {
+		Truename = "ApplicableAgent";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "TRUE";
+		lnAlphas = "c(POfMom = -0.22314355131421, ConOfMom = 0.182321556793955)";
+		betas = "-1L";
+		priorWeight = "10";
+		};
+	};
+NodeSet pnodes {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
+NodeSet Observable {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
 };

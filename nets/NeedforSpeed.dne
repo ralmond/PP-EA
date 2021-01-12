@@ -1,69 +1,27 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 08/11/2020 at 07:15:28 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet NeedforSpeed {
 autoupdate = FALSE;
 title = "Need for Speed";
-whenchanged = 1597173164;
+whenchanged = 1610461520;
 user U1 {
 	Truename = "NeedforSpeed";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/NeedforSpeed.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/NeedforSpeed.dne";
 	};
 
-param X_NSL_3 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695810;
-	};
-
-param X_NFL_3 {
+param X_NFL_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
-	whenchanged = 1590695810;
+	whenchanged = 1590695286;
 	};
 
-node TrophyLevel {
-	discrete = TRUE;
-	states = (Gold, None);
-	levels = (2, 0);
-	kind = NATURE;
-	chance = CHANCE;
-	inputs = (NFL, NSL);
-	parents = (X_NFL_3, X_NSL_3);
-	probs = 
-		// Gold         None          // NFL    NSL    
-		  (0.994835,    0.005165,     // High   High   
-		   0.9891899,   0.01081013,   // High   Medium 
-		   0.9775143,   0.02248568,   // High   Low    
-		   0.9843924,   0.01560757,   // Medium High   
-		   0.9677045,   0.03229547,   // Medium Medium 
-		   0.9343634,   0.06563663,   // Medium Low    
-		   0.9538172,   0.04618275,   // Low    High   
-		   0.9075094,   0.09249058,   // Low    Medium 
-		   0.8233671,   0.1766329);   // Low    Low    ;
-	numcases = 10;
-	title = "Level solving status";
-	whenchanged = 1597173163;
-	user U1 {
-		Truename = "TrophyLevel";
-		link = "\"partialCredit\"";
-		rules = "\"Compensatory\"";
-		Q = "TRUE";
-		lnAlphas = "structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NFL\",  \"NSL\"))";
-		betas = "-2L";
-		priorWeight = "10";
-		};
-	};
-
-param X_NSL_2 {
+param X_NSL_1 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
@@ -72,12 +30,56 @@ param X_NSL_2 {
 	whenchanged = 1590695286;
 	};
 
+node PufferClicks {
+	discrete = FALSE;
+	states = (Zero, One, Two, MorethanTwo);
+	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+	kind = NATURE;
+	chance = CHANCE;
+	inputs = (NFL, NSL);
+	parents = (X_NFL_1, X_NSL_1);
+	probs = 
+		// Zero         One          Two          MorethanTwo   // NFL    NSL    
+		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High   
+		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // High   Medium 
+		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // High   Low    
+		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // Medium High   
+		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
+		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Medium Low    
+		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // Low    High   
+		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Low    Medium 
+		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
+	numcases = 10;
+	title = "Number of puffer clicks";
+	whenchanged = 1610461520;
+	user U1 {
+		Truename = "PufferClicks";
+		link = "\"partialCredit\"";
+		rules = "\"Compensatory\"";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"264\", \
+			\"265\", \"266\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -0.0408219945202552, NSL = -0.446287102628419),      c(NFL = -0.0408219945202552, \
+			NSL = -0.446287102628419), c(NFL = -0.0408219945202552,      NSL = -0.446287102628419))";
+		betas = "list(-2L, -2L, -2L)";
+		priorWeight = "10";
+		};
+	};
+
 param X_NFL_2 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
+	whenchanged = 1590695286;
+	};
+
+param X_NSL_2 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
 	whenchanged = 1590695286;
 	};
 
@@ -117,59 +119,56 @@ node Duration {
 		};
 	};
 
-param X_NSL_1 {
-	discrete = TRUE;
-	states = (High, Medium, Low);
-	levels = (0.9674215661, 0, -0.9674215661);
-	kind = DISCONNECTED;
-	title = "NSL";
-	whenchanged = 1590695286;
-	};
-
-param X_NFL_1 {
+param X_NFL_3 {
 	discrete = TRUE;
 	states = (High, Medium, Low);
 	levels = (0.9674215661, 0, -0.9674215661);
 	kind = DISCONNECTED;
 	title = "NFL";
-	whenchanged = 1590695286;
+	whenchanged = 1590695810;
 	};
 
-node PufferClicks {
-	discrete = FALSE;
-	states = (Zero, One, Two, MorethanTwo);
-	levels = (0, 0.1, 1.1, 2.1, INFINITY);
+param X_NSL_3 {
+	discrete = TRUE;
+	states = (High, Medium, Low);
+	levels = (0.9674215661, 0, -0.9674215661);
+	kind = DISCONNECTED;
+	title = "NSL";
+	whenchanged = 1590695810;
+	};
+
+node TrophyLevel {
+	discrete = TRUE;
+	states = (Gold, None);
+	levels = (2, 0);
 	kind = NATURE;
 	chance = CHANCE;
 	inputs = (NFL, NSL);
-	parents = (X_NFL_1, X_NSL_1);
+	parents = (X_NFL_3, X_NSL_3);
 	probs = 
-		// Zero         One          Two          MorethanTwo   // NFL    NSL    
-		  (0.9948082,   0.005164863, 2.681503e-5, 1.392188e-7,  // High   High   
-		   0.9890717,   0.01080884,  1.181218e-4, 1.290867e-6,  // High   Medium 
-		   0.9769974,   0.02247379,  5.169627e-4, 1.189165e-5,  // High   Low    
-		   0.984145,    0.01560365,  2.473963e-4, 3.922476e-6,  // Medium High   
-		   0.966628,    0.03225954,  0.001076606, 3.592987e-5,  // Medium Medium 
-		   0.9297752,   0.06531432,  0.004588164, 3.223068e-4,  // Medium Low    
-		   0.9515864,   0.04607473,  0.002230886, 1.08017e-4,   // Low    High   
-		   0.8981799,   0.09153975,  0.00932945,  9.50829e-4,   // Low    Medium 
-		   0.787142,    0.1688617,   0.03622507,  0.007771186); // Low    Low    ;
+		// Gold         None          // NFL    NSL    
+		  (0.994835,    0.005165,     // High   High   
+		   0.9891899,   0.01081013,   // High   Medium 
+		   0.9775143,   0.02248568,   // High   Low    
+		   0.9843924,   0.01560757,   // Medium High   
+		   0.9677045,   0.03229547,   // Medium Medium 
+		   0.9343634,   0.06563663,   // Medium Low    
+		   0.9538172,   0.04618275,   // Low    High   
+		   0.9075094,   0.09249058,   // Low    Medium 
+		   0.8233671,   0.1766329);   // Low    Low    ;
 	numcases = 10;
-	title = "Number of puffer clicks";
-	whenchanged = 1597173163;
+	title = "Level solving status";
+	whenchanged = 1610461519;
 	user U1 {
-		Truename = "PufferClicks";
+		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"354\",\
-			\| \"355\", \"356\"), c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-0.0408219945202552, -0.446287102628419), .Names = c(\"NFL\",  \"NSL\")))";
-		betas = "list(-2L, -2L, -2L)";
+		Q = "TRUE";
+		lnAlphas = "c(NFL = -0.0408219945202552, NSL = -0.446287102628419)";
+		betas = "-2L";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, PufferClicks, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, PufferClicks, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, PufferClicks);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, PufferClicks);};
 };

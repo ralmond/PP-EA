@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet LaundryDay {
 autoupdate = FALSE;
 title = "Laundry Day";
-whenchanged = 1593810415;
+whenchanged = 1610461511;
 user U1 {
 	Truename = "LaundryDay";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/LaundryDay.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/LaundryDay.dne";
 	};
 
 param X_PropertiesofTorque_1 {
@@ -51,16 +51,15 @@ node TrophyLevel {
 		   0.001630106, 0.03953483,  0.9588351);   // Low                Low               ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810414;
+	whenchanged = 1610461510;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"293\", \
-			\"294\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
-		lnAlphas = "list(structure(c(-0.669430653942629, -0.263965545834465), .Names = c(\"PropertiesofTorque\",  \
-			\"StaticEquilibrium\")), structure(c(-0.669430653942629, -0.263965545834465 ), .Names = \
-			c(\"PropertiesofTorque\", \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"218\", \
+			\"219\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.669430653942629, StaticEquilibrium = -0.263965545834465 ), \
+			c(PropertiesofTorque = -0.669430653942629, StaticEquilibrium = -0.263965545834465 ))";
 		betas = "list(1L, 1L)";
 		priorWeight = "10";
 		};
@@ -105,17 +104,16 @@ node SliderAdjust {
 		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1593810414;
+	whenchanged = 1610461510;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"295\",\
-			\| \"296\", \"297\"), c(\"PropertiesofTorque\",  \"StaticEquilibrium\")))";
-		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"PropertiesofTorque\",  \
-			\"StaticEquilibrium\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = \
-			c(\"PropertiesofTorque\", \"StaticEquilibrium\")), structure(c(-0.263965545834465,  \
-			-0.669430653942629), .Names = c(\"PropertiesofTorque\", \"StaticEquilibrium\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"220\", \
+			\"221\", \"222\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ))";
 		betas = "list(1L, 1L, 1L)";
 		priorWeight = "10";
 		};
@@ -161,17 +159,16 @@ node AppropriateSlider {
 		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810415;
+	whenchanged = 1610461511;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"298\",\
-			\| \"299\", \"300\"), c(\"PropertiesofTorque\",  \"StaticEquilibrium\")))";
-		lnAlphas = "list(structure(c(-0.263965545834465, -0.669430653942629), .Names = c(\"PropertiesofTorque\",  \
-			\"StaticEquilibrium\")), structure(c(-0.263965545834465, -0.669430653942629 ), .Names = \
-			c(\"PropertiesofTorque\", \"StaticEquilibrium\")), structure(c(-0.263965545834465,  \
-			-0.669430653942629), .Names = c(\"PropertiesofTorque\", \"StaticEquilibrium\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"223\", \
+			\"224\", \"225\"), c(\"PropertiesofTorque\", \"StaticEquilibrium\"     )))";
+		lnAlphas = "list(c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ), \
+			c(PropertiesofTorque = -0.263965545834465, StaticEquilibrium = -0.669430653942629 ))";
 		betas = "list(1L, 1L, 1L)";
 		priorWeight = "10";
 		};
@@ -216,7 +213,7 @@ node Duration {
 		   6.720825e-5, 0.001629996, 0.03953217,  0.9587706);   // Low                Low               ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810415;
+	whenchanged = 1597173154;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -231,6 +228,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider);};
 };

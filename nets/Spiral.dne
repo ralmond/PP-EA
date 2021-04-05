@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet Spiral {
 autoupdate = FALSE;
 title = "Spiral";
-whenchanged = 1593810442;
+whenchanged = 1610461539;
 user U1 {
 	Truename = "Spiral";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Spiral.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Spiral.dne";
 	};
 
 param X_EnergyTransfer_1 {
@@ -51,14 +51,13 @@ node TrophyLevel {
 		   0.4599183,   0.5400816);   // Low            Low             ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810441;
+	whenchanged = 1610461538;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\"))";
+		lnAlphas = "c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 )";
 		betas = "-1L";
 		priorWeight = "10";
 		};
@@ -103,17 +102,16 @@ node LeftBlower {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Blower at the left of the Screen";
-	whenchanged = 1593810441;
+	whenchanged = 1610461538;
 	user U1 {
 		Truename = "LeftBlower";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"469\",\
-			\| \"470\", \"471\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
-			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"346\", \
+			\"347\", \"348\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
@@ -158,17 +156,16 @@ node BottomBlower {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Blower at the bottom of the Screen";
-	whenchanged = 1593810442;
+	whenchanged = 1610461539;
 	user U1 {
 		Truename = "BottomBlower";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"472\",\
-			\| \"473\", \"474\"), c(\"EnergyTransfer\",  \"EnergyDissipate\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"EnergyTransfer\",  \
-			\"EnergyDissipate\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"EnergyTransfer\", \"EnergyDissipate\")), structure(c(-0.446287102628419,  \
-			-0.0408219945202552), .Names = c(\"EnergyTransfer\", \"EnergyDissipate\" )))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"349\", \
+			\"350\", \"351\"), c(\"EnergyTransfer\", \"EnergyDissipate\"     )))";
+		lnAlphas = "list(c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ), \
+			c(EnergyTransfer = -0.446287102628419, EnergyDissipate = -0.0408219945202552 ))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
@@ -213,7 +210,7 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low            Low             ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810442;
+	whenchanged = 1597173183;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -228,6 +225,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, LeftBlower, BottomBlower, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, LeftBlower, BottomBlower, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, LeftBlower, BottomBlower);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, LeftBlower, BottomBlower);};
 };

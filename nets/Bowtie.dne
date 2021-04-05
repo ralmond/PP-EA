@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet Bowtie {
 autoupdate = FALSE;
 title = "Bowtie";
-whenchanged = 1593810381;
+whenchanged = 1610461475;
 user U1 {
 	Truename = "Bowtie";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Bowtie.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Bowtie.dne";
 	};
 
 param X_NFL_1 {
@@ -51,16 +51,15 @@ node TrophyLevel {
 		   0.02051371,  0.1318632,   0.8476231);   // Low    Low               ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810379;
+	whenchanged = 1610461474;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"74\", \"75\"),\
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"56\", \"57\"),\
 			\| c(\"NFL\", \"StaticEquilibrium\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NFL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NFL\", \"StaticEquilibrium\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = \
+			-0.446287102628419, StaticEquilibrium = -0.0408219945202552 ))";
 		betas = "list(0L, 0L)";
 		priorWeight = "10";
 		};
@@ -105,17 +104,16 @@ node PufferClicks {
 		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low               ;
 	numcases = 10;
 	title = "Number of puffer clicks";
-	whenchanged = 1593810380;
+	whenchanged = 1610461474;
 	user U1 {
 		Truename = "PufferClicks";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"76\", \
-			\"77\", \"78\"), c(\"NFL\", \"StaticEquilibrium\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NFL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NFL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
-			.Names = c(\"NFL\", \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"58\", \
+			\"59\", \"60\"), c(\"NFL\", \"StaticEquilibrium\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = \
+			-0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			StaticEquilibrium = -0.0408219945202552 ))";
 		betas = "list(0L, 0L, 0L)";
 		priorWeight = "10";
 		};
@@ -160,17 +158,16 @@ node SliderAdjust {
 		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low               ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1593810380;
+	whenchanged = 1610461475;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"79\", \
-			\"80\", \"81\"), c(\"NFL\", \"StaticEquilibrium\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NFL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NFL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
-			.Names = c(\"NFL\", \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"61\", \
+			\"62\", \"63\"), c(\"NFL\", \"StaticEquilibrium\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = \
+			-0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			StaticEquilibrium = -0.0408219945202552 ))";
 		betas = "list(0L, 0L, 0L)";
 		priorWeight = "10";
 		};
@@ -216,17 +213,16 @@ node AppropriateSlider {
 		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low               ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810381;
+	whenchanged = 1610461475;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"82\", \
-			\"83\", \"84\"), c(\"NFL\", \"StaticEquilibrium\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NFL\",  \
-			\"StaticEquilibrium\")), structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = \
-			c(\"NFL\", \"StaticEquilibrium\")), structure(c(-0.446287102628419,  -0.0408219945202552), \
-			.Names = c(\"NFL\", \"StaticEquilibrium\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"64\", \
+			\"65\", \"66\"), c(\"NFL\", \"StaticEquilibrium\")))";
+		lnAlphas = "list(c(NFL = -0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = \
+			-0.446287102628419, StaticEquilibrium = -0.0408219945202552 ), c(NFL = -0.446287102628419, \
+			StaticEquilibrium = -0.0408219945202552 ))";
 		betas = "list(0L, 0L, 0L)";
 		priorWeight = "10";
 		};
@@ -271,7 +267,7 @@ node Duration {
 		   0.003181128, 0.02044845,  0.1314437,   0.8449267);   // Low    Low               ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810381;
+	whenchanged = 1597173118;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -286,6 +282,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, PufferClicks, SliderAdjust, AppropriateSlider, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, PufferClicks, SliderAdjust, AppropriateSlider, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, PufferClicks, SliderAdjust, AppropriateSlider);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, PufferClicks, SliderAdjust, AppropriateSlider);};
 };

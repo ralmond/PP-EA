@@ -1,14 +1,14 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet PP_OrangeNodes_6 {
 autoupdate = FALSE;
 title = "Physics competency";
-whenchanged = 1593810368;
+whenchanged = 1610461461;
 user U1 {
 	Truename = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/PP_OrangeNodes_6.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/PP_OrangeNodes_6.dne";
 	};
 
 node Physics {
@@ -23,12 +23,12 @@ node Physics {
 		  (0.3333333,   0.3333333,   0.3333333);
 	numcases = 10;
 	title = "Physics Understanding";
-	whenchanged = 1593810364;
+	whenchanged = 1610461456;
 	user U1 {
 		Truename = "Physics";
-		rules = "structure(\"Compensatory\", .Names = \"Physics\")";
-		link = "structure(\"normalLink\", .Names = \"Physics\")";
-		betas = "structure(0, .Names = \"Physics\")";
+		rules = "c(Physics = \"Compensatory\")";
+		link = "c(Physics = \"normalLink\")";
+		betas = "c(Physics = 0)";
 		linkScale = "1";
 		Q = "TRUE";
 		lnAlphas = "structure(numeric(0), .Names = character(0))";
@@ -51,15 +51,15 @@ node ForceAndMotion {
 	numcases = 10;
 	title = "Force and Motion";
 	comment = "Newton's laws of motion";
-	whenchanged = 1593810364;
+	whenchanged = 1610461457;
 	user U1 {
 		Truename = "ForceAndMotion";
-		rules = "structure(\"Compensatory\", .Names = \"ForceAndMotion\")";
-		link = "structure(\"normalLink\", .Names = \"ForceAndMotion\")";
-		betas = "structure(-0.5, .Names = \"ForceAndMotion\")";
+		rules = "c(ForceAndMotion = \"Compensatory\")";
+		link = "c(ForceAndMotion = \"normalLink\")";
+		betas = "c(ForceAndMotion = -0.5)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"Physics\")";
+		lnAlphas = "c(Physics = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -85,15 +85,15 @@ node LinearMomentum {
 	numcases = 10;
 	title = "Linear Momentum";
 	comment = "Properties of momentum\nConservation of momentum";
-	whenchanged = 1593810365;
+	whenchanged = 1610461457;
 	user U1 {
 		Truename = "LinearMomentum";
-		rules = "structure(\"Compensatory\", .Names = \"LinearMomentum\")";
-		link = "structure(\"normalLink\", .Names = \"LinearMomentum\")";
-		betas = "structure(-0.2, .Names = \"LinearMomentum\")";
+		rules = "c(LinearMomentum = \"Compensatory\")";
+		link = "c(LinearMomentum = \"normalLink\")";
+		betas = "c(LinearMomentum = -0.2)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-0.25541281193655, 0), .Names = c(\"Physics\", \"ForceAndMotion\" ))";
+		lnAlphas = "c(Physics = -0.25541281193655, ForceAndMotion = 0)";
 		priorWeight = "10";
 		};
 	};
@@ -120,16 +120,15 @@ node Energy {
 	title = "Energy";
 	comment = "Gravitational Potential Energy \nKinetic Energy\nElastic potential energy \nEnergy Conservation \
 		";
-	whenchanged = 1593810365;
+	whenchanged = 1610461457;
 	user U1 {
 		Truename = "Energy";
-		rules = "structure(\"Compensatory\", .Names = \"Energy\")";
-		link = "structure(\"normalLink\", .Names = \"Energy\")";
-		betas = "structure(0, .Names = \"Energy\")";
+		rules = "c(Energy = \"Compensatory\")";
+		link = "c(Energy = \"normalLink\")";
+		betas = "c(Energy = 0)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-0.178337472010094, -0.0526802577767502), .Names = c(\"Physics\",  \
-			\"ForceAndMotion\"))";
+		lnAlphas = "c(Physics = -0.178337472010094, ForceAndMotion = -0.0526802577767502 )";
 		priorWeight = "10";
 		};
 	};
@@ -155,16 +154,15 @@ node Torque {
 	numcases = 10;
 	title = "Torque";
 	comment = "Properties of torque\nStatic equilibrium";
-	whenchanged = 1593810365;
+	whenchanged = 1610461458;
 	user U1 {
 		Truename = "Torque";
-		rules = "structure(\"Compensatory\", .Names = \"Torque\")";
-		link = "structure(\"normalLink\", .Names = \"Torque\")";
-		betas = "structure(0.5, .Names = \"Torque\")";
+		rules = "c(Torque = \"Compensatory\")";
+		link = "c(Torque = \"normalLink\")";
+		betas = "c(Torque = 0.5)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-0.111571775657011, -0.111571775657011), .Names = c(\"Physics\",  \
-			\"ForceAndMotion\"))";
+		lnAlphas = "c(Physics = -0.111571775657011, ForceAndMotion = -0.111571775657011 )";
 		priorWeight = "10";
 		};
 	};
@@ -184,15 +182,15 @@ node NFL {
 	numcases = 10;
 	title = "Newton's First Law";
 	comment = "\D1\8F\D1\8ES";
-	whenchanged = 1593810366;
+	whenchanged = 1610461458;
 	user U1 {
 		Truename = "NFL";
-		rules = "structure(\"Compensatory\", .Names = \"NFL\")";
-		link = "structure(\"normalLink\", .Names = \"NFL\")";
-		betas = "structure(-0.3, .Names = \"NFL\")";
+		rules = "c(NFL = \"Compensatory\")";
+		link = "c(NFL = \"normalLink\")";
+		betas = "c(NFL = -0.3)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"ForceAndMotion\")";
+		lnAlphas = "c(ForceAndMotion = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -212,15 +210,15 @@ node NSL {
 	numcases = 10;
 	title = "Newton's Second Law";
 	comment = "Mass and acceleration are inversely related\n\nNet force and acceleration are directly related";
-	whenchanged = 1593810366;
+	whenchanged = 1610461458;
 	user U1 {
 		Truename = "NSL";
-		rules = "structure(\"Compensatory\", .Names = \"NSL\")";
-		link = "structure(\"normalLink\", .Names = \"NSL\")";
-		betas = "structure(0, .Names = \"NSL\")";
+		rules = "c(NSL = \"Compensatory\")";
+		link = "c(NSL = \"normalLink\")";
+		betas = "c(NSL = 0)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"ForceAndMotion\")";
+		lnAlphas = "c(ForceAndMotion = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -240,15 +238,15 @@ node NTL {
 	numcases = 10;
 	title = "Newton's Third Law";
 	comment = "Force pairs act in opposite directions\nForce pairs have equal magnitudes";
-	whenchanged = 1593810366;
+	whenchanged = 1610461459;
 	user U1 {
 		Truename = "NTL";
-		rules = "structure(\"Compensatory\", .Names = \"NTL\")";
-		link = "structure(\"normalLink\", .Names = \"NTL\")";
-		betas = "structure(0.3, .Names = \"NTL\")";
+		rules = "c(NTL = \"Compensatory\")";
+		link = "c(NTL = \"normalLink\")";
+		betas = "c(NTL = 0.3)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"ForceAndMotion\")";
+		lnAlphas = "c(ForceAndMotion = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -270,15 +268,15 @@ node POfMom {
 	comment = "Momentum is directly related to mass\n\
 		Momentum is directly related to velocity\n\
 		Momentum is parallel to velocity";
-	whenchanged = 1593810366;
+	whenchanged = 1610461459;
 	user U1 {
 		Truename = "POfMom";
-		rules = "structure(\"Compensatory\", .Names = \"POfMom\")";
-		link = "structure(\"normalLink\", .Names = \"POfMom\")";
-		betas = "structure(0, .Names = \"POfMom\")";
+		rules = "c(POfMom = \"Compensatory\")";
+		link = "c(POfMom = \"normalLink\")";
+		betas = "c(POfMom = 0)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"LinearMomentum\")";
+		lnAlphas = "c(LinearMomentum = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -304,16 +302,15 @@ node ConOfMom {
 	numcases = 10;
 	title = "Conservation of momentum";
 	comment = "The total amount of momentum of a system \ndoes not change during a collision";
-	whenchanged = 1593810368;
+	whenchanged = 1610461461;
 	user U1 {
 		Truename = "ConOfMom";
-		rules = "structure(\"Compensatory\", .Names = \"ConOfMom\")";
-		link = "structure(\"normalLink\", .Names = \"ConOfMom\")";
-		betas = "structure(0.3, .Names = \"ConOfMom\")";
+		rules = "c(ConOfMom = \"Compensatory\")";
+		link = "c(ConOfMom = \"normalLink\")";
+		betas = "c(ConOfMom = 0.3)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-0.111571775657011, -0.111571775657011), .Names = c(\"LinearMomentum\",  \"POfMom\"\
-			))";
+		lnAlphas = "c(LinearMomentum = -0.111571775657011, POfMom = -0.111571775657011 )";
 		priorWeight = "10";
 		};
 	};
@@ -332,15 +329,15 @@ node EnergyTransfer {
 		   0.001877881, 0.1637201,   0.834402);    // Low    ;
 	numcases = 10;
 	title = "Energy can Transfer";
-	whenchanged = 1593810367;
+	whenchanged = 1610461460;
 	user U1 {
 		Truename = "EnergyTransfer";
-		rules = "structure(\"Compensatory\", .Names = \"EnergyTransfer\")";
-		link = "structure(\"normalLink\", .Names = \"EnergyTransfer\")";
-		betas = "structure(0, .Names = \"EnergyTransfer\")";
+		rules = "c(EnergyTransfer = \"Compensatory\")";
+		link = "c(EnergyTransfer = \"normalLink\")";
+		betas = "c(EnergyTransfer = 0)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"Energy\")";
+		lnAlphas = "c(Energy = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -359,15 +356,15 @@ node EnergyDissipate {
 		   4.111278e-4, 0.07754987,  0.922039);    // Low    ;
 	numcases = 10;
 	title = "Energy can Dissipate";
-	whenchanged = 1593810367;
+	whenchanged = 1610461460;
 	user U1 {
 		Truename = "EnergyDissipate";
-		rules = "structure(\"Compensatory\", .Names = \"EnergyDissipate\")";
-		link = "structure(\"normalLink\", .Names = \"EnergyDissipate\")";
-		betas = "structure(0.2, .Names = \"EnergyDissipate\")";
+		rules = "c(EnergyDissipate = \"Compensatory\")";
+		link = "c(EnergyDissipate = \"normalLink\")";
+		betas = "c(EnergyDissipate = 0.2)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"Energy\")";
+		lnAlphas = "c(Energy = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -386,15 +383,15 @@ node PropertiesofTorque {
 		   0.02255906,  0.446641,    0.5308);      // Low    ;
 	numcases = 10;
 	title = "Properties of Torque";
-	whenchanged = 1593810367;
+	whenchanged = 1610461460;
 	user U1 {
 		Truename = "PropertiesofTorque";
-		rules = "structure(\"Compensatory\", .Names = \"PropertiesofTorque\")";
-		link = "structure(\"normalLink\", .Names = \"PropertiesofTorque\")";
-		betas = "structure(-0.4, .Names = \"PropertiesofTorque\")";
+		rules = "c(PropertiesofTorque = \"Compensatory\")";
+		link = "c(PropertiesofTorque = \"normalLink\")";
+		betas = "c(PropertiesofTorque = -0.4)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"Torque\")";
+		lnAlphas = "c(Torque = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};
@@ -410,18 +407,18 @@ node StaticEquilibrium {
 		// High         Medium       Low           // Torque 
 		  (0.8840179,   0.1150827,   8.994e-4,     // High   
 		   0.229793,    0.6525424,   0.1176646,    // Medium 
-		   0.003743476, 0.2234563,   0.7728);      // Low    ;
+		   0.003743471, 0.2234563,   0.7728);      // Low    ;
 	numcases = 10;
 	title = "Static Equilibrium";
-	whenchanged = 1593810367;
+	whenchanged = 1610461461;
 	user U1 {
 		Truename = "StaticEquilibrium";
-		rules = "structure(\"Compensatory\", .Names = \"StaticEquilibrium\")";
-		link = "structure(\"normalLink\", .Names = \"StaticEquilibrium\")";
-		betas = "structure(-0.1, .Names = \"StaticEquilibrium\")";
+		rules = "c(StaticEquilibrium = \"Compensatory\")";
+		link = "c(StaticEquilibrium = \"normalLink\")";
+		betas = "c(StaticEquilibrium = -0.1)";
 		linkScale = "0.4472135955";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.111571775657011, .Names = \"Torque\")";
+		lnAlphas = "c(Torque = -0.111571775657011)";
 		priorWeight = "10";
 		};
 	};

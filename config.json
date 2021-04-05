@@ -11,7 +11,7 @@
         "netdir":"nets",
         "tabdir":"tables",
         "TableIDComment":"This is the unique part of the spreadsheet ID.",
-        "TableID":"16LcEuCspZjiBoZ3-Y1R3jxi1COXmh9vuTa9GwH1A_7Q",
+        "TableID":"13nbzvAoFlq_4eJoW-MM53As7BbtOsKDoiGROqJG0bZY",
         "downloadScript":"download.sh",
         "NetsName":"Nets",
         "NodesName":"Nodes",
@@ -20,7 +20,10 @@
         "StatName":"Statistics",
         "profModel":"PP_OrangeNodes_6",
         "manifestFile":"PPManifest.csv",
-        "statFile":"StatisticList.csv"
+        "statFile":"StatisticList.csv",
+	"OverrideComment":"Setting to false prevents accidentally changing structure of graphs.",
+	"profOverride":true,
+	"emOverride":true
     },
     "sender":"EA_<app>",
     "dbname":"EARecords",
@@ -73,5 +76,7 @@
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",
     "limitNN":"ALL",
     "statListener":"PPStats",
-    "statfile":"statsA-<app>.csv"
+    "statfile":"statsA-<app>.csv",
+    "histListener":"ToAS",
+    "histfile":"histA-<app>.csv"
 }

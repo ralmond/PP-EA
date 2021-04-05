@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:44 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:18 PM UTC.
 
 bnet SpaceTravel {
 autoupdate = FALSE;
 title = "Space Travel";
-whenchanged = 1593810540;
+whenchanged = 1610461609;
 user U1 {
 	Truename = "SpaceTravel";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/SpaceTravel.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/SpaceTravel.dne";
 	};
 
 param X_EnergyTransfer_1 {
@@ -36,14 +36,13 @@ node TrophyLevel {
 		   0.6726347,   0.2410098,   0.08635549);  // Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810539;
+	whenchanged = 1610461608;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE), .Dim = c(2L, 1L))";
-		lnAlphas = "list(structure(-0.892574205256839, .Names = \"EnergyTransfer\"),      \
-			structure(-0.892574205256839, .Names = \"EnergyTransfer\"))";
+		Q = "structure(c(TRUE, TRUE), .Dim = 2:1)";
+		lnAlphas = "list(c(EnergyTransfer = -0.892574205256839), c(EnergyTransfer = -0.892574205256839))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
@@ -73,7 +72,7 @@ node Duration {
 		   0.6524469,   0.2337763,   0.0837637,   0.03001312);  // Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810540;
+	whenchanged = 1597173284;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -111,7 +110,7 @@ node NumberAttempts {
 		   0.6524469,   0.2337763,   0.0837637,   0.03001312);  // Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1593810540;
+	whenchanged = 1597173284;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -149,17 +148,17 @@ node ApplicableAgent {
 		   0.7362106,   0.2637894);   // Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1593810540;
+	whenchanged = 1610461609;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "structure(-0.892574205256839, .Names = \"EnergyTransfer\")";
+		lnAlphas = "c(EnergyTransfer = -0.892574205256839)";
 		betas = "-1L";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
-NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+NodeSet pnodes {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
+NodeSet Observable {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
 };

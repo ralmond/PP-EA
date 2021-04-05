@@ -1,13 +1,12 @@
 {
-    "ConfigName":"PP-main",
-    "Branch":"PP-main",
+    "ConfigName":"PP-FormB",
+    "Branch":"PP-FormB",
     "Version":"0.5.2",
-    "Date":"2020-06-09",
-    "appStemOne":["userControl"],
+    "Date":"2020-08-01",
     "appStem":["userControl","linear","adaptive"],
     "rebuildNets":true,
     "logLevel":"INFO",
-    "logname":"EA_<app>0.log",
+    "logname":"EA_B-<app>0.log",
     "Tables":{
         "netdir":"nets",
         "tabdir":"tables",
@@ -71,14 +70,14 @@
         "purge":{},
         "ReprocessComment":"Records matching query are set processed<-false",
         "doReprocess":true,
-        "reprocess":{},
-        "reprocessX":{"uid":["219c3","218c3"]}
+
+        "reprocess":{"context":{"$nin":["Lever", "Pendulum", "Down Hill", "Puffer & Blowers", "Gravity", "Bounciness", "Lighthouse", "Through the Cracks", "Volcano", "UFO2", "Back and Forth", "Little Mermaid", "Stairs", "Spider Web", "Yippie!", "Wavy", "Work It Up", "Lightning", "Skate Park", "Broken Heart", "Whale", "Shelves", "Collision", "Spring", "Glacier View", "Break the maze", "Newton's Cradle", "Tetherball", "Cosmic Cave", "Green Apple ", "Timing is Everything", "Not too Far", "Lollipop", "Mobile", "Laundry Day", "Pipes", "Spiral", "Chain", "Balance", "Blocked by Blocks", "The Museum", "Cookie Monster", "Angels", "Invisible Chef", "Fireworks", "Breakfast time"]}}
     },
     "extensions":"",
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",
     "limitNN":"ALL",
     "statListener":"PPStats",
-    "statfile":"stats-<app>.csv",
+    "statfile":"statsB-<app>.csv",
     "histListener":"ToAS",
-    "histfile":"hist-<app>.csv"
+    "histfile":"histB-<app>.csv"
 }

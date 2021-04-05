@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet Blocked {
 autoupdate = FALSE;
 title = "Blocked";
-whenchanged = 1593810377;
+whenchanged = 1610461471;
 user U1 {
 	Truename = "Blocked";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Blocked.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Blocked.dne";
 	};
 
 param X_NFL_1 {
@@ -51,15 +51,15 @@ node TrophyLevel {
 		   0.9140683,   0.07908863,  0.006843045); // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810375;
+	whenchanged = 1610461469;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"46\", \"47\"),\
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"34\", \"35\"),\
 			\| c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")))";
+		lnAlphas = "list(c(NFL = -1.11571775657105, NSL = -0.710252648462884), c(NFL = -1.11571775657105,  NSL = \
+			-0.710252648462884))";
 		betas = "list(-2L, -2L)";
 		priorWeight = "10";
 		};
@@ -104,16 +104,15 @@ node SliderAdjust {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1593810376;
+	whenchanged = 1610461470;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"48\", \
-			\"49\", \"50\"), c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"36\", \
+			\"37\", \"38\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -1.11571775657105, NSL = -0.710252648462884), c(NFL = -1.11571775657105,  NSL = \
+			-0.710252648462884), c(NFL = -1.11571775657105, NSL = -0.710252648462884 ))";
 		betas = "list(-2L, -2L, -2L)";
 		priorWeight = "10";
 		};
@@ -159,16 +158,15 @@ node AppropriateSlider {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810376;
+	whenchanged = 1610461471;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"51\", \
-			\"52\", \"53\"), c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"39\", \
+			\"40\", \"41\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -1.11571775657105, NSL = -0.710252648462884), c(NFL = -1.11571775657105,  NSL = \
+			-0.710252648462884), c(NFL = -1.11571775657105, NSL = -0.710252648462884 ))";
 		betas = "list(-2L, -2L, -2L)";
 		priorWeight = "10";
 		};
@@ -213,16 +211,15 @@ node LeftBlower {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Blower at the left of the Screen";
-	whenchanged = 1593810377;
+	whenchanged = 1610461471;
 	user U1 {
 		Truename = "LeftBlower";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"54\", \
-			\"55\", \"56\"), c(\"NFL\", \"NSL\")))";
-		lnAlphas = "list(structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NFL\",  \"NSL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"42\", \
+			\"43\", \"44\"), c(\"NFL\", \"NSL\")))";
+		lnAlphas = "list(c(NFL = -1.11571775657105, NSL = -0.710252648462884), c(NFL = -1.11571775657105,  NSL = \
+			-0.710252648462884), c(NFL = -1.11571775657105, NSL = -0.710252648462884 ))";
 		betas = "list(-2L, -2L, -2L)";
 		priorWeight = "10";
 		};
@@ -267,7 +264,7 @@ node Duration {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810377;
+	whenchanged = 1597173114;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -281,6 +278,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, LeftBlower, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, LeftBlower, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider, LeftBlower);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider, LeftBlower);};
 };

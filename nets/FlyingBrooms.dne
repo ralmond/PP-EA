@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet FlyingBrooms {
 autoupdate = FALSE;
 title = "Flying Brooms";
-whenchanged = 1593810401;
+whenchanged = 1610461496;
 user U1 {
 	Truename = "FlyingBrooms";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/FlyingBrooms.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/FlyingBrooms.dne";
 	};
 
 param X_NSL_1 {
@@ -51,15 +51,15 @@ node TrophyLevel {
 		   0.9140683,   0.07908863,  0.006843045); // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810400;
+	whenchanged = 1610461496;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"206\", \
-			\"207\"), c(\"NSL\", \"NTL\")))";
-		lnAlphas = "list(structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NSL\",  \"NTL\")), \
-			structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NSL\",  \"NTL\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"155\", \
+			\"156\"), c(\"NSL\", \"NTL\")))";
+		lnAlphas = "list(c(NSL = -1.11571775657105, NTL = -0.710252648462884), c(NSL = -1.11571775657105,  NTL = \
+			-0.710252648462884))";
 		betas = "list(-2L, -2L)";
 		priorWeight = "10";
 		};
@@ -103,13 +103,13 @@ node Bounciness {
 		   0.9203665,   0.07963356);  // Low    Low    ;
 	numcases = 10;
 	title = "Check Bounciness";
-	whenchanged = 1593810400;
+	whenchanged = 1610461496;
 	user U1 {
 		Truename = "Bounciness";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "structure(c(-1.11571775657105, -0.710252648462884), .Names = c(\"NSL\",  \"NTL\"))";
+		lnAlphas = "c(NSL = -1.11571775657105, NTL = -0.710252648462884)";
 		betas = "-2L";
 		priorWeight = "10";
 		};
@@ -154,7 +154,7 @@ node Duration {
 		   0.9135274,   0.07904182,  0.006838995, 5.917356e-4); // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810401;
+	whenchanged = 1597173139;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -168,6 +168,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Bounciness, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, Bounciness, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, Bounciness);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, Bounciness);};
 };

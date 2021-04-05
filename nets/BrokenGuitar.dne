@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:42 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:16 PM UTC.
 
 bnet BrokenGuitar {
 autoupdate = FALSE;
 title = "Broken Guitar";
-whenchanged = 1593810387;
+whenchanged = 1610461482;
 user U1 {
 	Truename = "BrokenGuitar";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/BrokenGuitar.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/BrokenGuitar.dne";
 	};
 
 param X_NSL_1 {
@@ -51,15 +51,15 @@ node TrophyLevel {
 		   0.2814304,   0.3304834,   0.3880863);   // Low    Low    ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810386;
+	whenchanged = 1610461481;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"116\", \
-			\"117\"), c(\"NSL\", \"POfMom\")))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"POfMom\")), \
-			structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = c(\"NSL\", \"POfMom\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"89\", \"90\"),\
+			\| c(\"NSL\", \"POfMom\")))";
+		lnAlphas = "list(c(NSL = -0.446287102628419, POfMom = -0.0408219945202552 ), c(NSL = -0.446287102628419, \
+			POfMom = -0.0408219945202552))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
@@ -104,16 +104,15 @@ node SliderAdjust {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Number of slider adjustment";
-	whenchanged = 1593810386;
+	whenchanged = 1610461481;
 	user U1 {
 		Truename = "SliderAdjust";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"118\",\
-			\| \"119\", \"120\"), c(\"NSL\", \"POfMom\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"POfMom\")), \
-			structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = c(\"NSL\", \"POfMom\")), \
-			structure(c(-0.446287102628419,  -0.0408219945202552), .Names = c(\"NSL\", \"POfMom\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"91\", \
+			\"92\", \"93\"), c(\"NSL\", \"POfMom\")))";
+		lnAlphas = "list(c(NSL = -0.446287102628419, POfMom = -0.0408219945202552 ), c(NSL = -0.446287102628419, \
+			POfMom = -0.0408219945202552),      c(NSL = -0.446287102628419, POfMom = -0.0408219945202552))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
@@ -159,16 +158,15 @@ node AppropriateSlider {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Slider";
-	whenchanged = 1593810386;
+	whenchanged = 1610461482;
 	user U1 {
 		Truename = "AppropriateSlider";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = c(3L,  2L), .Dimnames = list(c(\"121\",\
-			\| \"122\", \"123\"), c(\"NSL\", \"POfMom\" )))";
-		lnAlphas = "list(structure(c(-0.446287102628419, -0.0408219945202552), .Names = c(\"NSL\",  \"POfMom\")), \
-			structure(c(-0.446287102628419, -0.0408219945202552 ), .Names = c(\"NSL\", \"POfMom\")), \
-			structure(c(-0.446287102628419,  -0.0408219945202552), .Names = c(\"NSL\", \"POfMom\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE), .Dim = 3:2, .Dimnames = list(     c(\"94\", \
+			\"95\", \"96\"), c(\"NSL\", \"POfMom\")))";
+		lnAlphas = "list(c(NSL = -0.446287102628419, POfMom = -0.0408219945202552 ), c(NSL = -0.446287102628419, \
+			POfMom = -0.0408219945202552),      c(NSL = -0.446287102628419, POfMom = -0.0408219945202552))";
 		betas = "list(-1L, -1L, -1L)";
 		priorWeight = "10";
 		};
@@ -213,7 +211,7 @@ node Duration {
 		   0.193326,    0.2270225,   0.2665923,   0.3130591);   // Low    Low    ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810387;
+	whenchanged = 1597173124;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -227,6 +225,6 @@ node Duration {
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
-NodeSet Observable {Nodes = (TrophyLevel, SliderAdjust, AppropriateSlider, Duration);};
+NodeSet pnodes {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider);};
+NodeSet Observable {Nodes = (Duration, TrophyLevel, SliderAdjust, AppropriateSlider);};
 };

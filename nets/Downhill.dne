@@ -1,15 +1,15 @@
 // ~->[DNET-1]->~
 
-// File created by AlmondR at FloridaStateU using Netica 6.07 on 07/03/2020 at 09:09:43 PM UTC.
+// File created by AlmondR at FloridaStateU using Netica 6.07 on 01/12/2021 at 02:27:17 PM UTC.
 
 bnet Downhill {
 autoupdate = FALSE;
 title = "Down Hill";
-whenchanged = 1593810489;
+whenchanged = 1610461576;
 user U1 {
 	Truename = "Downhill";
 	Hub = "PP_OrangeNodes_6";
-	Pathname = "/home/ralmond/Projects/PP-EA/nets/Downhill.dne";
+	Pathname = "/home1/ralmond/Projects/PP-EA/nets/Downhill.dne";
 	};
 
 param X_NFL_1 {
@@ -51,16 +51,15 @@ node TrophyLevel {
 		   0.157084,    0.293718,    0.549198);    // Low    Low            ;
 	numcases = 10;
 	title = "Level solving status";
-	whenchanged = 1593810488;
+	whenchanged = 1610461575;
 	user U1 {
 		Truename = "TrophyLevel";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
-		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"742\", \
-			\"743\"), c(\"NFL\", \"EnergyTransfer\")))";
-		lnAlphas = "list(structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NFL\",  \
-			\"EnergyTransfer\")), structure(c(0.182321556793955, -0.22314355131421 ), .Names = c(\"NFL\", \
-			\"EnergyTransfer\")))";
+		Q = "structure(c(TRUE, TRUE, TRUE, TRUE), .Dim = c(2L, 2L), .Dimnames = list(     c(\"475\", \
+			\"476\"), c(\"NFL\", \"EnergyTransfer\")))";
+		lnAlphas = "list(c(NFL = 0.182321556793955, EnergyTransfer = -0.22314355131421 ), c(NFL = \
+			0.182321556793955, EnergyTransfer = -0.22314355131421 ))";
 		betas = "list(-1L, -1L)";
 		priorWeight = "10";
 		};
@@ -105,7 +104,7 @@ node Duration {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low            ;
 	numcases = 10;
 	title = "Duration to solve level";
-	whenchanged = 1593810488;
+	whenchanged = 1597173232;
 	user U1 {
 		Truename = "Duration";
 		link = "\"partialCredit\"";
@@ -160,7 +159,7 @@ node NumberAttempts {
 		   0.0774997,   0.1449101,   0.2709549,   0.5066354);   // Low    Low            ;
 	numcases = 10;
 	title = "Number of attempts";
-	whenchanged = 1593810489;
+	whenchanged = 1597173232;
 	user U1 {
 		Truename = "NumberAttempts";
 		link = "\"partialCredit\"";
@@ -215,17 +214,17 @@ node ApplicableAgent {
 		   0.3484546,   0.6515454);   // Low    Low            ;
 	numcases = 10;
 	title = "Agent Type";
-	whenchanged = 1593810489;
+	whenchanged = 1610461576;
 	user U1 {
 		Truename = "ApplicableAgent";
 		link = "\"partialCredit\"";
 		rules = "\"Compensatory\"";
 		Q = "TRUE";
-		lnAlphas = "structure(c(0.182321556793955, -0.22314355131421), .Names = c(\"NFL\",  \"EnergyTransfer\"))";
+		lnAlphas = "c(NFL = 0.182321556793955, EnergyTransfer = -0.22314355131421 )";
 		betas = "-1L";
 		priorWeight = "10";
 		};
 	};
-NodeSet pnodes {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
-NodeSet Observable {Nodes = (TrophyLevel, Duration, NumberAttempts, ApplicableAgent);};
+NodeSet pnodes {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
+NodeSet Observable {Nodes = (Duration, NumberAttempts, TrophyLevel, ApplicableAgent);};
 };

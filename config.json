@@ -70,7 +70,7 @@
         "purge":{},
         "ReprocessComment":"Records matching query are set processed<-false",
         "doReprocess":true,
-        "reprocess":{"context":{"$in":["Lever", "Pendulum", "Down Hill", "Puffer & Blowers", "Gravity", "Bounciness", "Lighthouse", "Through the Cracks", "Volcano", "UFO2", "Back and Forth", "Little Mermaid", "Stairs", "Spider Web", "Yippie!", "Wavy", "Work It Up", "Lightning", "Skate Park", "Broken Heart", "Whale", "Shelves", "Collision", "Spring", "Glacier View", "Break the maze", "Newton's Cradle", "Tetherball", "Cosmic Cave", "Green Apple ", "Timing is Everything", "Not too Far", "Lollipop", "Mobile", "Laundry Day", "Pipes", "Spiral", "Chain", "Balance", "Blocked by Blocks", "The Museum", "Cookie Monster", "Angels", "Invisible Chef", "Fireworks", "Breakfast time"]}}
+        "reprocess":{"context":{"in":["Lever", "Pendulum", "Down Hill", "Puffer & Blowers", "Gravity", "Bounciness", "Lighthouse", "Through the Cracks", "Volcano", "UFO2", "Back and Forth", "Little Mermaid", "Stairs", "Spider Web", "Yippie!", "Wavy", "Work It Up", "Lightning", "Skate Park", "Broken Heart", "Whale", "Shelves", "Collision", "Spring", "Glacier View", "Break the maze", "Newton's Cradle", "Tetherball", "Cosmic Cave", "Green Apple ", "Timing is Everything", "Not too Far", "Lollipop", "Mobile", "Laundry Day", "Pipes", "Spiral", "Chain", "Balance", "Blocked by Blocks", "The Museum", "Cookie Monster", "Angels", "Invisible Chef", "Fireworks", "Breakfast time"]}}
     },
     "extensions":"",
     "limitNNcomment":"Special value Inf runs in server mode.  Value ALL sets limits based on contents.",

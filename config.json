@@ -4,7 +4,7 @@
     "Version":"0.5.2",
     "Date":"2020-06-09",
     "appStemOne":["userControl"],
-    "appStem":["userControl","linear","adaptive"],
+    "appStem":["userControl","linear","adaptive","IESSp2020","SummerCamp"],
     "rebuildNets":true,
     "logLevel":"INFO",
     "logname":"EA_<app>0.log",

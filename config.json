@@ -34,8 +34,6 @@
 	{
 	    "name":"ToAS",
 	    "type":"InjectionListener",
-	    "sender":"EA_<app>",
-	    "dburi":"<dburi>",
 	    "dbname":"ASRecords",
 	    "colname":"Statistics",
 	    "messages":["Statistics"]
@@ -43,7 +41,6 @@
 	{
 	    "name":"PPStats",
 	    "type":"UpdateListener",
-	    "dburi":"<dburi>",
 	    "dbname":"Proc4",
 	    "colname":"Statistics",
 	    "targetField":"data",
